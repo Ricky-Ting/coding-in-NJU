@@ -1,0 +1,130 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+struct set
+{
+    vector <int> value;
+};
+int n,m; // n:number of elements in A and m:number of elements in B
+set B[10000];
+set section[10000];
+int a[10000];
+int b[10000];
+int s_length=0;
+void input(void);
+void intersection(void);
+void set_union(void);
+void set_minus(void);
+void testify(void);
+int main(void)
+{
+    int temp;
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>temp;
+        a[i]=temp;
+         
+    }
+    cin>>m;
+    for(int i=1;i<=m;i++)
+    {
+        cin>>temp;
+        B[temp%10000].value.push_back(temp);
+        b[i]=temp;
+    }
+    intersection();
+    set_union();
+    set_minus();
+    testify();
+    return 0;
+}
+ 
+ 
+void intersection(void)
+{
+    int temp;
+    for(int i=1;i<=n;i++)
+    {
+        temp=a[i]%10000;
+        if((!B[temp].value.empty()))
+        {
+            for(int k=0;k<B[temp].value.size();k++)
+            {
+                if(a[i]==B[temp].value.at(k))
+                {
+                    section[temp].value.push_back(a[i]);
+                    s_length++;
+                    cout<<a[i]<<' ';
+                    break;
+                }
+            }
+             
+        }
+    }
+    cout<<endl;
+}
+ 
+ 
+void set_union(void)
+{
+    bool match=false;
+    int temp;
+    for(int i=1;i<=n;i++)
+    {
+        cout<<a[i]<<' ';
+    }
+    for(int i=1;i<=m;i++)
+    {
+        match=false;
+        temp=b[i]%10000;
+        if(!section[temp].value.empty())
+        {
+            for(int k=0;k<section[temp].value.size();k++)
+            if (b[i]==section[temp].value.at(k))
+            {
+                match=true;
+                break;
+            }
+        }
+        if(!match)
+            cout<<b[i]<<' ';
+         
+    }
+     
+    cout<<endl;
+}
+ 
+void set_minus(void)
+{
+    int temp;
+    bool match=false;
+    for(int i=1;i<=n;i++)
+    {
+        match=false;
+        temp=a[i]%10000;
+        if(!section[temp].value.empty())
+        {
+            for(int k=0;k<section[temp].value.size();k++)
+                if (a[i]==section[temp].value.at(k))
+                {
+                    match=true;
+                    break;
+                }
+        }
+        if(!match)
+            cout<<a[i]<<' ';
+        }
+    cout<<endl;
+     
+}
+ 
+ 
+void testify(void)
+{
+    if (s_length==n)
+        cout<<"true";
+    else
+        cout<<"false";
+}
+ 
