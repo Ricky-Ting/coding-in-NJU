@@ -1,0 +1,617 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第十讲：函数}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[UD:13.3]
+Which of the following are functions? Give reasons for your answers.\\
+(a) Define $\mathnormal{f}$ on $\mathbb{R}$ by $\mathnormal{f}$ =\{(x,y):x$^2$+y$^2$=4\}.\\
+(b) Define $\mathnormal{f}$ :$\mathbb{R}$ $\rightarrow$ $\mathbb{R}$ by $\mathnormal{f(x)=1/(x+1)}$.\\
+(c) Define $\mathnormal{f}$ :$\mathbb{R}^2$ $\rightarrow$ $\mathbb{R}$ by $\mathnormal{f(x,y)=x+y}$.\\
+(d) The domain of $\mathnormal{f}$ is the set of all closed intervals of real numbers of the form [a,b], where a,b$\in$$\mathbb{R}$, a$\le$b, and $\mathnormal{f}$ is defined by $\mathnormal{f([a,b])=a}$.\\
+(e) Define $\mathnormal{f}$ : $\mathbb{N}$$\times$$\mathbb{N}$ $\rightarrow$ $\mathbb{R}$ by $\mathnormal{f(n,m)=m}$.\\
+(f) Define $\mathnormal{f}$ : $\mathbb{R}$ $\rightarrow$ $\mathbb{R}$ by\\
+\[f(x)= \begin{cases}
+0 & if\quad x\ge 0\\
+x & if\quad x\le 0
+\end{cases}\]
+(g) Define $\mathnormal{f}$ : $\mathbb{Q}$ $\rightarrow$ $\mathbb{R}$ by\\
+\[f(x)= \begin{cases}
+x+1 & if\quad x\in 2\mathbb{N}\\
+x-1 & if\quad x\in 3\mathbb{N}\\
+2   & otherwise
+\end{cases}\]
+(h) The domain of $\mathnormal{f}$ is the set of all circles in the plane $\mathbb{N}^2$ and, if $\mathnormal{c}$ is such a circle, define $\mathnormal{f}$ by $\mathnormal{f(c)}$= the circumference of $\mathnormal{c}$.\\
+(i) ($\emph{For students with a background in calculus.}$) The domain of $\mathnormal{f}$ is the set of all polynomials with real coefficients, and $\mathnormal{f}$ is defined by $\mathnormal{f(p)=p^{'}}$.(Here p$^{'}$ is the derivative of $\mathnormal{p}$.)\\
+(j) ($\emph{For students with a background in calculus.}$) The domain of $\mathnormal{f}$ is the set of all polynomials and $\mathnormal{f}$ is defined by $\mathnormal{f(p)=\int_{0}^{1}p(x)dx.}$ (Here $\int_{0}^{1}p(x)dx$ is the definite integral of p.)
+
+\end{problem}
+\begin{solution}
+(a) This is not a function, because it doesn't satisfy (i) or (ii). For example for x=0, y can be 2 or -2.\\
+(b) This is not a function, because it doesn't satisfy (i), x=-1$\in$ dom($\mathnormal{f}$) but this x makes the expression meaningless, we cannot find a y related to it.\\
+(c) This is a function, because it satisfies (i) and (ii)\\
+(d) This is a function, because it satisfies (i) and (ii)\\
+(e) This is a function, because it satisfies (i) and (ii)\\
+(f) This is a function, because it satisfies (i) and (ii)\\
+(g) This is not a function, because it doesn't satisfy (ii). For example, for x=6, we have y=7 or 5.\\
+(h) This is a function, because it satisfies (i) and (ii)\\
+(i) This is a function, because it satisfies (i) and (ii)\\
+(j) This is a function, because it satisfies (i) and (ii)\\
+
+\end{solution}
+
+\begin{problem}[UD:13.4]
+Let \(f:P(R) \rightarrow Z\) be defined by
+\begin{align}
+f(A) = 
+\begin{cases}
+min(A\bigcap N) \qquad if \quad A\bigcap N \neq \phi\\
+-1              \qquad if \quad A\bigcap N = \phi
+\end{cases}
+\end{align}
+Prove that f above is a well-defined function.
+\end{problem}
+\begin{solution}
+(i) for all A$\in$ $\mathbb{P(R)}$, whether A$\cap$ $\mathbb{N}$ = $\emptyset$ has two cases.\\
+and the two cases are both defined in $\mathnormal{f}$\\
+(ii) For every A that satisfies A$\cap$ $\mathbb{N}$ =$\emptyset$, y is unique, namely -1.\\
+For every A that satisfies A$\cap$ $\mathbb{N}$ $\not=$ $\emptyset$, there is only one A$\cap$ $\mathbb{N}$, and the minmum of A$\cap$ $\mathbb{N}$ is unique , so y is unique.\\
+$\therefore$ for every A$\in$ $\mathbb{P(R)}$, the y it relates to is unique.\\
+$\therefore$ $\mathnormal{f}$ satisfies (i) and (ii)\\
+$\therefore$ $\mathnormal{f}$ is a well-defined function. 
+\end{solution}
+
+\begin{problem}[UD:13.5]
+Let x be a nonempty set and let A be a subset of X. We define the Characteristic function of the set A by
+\begin{align}
+X_{A}(x) = 
+\begin{cases}
+1 \qquad if \quad x \in A\\
+0 \qquad if \quad x \in X \backslash A
+\end{cases}
+\end{align}
+
+(a)Since this is called the characteristic function, it probably is a function, but check this carefully anyway.
+
+(b)Determine the domain and range of this function. Make sure you look at all possibilities for A and X.
+\end{problem}
+\begin{solution}
+The domain of is X, the range is \{0,1\}\\
+(i) Since A is a subset of X, for every x$\in$X, there are two cases: x$\in$A or x$\in$X$\backslash$A\\
+The two cases are defined in the $X_A$\\
+(ii) Since A is a subset of X, for every x$\in$X, there are two cases: x$\in$A or x$\in$X$\backslash$A\\
+(1) x$\in$A , the y is unique, namely 1\\
+(2) x$\in$X$\backslash$A, the y is also unique, namely 0\\
+$\therefore$ for every x$\in$X, the y it relates to is unique.\\
+$\therefore$ $X_A$ satisfies (i) and (ii)\\
+$\therefore$ $X_A$ is a well-defined function. 
+\end{solution}
+
+
+\begin{problem}[UD:13.11]
+Suppose that f is a function from a set A to a set B. Thus, we know that f is a subset of \(A \times B\). Is the relation \(\{(y,x) : (x,y) \in f\}\) necessarily a function from B to A? Why or why not? (Say as much as is possible to say with the given information.)
+\end{problem}
+\begin{solution}
+No,let us consider an example: $\mathnormal{f_1}$: (1,2) (2,2)\\
+then according to the relation, we have $\mathnormal{f_2}$: (2,1) (2,2)\\
+$\therefore$ for x=2, we have two y's: y=1 or y=2, it doesn't satisfy (ii)\\
+
+\end{solution}
+
+
+\begin{problem}[UD:13.13]
+Let X be a nonempty set. Find all relations on X that are both equivalence relations and functions.
+\end{problem}
+\begin{solution}
+x$\sim$y:x=y\\
+
+\end{solution}
+
+
+\begin{problem}[UD:14.8]
+For each of the functions below, determine whether or not the function is one-to-one and whether or not the function is onto. If the function is not one-to-one, give an explicit example to show what goes wrong. If it is not onto, determine the range.
+
+(a) Define \(f:R \rightarrow R\) by \(f(x) = 1 / (x^{2} +1)\).
+
+(b) Define \(f:R \rightarrow R\) by \(f(x) = sin(x)\). (Assume familiar facts about the sine function.)
+
+(c) Define \(f:Z \times Z \rightarrow Z\) by \(f(n,m) = nm\).
+
+(d) Define \(f:R^{2} \times R^{2} \rightarrow R\) by \(f((x,y),(u,v)) = xu + yv\). (Do you recognize this function?)
+
+(e) Define \(f:R^{2} \times R^{2} \rightarrow R\) by \(f((x,y),(u,v)) = \sqrt{(x-u)^{2} + (y-v)^{2}}\). (Do you recognize this function?)
+
+(f) Let A and B be nonempty sets and let \(b \in B\). Define \(f:A \rightarrow A \times B\) by \(f(a) = (a,b)\).
+
+(g) Let X be a nonempty set, and P(x) the power set of X. Define \(f:P(x) \rightarrow P(x)\) by \(f(A) = X \backslash A\).
+
+(h)Let B be a fixed proper subset of a nonempty set X. Define a function \(f:P(X) \rightarrow P(X)\) by \(f(A) = A \bigcap B\).
+
+(i) Let \(f:R \rightarrow R\) be defined by
+\begin{align}
+f(x) = 
+\begin{cases}
+2 - x \qquad if \quad x < 1\\
+1/x \qquad otherwise
+\end{cases}
+\end{align}
+\end{problem}
+\begin{solution}
+(a)\\
+(1) This function isn't one-to-one, for y=1/2, we have $x^2$=1, then we have x=1 or x=-1\\
+(2) This function isn't onto, the range of this function is (0,1]\\
+(b)\\
+(1) This function isn't one-to-one, for y=0, we have x=k$\pi$ k$\in$$\mathbb{Z}$\\
+(2) This function isn't onto, the range of this function is [-1,1]\\
+(c)\\
+(1) This function isn't one-to-one, for y=2, we have nm=2, then we have (n=1 and m=2)or (n=2 and m=1)\\
+(2) This function is onto.\\
+(d)\\
+(1) This function isn't one-to-one, for y=2, we can have (x=1, u=2,y=0,v=0) or (x=2,u=1,y=v=0) and so on\\
+(2) This function is onto.\\
+(e)\\
+(1) This function isn't one-to-one, for y=2, we can have (x=2, u=0,y=0,v=0) or (x=0,u=2,y=v=0) and so on\\
+(2) This function isn't onto, the range of this function is [0,+$\infty$)\\
+(f)\\
+(1) This function is one-to-one.\\
+(2) This function isn't onto, the range of this function is \{(x,y):x$\in A,y=b$\}\\
+(g)\\
+(1) This function is one-to-one.\\
+(2) This function is onto.\\
+(h)\\
+(1) This function isn't one-to-one, for y=B, we can have A=B or A=X and so on\\
+(2) This function isn't onto, the range of this function is $\mathcal{P}$(B)\\
+(i)\\
+(1) This function is one-to-one.\\
+(2) This function isn't onto, the range of this function is (0,+$\infty$)\\
+
+\end{solution}
+
+
+\begin{problem}[UD:14.12]
+Let a, b, c, and d be real numbers with \(a < b\) and \(c < d\). Define a bijection from the closed interval \([a,b]\) onto the closed interval \([c,d]\) and prove that your function is a bijection.
+\end{problem}
+\begin{solution}
+f(x)=$\frac{d-c}{b-a}$(x-a) +c\\
+Prove:\\
+(1)if x1,x2$\in$[a,b] and f(x$_1$)=f(x$_2$), then $\frac{d-c}{b-a}$(x$_1$-a) +c=$\frac{d-c}{b-a}$(x$_2$-a) +c\\
+$\therefore$ $\frac{d-c}{b-a}$(x$_1$-a)=$\frac{d-c}{b-a}$(x$_2$-a) \\
+$\because$ a<b and c<d\\
+$\therefore$ a-b<0, c-d<0\\
+$\therefore$ x$_1$-a=x$_2$-a\\
+$\therefore$ x$_1$=x$_2$\\
+$\therefore$ this function is one-to-one\\
+(2)$\because$ the range of x is [a,b]\\
+$\therefore$ the range of (x-a) is [0,b-a]\\
+$\therefore$ the range of $\frac{x-a}{b-a}$ is [0,1]\\
+$\therefore$ the range of $\frac{d-c}{b-a}$(x-a) is [0,d-c]\\
+$\therefore$ the range of $\frac{d-c}{b-a}$(x-a) +c is [c,d]\\
+$\therefore$ this function is onto.\\
+Based on (1) and (2), this function is bijective.\\
+\end{solution}
+
+
+\begin{problem}[UD:14.13]
+Let \(F([0,1])\) denote the set of all real-valued functions defined on the closed interval \([0,1]\). Define a new function \(\phi:F([0,1]) \rightarrow R\) by \(\phi(f) = f(0)\). Is \(\phi\) a function from \(F([0,1])\) to R? Is it one-to-one? Is it onto? Remember to prove all claims, and to provide examples where appropriate.
+\end{problem}
+\begin{solution}
+(1) $\phi$ is a function from F([0,1]) to R. For every f defined on [0,1], we can have a unique f(0), thus a unique $\phi$(f),and f(0)$\in$R. $\therefore$ $\phi$ is a function from F([0,1]) to R.\\
+(2) it is not one-to-one. for $\phi$$\mathnormal{f}$=f(0). we can have f(x)=x+f(0) or f(x)=2x+f(0) and so on\\
+(3) it is onto, for every f(0)$\in$R, we can let f(x)=x+f(0) $\in$ F([0,1])\\
+\end{solution}
+
+
+\begin{problem}[UD:14.15]
+Let f be a function, \(f:R \rightarrow R\). Define a new function \(f\cdot f\) by 
+\[(f\cdot f)(x) = f(x) \cdot f(x).\]
+Prove that \(f \cdot f\) is a function. Then do the remaining parts of the problem. (You may wish to work Problem 14.14, if you havem't already done so.)
+
+(a) Does there exists a function f for which \(f\cdot f\) is one-to-one? If not, why not? If there is, what is an example?
+
+(b) Does there exist a function f for which \(f\cdot f\) maps onto R? If not, what is \(ran(f\cdot f)\)? Your answer will be terms of \(ran(f)\).
+\end{problem}
+\begin{solution}
+(i) $\because$ f(x) is a function\\
+$\therefore$ for every x$\in$ R, there is a f(x)$\in$R that it relates to.\\
+$\therefore$ for every x$\in$ R, there is a f(x)*f(x)$\in$R that it relates to.\\
+(ii) $\because$ f(x) is a function\\
+$\therefore$ for every x$\in$ R, there is an unique f(x)$\in$R that it relates to.\\
+$\therefore$ for every x$\in$ R, there is an unique f(x)*f(x)$\in$R that it relates to.\\
+Based on (i) and (ii), we have (f·f)(x) is a function\\
+(a) Yes, let f(x)=2$^x$\\
+(b)No, there doesn't exist a function f for which f·f maps onto R\\
+(1) if ran(f)=(a,b) where a$\le$0$\le$b, then ran(f·f)=[0,(max(|a|,|b|))$_2$). (for ran(f)=[a,b] or (a,b] or [a,b) is the similar)\\
+(2) if ran(f)=(a,b) where a<b<0 or b>a>0, then ran(f·f)=( (min(|a|,|b|))$^2$. (max(|a|,|b|))$^2$) (for ran(f)=[a,b] or (a,b] or [a,b) is the similar)\\
+(3) if ran(f)=(a,+$\infty$),where a$\ge$0, then ran(f·f)=(a$^2$,+$\infty$), (for ran(f)=[a,+$\infty$) is the similar)\\
+(4) if ran(f)=(a,+$\infty$),where a<0, then ran(f·f)=[0,+$\infty$). (for ran(f)=[a,+$\infty$) is the similar)\\
+(5) if ran(f)=(-$\infty$,b),where b$\ge$0, then ran(f·f)=[0,+$\infty$). (for ran(f)=(-$\infty$,b] is the similar)\\
+(6) if ran(f)=(-$\infty$,b),where b<0, then ran(f·f)=(b$_2$,+$\infty$). (for ran(f)=(-$\infty$,b] is the similar)\\
+\end{solution}
+
+
+\begin{problem}[UD:15.1]
+Find the compositions \(f \circ g\) and \(g \circ f\) assuming the domain of each is the largest set of real numbers for which the functions \(f,g,f \circ g\), and \(g \circ f\) make sense. In your solution to each of the following, give the compositions and the corresponding domain and range:
+
+(a) \(f(x) = 1/(1+x), g(x) = x^{2}\);
+
+(b) \(f(x) = x^{2}, G(X) = \sqrt{x}\) (simplify this one);
+
+(c) \(f(x) = 1/x, g(x) = x^{2} + 1\);
+
+(d) \(f(x) = |x|,g(x) = f(x)\).
+\end{problem}
+\begin{solution}
+(a)\\
+f$\circ$g=f(g(x))=f(x$^2$)=$\frac{1}{1+x^2}$  dom(f$\circ$g)=R ran(f$\circ$g)=(0,1]\\
+g$\circ$f=g(f(x))=g($\frac{1}{1+x}$)=$\frac{1}{(1+x)^2}$  dom(g$\circ$f)=R$\backslash$\{-1\}  ran(g$\circ$f)=(0,+$\infty$)\\
+(b)\\
+f$\circ$g=f(g(x))=f($\sqrt{x}$)=x  dom(f$\circ$g)=[0,+$\infty$) ran(f$\circ$g)=[0,+$\infty$)\\
+g$\circ$f=g(f(x))=g(x$^2$)=|x| dom(g$\circ$f)=R  ran(g$\circ$f)=[0,+$\infty$)\\
+(c)\\
+f$\circ$g=f(g(x))=f(x$^2$+1)=$\frac{1}{1+x^2}$  dom(f$\circ$g)=R ran(f$\circ$g)=(0,1]\\
+g$\circ$f=g(f(x))=g($\frac{1}{x}$)=$\frac{1}{x^2}$+1  dom(g$\circ$f)=R$\backslash$\{0\}  ran(g$\circ$f)=(1,+$\infty$)\\
+(d)\\
+f$\circ$g=f(g(x))=f(f(x))=f(|x|)=|x|  dom(f$\circ$g)=R ran(f$\circ$g)=[0,+$\infty$)\\
+g$\circ$f=g(f(x))=g(|x|)=f(|x|)=|x| dom(g$\circ$f)=R  ran(g$\circ$f)=[0,+$\infty$)\\
+\end{solution}
+
+
+\begin{problem}[UD:15.6]
+The functions \(f:R \backslash \{-2\} \rightarrow R \backslash \{1\}\) and \(g:R \backslash \{1\} \rightarrow R \backslash \{-2\}\) defined by 
+\[f(x) = \frac{x-3}{x+2} \quad and \quad g(x) = \frac{3+2x}{1-x}\]
+are well-defined functions (you need not check this).
+
+(a) Calculate \(f \circ g\) and \(g \circ f\).
+
+(b) What can you conclude about f and g from your result in part (a)? If you use a theorem, give a reference.
+\end{problem}
+\begin{solution}
+(a)\\
+f$\circ$g=f(g(x))=f($\frac{3+2x}{1-x}$)=$\frac{\frac{3+2x}{1-x}-3}{\frac{3+2x}{1-x}+2}$=$\frac{3+2x-3(1-x)}{3+2x+2(1-x)}$=$\frac{5x}{5}$=x\\
+g$\circ$f=g(f(x))=g($\frac{x-3}{x+2}$)=$\frac{3+\frac{2(x-3)}{x+2}}{1-\frac{x-3}{x+2}}$=$\frac{3(x+2)+2x-3}{x+2-(x-3)}$=$\frac{5x}{5}$=x\\
+(b)\\let A=R$\backslash$\{-2\} B=R$\backslash$\{1\}\\
+And according to (a) we have f$\circ$g=i$_B$ and g$\circ$f=i$_A$\\
+$\therefore$ according to Theorem 15.8, we have g=f$^{-1}$.
+\end{solution}
+
+
+\begin{problem}[UD:15.7]
+(a)If possible, find examples of functions \(f:A \rightarrow B\) and \(g:B \rightarrow A\) such that \(f \circ g = i_{b}\) when:
+
+(i) \(A = \{1,2,3\}, B = \{4,5\}\);
+
+(ii) \(A = \{1,2\}, B = \{4,5\}\);
+
+(iii) \(A = \{1,2,3\}, B = \{4,5,6,7\}\).\\
+Draw diagrams of A and B in each case above.\\
+(b) Give an example pf sets A and B, and functions \(f:A \rightarrow B\) and \(g:B \rightarrow A\) such that \(f \circ g = i_{B}\), but \(g \circ f \neq i_{A}\). (Thus the existence of a function g such that \(f \circ g = i_{B}\) is not enough to conclude that f has an inverse!) Why doesn't this contradict Theorem 15.4, part(iv)?\\
+(c) Give an example of sets A and B, anf functions \(f:A \rightarrow B\) and \(g:B \rightarrow A\) such that \(g \circ f = i_{A}\), but \(f \circ g \neq i_{B}\). (Thus the existence of a function g such that \(g \circ f = i_{A}\) is not enough to conclude that f has an inverse!) Why doesn't this contradict Theorem 15.4, part(iv)?\\
+(d) Let A and B be two sets, and let \(f: A \rightarrow B\) be a function. Assume further that there exists a function \(g:B \rightarrow A\) such that \(f \circ g = i_{B}\). Must f be one-to-one? onto?\\
+(e) Looking over your work above, what should be your strategy in solving a question like (d) above? Whatever you decide, use it to solve the following: Let f and g be as above and suppose \(g \circ f = i_{A}\). Must f be one-to-one? onto?
+\end{problem}
+\begin{solution}
+(a)\\
+(i) let:
+\[f(x)= \begin{cases}
+4 & if\quad x= 1\\
+x+2 & if\quad x=2,3
+\end{cases}\]
+g(x)=x-2\\
+(ii) let f(x)=x+3 and g(x)=x-3\\
+(iii) this is not possible\\
+\fig{width = 0.70\textwidth}{UD15.7.JPG}{diagram of A and B}\\
+(b)\\
+A=\{1,2,3\},B=\{4,5\}
+ let:
+\[f(x)= \begin{cases}
+4 & if\quad x= 1\\
+x+2 & if\quad x=2,3
+\end{cases}\]
+g(x)=x-2\\
+This doesn't contradict Theorem 15.4,part(iv) beacuse f here cannot be a bijective function.\\
+(c)\\
+A=\{4,5\},B=\{1,2,3\}
+ let:
+\[g(x)= \begin{cases}
+4 & if\quad x= 1\\
+x+2 & if\quad x=2,3
+\end{cases}\]
+f(x)=x-2\\
+This doesn't contradict Theorem 15.4,part(iv) beacuse g here cannot be a bijective function.\\
+(d)\\
+A=\{1,2,3\},B=\{4,5\}
+ let:
+\[f(x)= \begin{cases}
+4 & if\quad x= 1\\
+x+2 & if\quad x=2,3
+\end{cases}\]
+g(x)=x-2\\
+As we cans see, f doesn't need to be one-to-one but it has to be onto.\\
+(e)\\
+f must be one-to-one but it doesn't have to be onto.
+
+\end{solution}
+
+
+\begin{problem}[UD:15.11]
+Suppose that \(f:A \rightarrow B\) and \(g_{1}\) and \(g_{2}\) are functions from B to A such that \(f \circ g_{1} = f \circ g_{2}\). Show that if f is bijective, then \(g_{1} = g_{2}\). If \(g_{1} \circ f = g_{2} \circ f\) and f is bijective, must \(g_{1} = g_{2}\)?
+\end{problem}
+\begin{solution}
+(a)\\
+$\because$ f is bijective\\
+$\therefore$ we have f$^{-1}$\\
+$\therefore$ f$^{-1}$$\circ$f$\circ$$g_1$=f$^{-1}$$\circ$f$\circ$$g_2$\\
+$\therefore$ i$_A$$\circ$$g_1$=i$_A$$\circ$$g_2$\\
+$\because$ i$_A$$\circ$$g_1$=$g_1$ and i$_A$$\circ$$g_2$=$g_2$\\
+$\therefore$ $g_1$=$g_2$\\
+(b)\\
+$\because$ f is bijective\\
+$\therefore$ we have f$^{-1}$\\
+$\therefore$ $g_1$$\circ$f$\circ$f$^{-1}$=$g_2$$\circ$f$\circ$f$^{-1}$\\
+$\therefore$ $g_1$$\circ$i$_B$=$g_2$$\circ$i$_B$\\
+$\because$ $g_1$$\circ$i$_B$=$g_1$ and $g_2$$\circ$i$_B$=$g_2$\\
+$\therefore$ $g_1$=$g_2$\\
+\end{solution}
+
+\begin{problem}[UD:15.12]
+Let \(f:A \rightarrow A\) be a function. Define a relation on A by \(a \sim b\) if and only if \(f(a) = f(b)\). Is this an equivalence? If f is one-to-one, what is the equivalence class of a point \(a \in A\)?
+\end{problem}
+\begin{solution}
+Yes, this is an equivalence.\\
+E$_a$=\{a\}\\
+
+\end{solution}
+
+
+\begin{problem}[UD:15.13]
+Let \(f:A \rightarrow A\) be a function. Define a relation on A by \(a \sim b\) if and only if \(f(a) = b\). Is this an equivalence relation for an arbitrary function f? If not, is there a function for which it is an equivalence relation?
+\end{problem}
+\begin{solution}
+No. An example: f(x)=x-1 doesn't satisify the symmetric\\
+Yes, f(x)=x\\
+\end{solution}
+
+
+\begin{problem}[UD:15.14]
+Let A, B, C, and D be nonempty sets. Let \(f:A \rightarrow B\) and \(g:C \rightarrow D\) be functions.
+
+(a) Prove that if f and g are one-to-one, then \(H: A \times C \rightarrow B \times D\) defined by 
+\[H(a,b) = (f(a),g(c))\]
+is a one-to-one function. (Check that it is one-to-one and a function.)
+
+(b) Prove that if f and g are onto, then H is also onto.
+\end{problem}
+\begin{solution}
+(a)\\
+$\because$ f and g are one-to-one functions, \\
+$\therefore$ for every a$\in$A and c$\in$C, we have there exist a u$\in$B that satisfies u=f(a) and a w$\in$B that satisfies w=g(c).\\
+and for every u$\in$ran(f) and every w$\in$ ran(g), we have there exist a unique a$\in$A that satisfies u=f(a) and a unique c$\in$C that satisfies w=g(c).\\
+$\therefore$ H is a one-to=one function\\
+(b)\\
+$\because$ f and g are onto functions, \\
+$\therefore$ for every a$\in$A and c$\in$C, we have there exist a u$\in$B that satisfies u=f(a) and a w$\in$B that satisfies w=g(c).\\
+and for every u$\in$B and w$\in$D, we have there exist a  u$\in$A that satisfies u=f(a) and a w$\in$B that satisfies w=g(c).\\
+$\therefore$ H is an onto function\\
+
+\end{solution}
+
+
+\begin{problem}[UD:15.15]
+Let A, B, C, and D be nonempty sets. Let \(f:A \rightarrow B\) and \(g:C \rightarrow D\) be functions. Consider H defined on \(A \bigcup C\) by 
+\begin{align}
+H(x)= 
+\begin{cases}
+f(x) \qquad if \quad x \in A\\
+g(x) \qquad if \quad x \in C
+\end{cases}
+\end{align}
+
+Show that there exist sets A, B, C, and D for which H is not a function, But there also exist such sets for which H is a function. What conditions can we place on A and C that assume us that H is a function?
+\end{problem}
+\begin{solution}
+(a) Let A=\{1,2,3\} B=\{3,4,5\} C=\{0\} D=\{1\} this H is not a function\\
+ Let A=\{1,2\} B=\{3,4\} C=\{0\} D=\{1\} this H is a function\\
+(b) for x$\in$A$\cap$C, we let f(x)=g(x)
+\end{solution}
+
+\begin{problem}[UD:15.20]
+In this problem, we look at a function called the restriction function, which we now define.
+
+If \(f:A \rightarrow B\) is a function, and \(A_{1} \subset A\), we define another function \(F:A_{1} \rightarrow B\) by \(F(a) = f(a)\) for all \(a \in A_{1}\). This function F is called the restriction of f to \(A_{1}\) and is usually denoted \(f|_{A_{1}}\), We now turn to the problem:
+
+(a) Prove that if f is one-to-one, then \(f|_{A_{1}}\) is one-to-one.
+
+(b) Prove that if \(f|_{A_{1}}\) is onto, the f is onto.
+\end{problem}
+\begin{solution}
+(a)\\
+$\because$ we have A$_1$$\Subset$A\\
+$\therefore$ we can easily note that ran(f|$_{A1}$)$\subseteq$ran(f)\\
+$\because$ f is one-to-one\\
+$\therefore$ for every y$\in$ran(f), we have there exists a unique x that satisfies y=f(x)\\
+$\because$ ran(f|$_{A1}$)$\subseteq$ran(f)\\
+$\therefore$ for every y$\in$ran(f|$_{A1}$), we have there exists a unique x that satisfies y=f(x)\\
+$\therefore$ f|$_{A1}$ is one-to-one.\\
+(b)\\
+$\because$ f|$_{A1}$ is one-to-one.\\
+$\therefore$ ran(f|$_{A1}$)=B\\
+$\because$ we have A$_1$$\Subset$A\\
+$\therefore$ we can easily note that ran(f|$_{A1}$)$\subseteq$ran(f)\\
+$\therefore$ we have B$\subseteq$ran(f)\\
+$\because$ ran(f)$\subseteq$B\\
+$\therefore$ we have ran(f)=B\\
+$\therefore$ f is onto
+\end{solution}
+
+\begin{problem}[UD:16.19]
+Let \(f:A \rightarrow B\) be a function. Prove that if f is onto, then \(\{f^{-1}(\{b\}): b \in B\}\) partitions the set A.
+\end{problem}
+\begin{solution}
+Let I$_b$=\{f$^{-1}$(\{b\}):b$\in$ B\}\\
+$\because$ f is a function\\
+$\therefore$ for every y$_1$ and y$_2$ $\in$B, if f(x)=y$_1$ and f(x)=y$_2$, we have y$_1$=y$_2$\\
+$\therefore$ I$_{y_1}$ $\cap$ I$_{y_2}$=$\emptyset$ for every y$_1$ and y$_2$ $\in$B\\
+$\bigcup _{b\in B}$I$_b$=$\bigcup_{b\in B}$f$^{-1}$(\{b\})=f$^{-1}$($\bigcup _{b\in B}$\{b\})=f$^{-1}$(B)=A\\
+$\therefore$ \{f$^{-1}$(\{b\}):b$\in$ B\} partitions the set A.\\
+\end{solution}
+
+
+\begin{problem}[UD:16.20]
+Suppose that \(f: X \rightarrow Y\) is a function, and let \(A_{1}\) and \(A_{2}\) be subsets of X.
+
+(a) If \(f(A_{1}) = f(A_{2})\), must \(A_{1} = A_{2}\)?
+
+(b) Let f be a bijective function. Show that if \(f(A_{1}) = f(A_{2})\), then \(A_{1} = A_{2}\). Indicate clearly where you use one-to-one or onto. Did you use both?
+\end{problem}
+\begin{solution}
+(a) it doesn't need to\\
+(b) \\
+$\because$ f(A$_1$)=f(A$_2$)\\
+$\therefore$ \{f(a):a$\in$A$_1$\}=\{f(b):b$\in$A$_2$\}\\
+Let S=\{f(a):a$\in$A$_1$\} T=\{f(b):b$\in$A$_2$\}\\
+$\therefore$ S $\subseteq$ T and T$\subseteq$S\\
+(i)S $\subseteq$ T:\\
+$\therefore$ for every s$\in$S ,we have s$\in$T\\
+$\therefore$ for every f(a)$\in$S, we have f(c)$\in$T that satisfies f(c)=f(a)\\
+$\because$ f is one-to-one\\
+$\therefore$ if f(a)=f(c), then a=c\\
+$\therefore$ for every a$\in$A$_1$, we have a $\in$A$_2$\\
+$\therefore$ A$_1$ $\subseteq$ A$_2$\\
+(ii)T$\subseteq$S:\\
+Similarly, we have A$_2$ $\subseteq$ A$_1$\\
+$\therefore$ A$_1$=A$_2$\\
+And I only use one-to-one.
+\end{solution}
+
+
+\begin{problem}[UD:16.21]
+Suppose that \(f: X \rightarrow Y\) is a function, and let \(B_{1}\) and \(B_{2}\) be subsets of Y.
+
+(a) If \(f^{-1}(B_{1}) = f^{-1}(B_{2})\), must \(B_{1} = B_{2}\)?
+
+(b) Let f be a bijective function. Show that if \(f^{-1}(B_{1}) = f^{-1}(B_{2})\), then \(B_{1} = B_{2}\). Indicate clearly where you use one-to-one or onto. Did you use both?
+\end{problem}
+\begin{solution}
+(a) No,cause Y is not neccessarily the range.\\
+(b)\\
+$\because$ f is bijective\\
+$\therefore$ f$^{-1}$ is bijective\\
+$\therefore$ according to 16.20(b), we have B$_1$=B$_2$
+And I use both one-to-one and onto.
+\end{solution}
+
+
+\begin{problem}[UD:16.22]
+Let X be a nonempty set and let \(A_{1}\) and \(A_{2}\) be subsets of X. Recall the notation for characteristic function, \(x_{A}\), defined in Problem 13.5. 
+
+(a) If \(X_{A_{1}} = X_{A_{2}}\), must \(A_{1} = A_{2}\)?
+
+(b) Show that the product \(X_{A_{1}} \cdot X_{A_{2}}\), which is defined pointwise on X by \((X_{A_{1}} \cdot X_{A_{2}})(x) = X_{A_{1}}(x) \cdot X_{A_{2}}(x)\), satisfies \(X_{A_{1}} \cdot X_{A_{2}} = X_{A_{1} \bigcap A_{2}}\).
+
+(c) Show that \(X_{A_{1}}(x) + X_{A_{2}}(x) - X_{A_{1} \bigcap A_{2}} = X_{A_{1} \bigcup A_{2}}\). (In other words, for each \(x \in X\), we have \(X_{A_{1}}(x) + X_{A_{2}}(x) - X_{A_{1} \bigcap A_{2}} = X_{A_{1} \bigcup A_{2}}\).)
+
+(d) Can you find a similar result for \(X_{X \backslash A_{1}}\)?
+\end{problem}
+\begin{solution}
+(a) Yes.\\
+(b)\\
+for x$\in$ X there are four cases:\\
+(i)if x$\in$A$_1$ and x$\in$A$_2$,\\
+we have X$_{A_1}$(x)=1 and X$_{A_2}$(x)=1, \\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=1 and X$_{A_1 \cap A_2}$(x)=1\\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=X$_{A_1 \cap A_2}$(x)\\
+(ii)if x$\in$A$_1$ and x$\notin$A$_2$, \\
+we have X$_{A_1}$(x)=1 and X$_{A_2}$(x)=0, \\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=0 and X$_{A_1 \cap A_2}$(x)=0\\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=X$_{A_1 \cap A_2}$(x)\\
+(iii)if x$\notin$A$_1$ and x$\in$A$_2$,\\
+we have X$_{A_1}$(x)=0 and X$_{A_2}$(x)=1, \\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=0 and X$_{A_1 \cap A_2}$(x)=0\\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=X$_{A_1 \cap A_2}$(x)\\
+(iv)if x$\notin$A$_1$ and x$\notin$A$_2$, \\
+we have X$_{A_1}$(x)=0 and X$_{A_2}$(x)=0, \\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=0 and X$_{A_1 \cap A_2}$(x)=0\\
+$\therefore$ (X$_{A_1}$·X$_{A_2}$)(x)=X$_{A_1 \cap A_2}$(x)\\
+(c)\\
+for x$\in$ X there are four cases:\\
+(i)if x$\in$A$_1$ and x$\in$A$_2$,\\
+we have X$_{A_1}$(x)=1 and X$_{A_2}$(x)=1, \\
+$\therefore$  X$_{A_1 \cap A_2}$(x)=1\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=1  and X$_{A_1 \cup A_2}$(x)=1\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=X$_{A_1 \cup A_2}$(x)\\
+(ii)if x$\in$A$_1$ and x$\notin$A$_2$, \\
+we have X$_{A_1}$(x)=1 and X$_{A_2}$(x)=0, \\
+$\therefore$  X$_{A_1 \cap A_2}$(x)=0\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=1 and X$_{A_1 \cup A_2}$(x)=1\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=X$_{A_1 \cup A_2}$(x)\\
+(iii)if x$\notin$A$_1$ and x$\in$A$_2$,\\
+we have X$_{A_1}$(x)=0 and X$_{A_2}$(x)=1, \\
+$\therefore$  X$_{A_1 \cap A_2}$(x)=0\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=1 and X$_{A_1 \cup A_2}$(x)=1\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=X$_{A_1 \cup A_2}$(x)\\
+(iv)if x$\notin$A$_1$ and x$\notin$A$_2$, \\
+we have X$_{A_1}$(x)=0 and X$_{A_2}$(x)=0, \\
+$\therefore$  X$_{A_1 \cap A_2}$(x)=0\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=0 and X$_{A_1 \cup A_2}$(x)=0\\
+$\therefore$ X$_{A_1}$(x)+X$_{A_2}$(x)-X$_{A_1 \cap A_2}$(x)=X$_{A_1 \cup A_2}$(x)\\
+(d)\\
+X$_{X\backslash A_1}$=X$_X$ -X$_{A_1}$\\
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,380 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第九讲：关系及其基本性质}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism % always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw  % begin ``this homework (hw)'' part
+
+
+\begin{problem}[UD:10.2]
+Let X=\{1,2,3,4,5\}.\\
+(a) If possible, define a relation on X that is an equivalence relation.\\
+(b) If possible, define a relation on X that is reflexive, but neither symmetric nor transitive.\\
+(c) If possible, define a relation on X that is symmetric, but neither reflexive nor transitive.\\
+(d) If possible, define a relation on X that is transitive, but neither reflexive nor symmetric.\\
+\end{problem}
+\begin{solution}
+(a) define x$\sim$y if and only if x=y\\
+(b) define x$\sim$y if and only if 0$\le$x-y$\le$1\\
+(c) define x$\sim$y if and only if x=6-y\\
+(d) define x$\sim$y :1$\sim$2 , 2$\sim$3 and 1$\sim$3
+
+\end{solution}
+
+
+\begin{problem}[UD:10.4]
+Define a relation $\sim$ on R$^2$ as follows: For (x$_1$,x$_2$),(y$_1$,y$_2$)$\in$ R$^2$, we say that (x$_1$,x$_2$)$\sim$(y$_1$,y$_2$) if and only if both x$_1$-y$_1$ and x$_2$-y$_2$ are even integers. Is this relation an equivalence relation? Why or why not?
+\end{problem}
+\begin{solution}
+Yes, this relation is an equivalence.\\
+(i) for reflexive:\\
+\indent $\because$  for (x$_1$,x$_2$) $\sim$ (y$_1$,y$_2$), we have both x$_1$-y$_1$ and x$_2$-y$_2$ are even integers\\
+\indent $\therefore$  we can let x$_1$-y$_1$ and x$_2$-y$_2$ are 0\\
+\indent $\therefore$  we have x$_1$=y$_1$ and x$_2$=y$_2$\\
+\indent $\therefore$  we have (x$_1$,x$_2$) $\sim$ (x$_1$,x$_2$)\\
+\indent $\therefore$  this relation is reflexive\\
+(ii) for symmetric\\
+\indent $\because$  for (x$_1$,x$_2$) $\sim$ (y$_1$,y$_2$), we have both x$_1$-y$_1$ and x$_2$-y$_2$ are even integers\\
+\indent $\therefore$  we also have both y$_1$-x$_1$ and y$_2$-x$_2$ are even integers\\
+\indent $\therefore$  (y$_1$,y$_2$) $\sim$ (x$_1$,x$_2$)\\
+\indent $\therefore$  this relation is symmetric\\
+(iii)  for transitive\\
+\indent $\because$  for (x$_1$,x$_2$) $\sim$ (y$_1$,y$_2$), we have both x$_1$-y$_1$ and x$_2$-y$_2$ are even integers\\
+\indent $\therefore$  we also have for (y$_1$,y$_2$) $\sim$ (z$_1$,z$_2$), we have both y$_1$-z$_1$ and y$_2$-z$_2$ are even integers\\
+\indent $\therefore$  we have both x$_1$-z$_1$ and x$_2$-z$_2$ are even integers\\
+\indent $\therefore$  (x$_1$,x$_2$) $\sim$ (z$_1$,z$_2$)\\
+\indent $\therefore$  this relation is transitive\\
+\end{solution}
+
+
+%%%%此题存疑
+
+\begin{problem}[UD:10.5]
+Let X be a nonempty set with an equivalence relation $\sim$ on it. Prove that for all elements x and y in X, the equality E$_x$=E$_y$ holds if and only if x$\sim$y.
+\end{problem}
+\begin{solution}
+(1)\\
+$\because$ we have E$_x$=E$_y$\\
+$\therefore$ \{y$\in$X:x$\sim$y\}=\{x$\in$X:y$\sim$x\}\\
+$\therefore$  x$\sim$y\\
+(2)\\
+$\because$ we have x$\sim$y and this relation is an equivalence\\
+$\therefore$ y$\sim$x\\
+$\therefore$ \{y$\in$X:x$\sim$y\}=\{x$\in$X:y$\sim$x\}\\
+$\therefore$ E$_x$=E$_y$\\
+Based on (1) and (2), we have for all elements x and y in X, the equality E$_x$=E$_y$ holds if and only if x$\sim$y.
+\end{solution}
+
+
+\begin{problem}[UD:10.8]
+Recall that a $\boldsymbol{polynomial}$ p over R is an expression of the form p(x)=a$_n$x$^n$ + a$_{n-1}$x$^{n-1}$ + ... + a$_1$x$^1$ + a$_0$ where each a$_j$ $\in$ R and n$\in$ N. The largest integer j such that a$_j$ $\not=$ 0 is the degree of p. We define the degree of the constant polynomial p=0 to be -$\infty$. (A polynomial over R defines a function p:R $\rightarrow$ R.)\\
+(a) Define a relation on the set of polynomials by p $\sim$ q if and only if p(0)=q(0). Is this an equivalence relation? If so, what is the equivalence class of the polynomial given by p(x)=x?\\
+(b) Define a relation on the set of polynomials by p $\sim$ q if and only the degree of p is the same as the degree of q. Is this an equivalence relation? If so, what is E$_r$ if r(x)=3x+5?\\
+(c) Define a relation on the set of polynomials by p $\sim$ q if and only the degree of p is less than or equal to the degree of q. Is this an equivalence relation? If so, what is E$_r$ where r(x)=x$^2$?\\
+\end{problem}
+\begin{solution}
+(a) yes.\\
+E$_{p(x)=x}$=\{q(x)=a$_n$x$^n$ + a$_{n-1}$x$^{n-1}$ + ... + a$_1$x$^1$ :a$_j$ $\in$ R and n$\in$ N\}\\
+(b) yes.\\
+E$_{r(x)=3x+5}$=\{q(x)=ax+b : a$\not=$0\}\\
+(c) No\\
+\end{solution}
+
+
+\begin{problem}[UD:11.3]
+(a) For each r$\in$R, let A$_r$=\{(x,y,z)$\in$ R$^3$ : x+y+z=r\}. Is this a partition of R$^3$? If so, give a geometric description of the partitioning sets.\\
+(b) For each r$\in$R, let A$_r$=\{(x,y,z)$\in$ R$^3$ : x$^2$+y$^2$+z$^2$=r$^2$\}. Is this a partition of R$^3$? If so, give a geometric description of the partitioning sets.\\
+\end{problem}
+\begin{solution}
+(a) yes.\\
+Each partitioning set is a plane.\\
+(b) yes.\\
+when r=0,the partitioning set is a dot.\\
+for other r, the partitioning set is a sphere(only the surface).
+\end{solution}
+
+
+\begin{problem}[UD:11.7]
+Consider the set P of polynomials with real coefficients. Decide whether or not each of the following collection of sets determines a partition of P. If you decide that it does determine a partition, show it carefully. If you decide that it does not determine a partition, list the part(s) of the definition that is (are) not satisfied and justify your claim with an example. (See Problem 10.8 for more information about polynomials.)\\
+(a) For m$\in$ N, let A$_m$ denote the set of polynomials of degree m.\\
+(b) For c$\in$ R, let A$_c$ denote the set of polynomials such that p(0)=c.\\
+(c) For a polynomial q, let A$_q$ denote the set of all polynomials p such that q is a factor of p; that is, there is a polynomial r such that p=qr.\\
+(d) For c$\in$ R, let A$_c$ denote the set of polynomials such that p(c)=0.
+\end{problem}
+\begin{solution}
+(a) this doesn't determine a partition of P.\\
+$\because$ the degree of (p(x)=0) is -$\infty$\\
+$\therefore$the set of (A$_m$) doesn't include B=\{p(x)=0\}\\
+\\
+(b) this determines a partition of P.\\
+(i) we can easily note that A$_c$ is nonempty\\
+(ii) first, we can easily conclude that $\bigcup_{c\in R}$A$_c$$\subseteq$ P\\
+then, for every polynomial $\in$ P, we can denote it by p(x)=a$_n$x$^n$ + a$_{n-1}$x$^{n-1}$ + ... + a$_1$x$^1$ + c where each a$_j$ $\in$ R and n$\in$ N.\\
+$\therefore$ p(0)=0\\
+$\therefore$ p(x) $\in$ A$_c$ for some c $\in$ R\\
+$\therefore$ P $\subseteq$ $\bigcup_{c\in R}$A$_c$\\
+$\therefore$ $\bigcup_{c\in R}$A$_c$ =P\\
+(iii) If A$_a$ $\cap$ A$_b$ $\not=$ $\emptyset$ (a,b$\in$R)\\
+$\therefore$ there exist a p(x)$\in$ A$_a$ $\cap$ A$_b$\\
+$\therefore$ p(0)=a and p(0)=b\\
+$\therefore$ a=b\\
+$\therefore$ A$_a$=A$_b$\\
+Based on (i),(ii) and (iii), this determines a partition of P\\
+\\
+(c) this doesn't determine a partition of P.\\
+A$_{1}$=P while A$_{x}$ $\subsetneqq$ P and A$_{x}$ $\not=$ $\emptyset$\\
+$\therefore$ A$_{1}$ $\cap$ A$_{x}$ $\not=$ $\emptyset$ and A$_{1}$$\not=$A$_{x}$\\
+$\therefore$ this doesn't satisfy the third condition\\
+$\therefore$ this doesn't determine a partition of P.\\
+\\
+(d) this doesn't determine a partition of P.\\
+for p(x)=x$^2$+1, we cannot find c$\in$R to let p(c)=0\\
+$\therefore$ p(x)=x$^2$+1 $\notin$ A$_c$ for any of c$\in$R\\
+$\therefore$ $\bigcup_{c\in R}$A$_c$ $\not=$P\\
+$\therefore$ this doesn't determine a partition of P.\\
+\end{solution}
+
+
+
+\begin{problem}[UD:11.8]
+For two nonempty disjoint sets, I and J, let \{A$_\alpha$: $\alpha \in$ I\} be a partition of R$^+$ and \{A$_\alpha$: $\alpha \in$ J\} be a partition of R$^-$ $\cup$ \{0\}. Prove that \{A$_\alpha$ : $\alpha \in$ I$\cup$J \} is a partition of R.
+\end{problem}
+\begin{solution}
+(i) we can easily note that for every $\alpha \in I \cup J$, A$\alpha$ $\not=$ $\emptyset$\\
+(ii) \\
+$\because$ \{A$_\alpha$: $\alpha \in$ I\} is a partition of R$^+$ and \{A$_\alpha$: $\alpha \in$ J\} is a partition of R$^-$ $\cup$ \{0\}\\
+$\therefore$ $\bigcup_{\alpha \in I}$A$\alpha$ = R$^+$ and $\bigcup_{\alpha \in J}$A$\alpha$ = R$^-$ $\cup$ \{0\}\\
+$\therefore$ $\bigcup_{\alpha \in I}$A$\alpha$ $\cup$ $\bigcup_{\alpha \in J}$A$\alpha$ = R$^+$ $\cup$ (R$^-$ $\cup$ \{0\})\\
+$\therefore$ $\bigcup_{\alpha \in I\cup J}$A$\alpha$ = R\\
+(iii)\\
+if  both i and j $\in$ I(or J)  and A$_i$$\cap$A$_j$ $\not=$ $\emptyset$, we conclude from the condition that A$_i$=A$_j$\\
+if i$\in$ I and j$\in$ J we can conclude from the condition that A$_i$$\cap$A$_j$ = $\emptyset$\\
+$\therefore$ for i,j$\in$ I$\cup$J, if A$_i$$\cap$A$_j$ $\not=$ $\emptyset$, we can conclude that A$_i$=A$_j$\\
+Based on (i), (ii) and (iii), \{A$_\alpha$ : $\alpha \in$ I$\cup$J \} is a partition of R.
+\end{solution}
+
+
+
+\begin{problem}[UD:11.9]
+Let X be a nonempty set and \{A$_\alpha$ : $\alpha \in$ I\} be a partition of X.\\
+(a) Let B be a subset of X such that A$_\alpha \cap$ B $\not=$ $\emptyset$ for every $\alpha \in$ I. Is \{A$_\alpha \cap B$: $\alpha \in$ I\} a partition of B? Prove it or give a counterexample.\\
+(b) Suppose further that A$_\alpha$ $\not=$ X for every $\alpha \in$ I. Is \{X$\backslash$ A$_\alpha$: $\alpha \in$ I\} a partition of X? Prove it or give a counterexample.
+\end{problem}
+\begin{solution}
+(a) yes, \{A$_\alpha \cap B$: $\alpha \in$ I\} is a partition of B\\
+(i) we can easily see from the condition that A$_\alpha \cap$ B $\not=$ $\emptyset$ for every $\alpha \in$ I\\
+(ii)\\
+\indent first, for every $\alpha \in$ I, A$_\alpha \cap$ B $\subseteq$ B \\
+$\therefore$ $\bigcup_{\alpha \in I}$ (A$_\alpha \cap$ B) $\subseteq$ B\\
+\indent then, $\because$ B$\subseteq$ X and  X=$\bigcup_{\alpha \in I}$ A$_\alpha$ \\
+$\therefore$ B$\subseteq$ $\bigcup_{\alpha \in I}$ A$_\alpha$\\
+$\therefore$ B$\subseteq$ $\bigcup_{\alpha \in I}$ (A$_\alpha \cap$ B)\\
+$\therefore$ $\bigcup_{\alpha \in I}$ (A$_\alpha \cap$ B) = B\\
+(iii)\\
+if A$_i \cap B$ $\cap$ A$_j \cap B$ $\not=$ $\emptyset$ (i,j$\in$ I)\\
+$\therefore$  A$_i$ $\cap$ A$_j$ $\not=$ $\emptyset$ (i,j$\in$ I)\\
+$\therefore$ acoodint to the condition , A$_i$=A$_j$\\
+$\therefore$ A$_i \cap B$ = A$_j \cap B$\\
+Based on (i), (ii) and (iii), \{A$_\alpha \cap B$: $\alpha \in$ I\} is a partition of B\\
+(b) No\\
+Let X=\{1,2,3\} A$_1$=\{1\}  A$_2$=\{2\}  A$_3$=\{3\} \\
+$\therefore$ we have X$\backslash$ A$_1$=\{2,3\} ,X$\backslash$ A$_2$=\{1,3\} ,X$\backslash$ A$_3$=\{1,2\} \\
+$\therefore$ A$_1$ $\cap$ A$_2$ =\{3\} $\not=$ $\emptyset$ but A$_1$ $\not=$ A$_2$\\
+$\therefore$ it doesn't satisfy the third condition.\\
+\end{solution}
+
+
+\begin{problem}[UD:12.10]
+Let S and T be nonempty bounded subsets of R.\\
+(a) Show that sup(S$\cup$T) $\ge$ sup S, and  sup(S$\cup$T) $\ge$ sup T.\\
+(b) Show that sup(S$\cup$T) = max\{sup S, sup T\}.\\
+(c) Try to state the results of (a) and (b) in English, without using mathematical symbols.
+\end{problem}
+\begin{solution}
+(a) \\
+$\therefore$ for all x $\in$ S,we have x$\le$sup S and for all y $\in$ T,we have y$\le$sup T\\
+there are three cases: S>T,S<T,S=T\\
+\indent (i) S>T\\
+\indent $\therefore$ sup S$\ge$ x and sup S$\ge$ sup T $\ge$ y\\
+\indent $\therefore$ sup S is the upper bound of S$\cup$T\\
+\indent if there is M<sup S that M is also the upper bound of S$\cup$T, then M is also the upper bound of S\\
+\indent $\therefore$ it contradicts with that sup S is the least upper bound of S\\
+\indent $\therefore$ sup S is the supremum of S$\cup$T\\
+\indent (ii)S<T\\
+\indent it is similar to (i)\\
+\indent $\therefore$ sup T is the supremum of S$\cup$T\\
+\indent (iii)S=T\\
+\indent following the above, we can easily conclude that sup T or sup S is the supremum of S$\cup$T\\
+$\therefore$ we can conclude that sup\{S$\cup$T)=max(sup S, sup T)\}\\
+$\therefore$ sup(S$\cup$T) $\ge$ sup S, and  sup(S$\cup$T) $\ge$ sup T.\\
+(b)\\
+I have done it in (a)\\
+$\therefore$ we can conclude that sup\{S$\cup$T)=max(sup S, sup T)\}\\
+(c)\\
+for (a): the supremum of the union of sets S and T is greater than the supremum of set S or that of set T\\
+for (b): the supremum of the union of sets S and T is the maximum of the supremum of set S and that of set T\\
+
+\end{solution}
+
+
+
+\begin{problem}[UD:12.13b]
+Let $\sim$ denote a relation on a set S. The relation $\sim$ is called a $\boldsymbol{partial order}$ if the following three conditions are satisfied.\\
+(i) (Reflexive property) For all x$\in$ S, we have x$\sim$x.\\
+(ii) (Transitive property) For all x,y,z$\in$S, if x$\sim$y and y$\sim$z,then x$\sim$z.\\
+(iii)(Antisymmetric property) For all x,y$\in$ S, if x$\sim$y and y$\sim$x, then x=y.\\
+The relation $\sim$ is a $\boldsymbol{total order}$ on the set S if, in addition, (iv) below is satisfied.\\
+(iv) For all x,y$\in$S, either x$\sim$y or y$\sim$x.\\
+(b) Let A be a set containing at least two elements. We define an order on P(A) using the regular set inclusion $\Subset$. Show that (P(A),$\Subset$) is a partial order, but not a total order.
+\end{problem}
+\begin{solution}
+(b)\\
+(i) for every x$\in$ $\mathcal{P}$(A), we can easily conclude that x$\subseteq$x\\
+$\therefore$ x$\sim$x\\
+(ii) for every x,y,z$\in$$\mathcal{P}$(A) and x$\sim$y and y$\sim$z, we have x$\subseteq$y and y$\subseteq$z\\
+$\therefore$ x$\subseteq$z\\
+$\therefore$ x$\sim$z\\
+(iii) for every x,y$\in$$\mathcal{P}$(A) and x$\sim$y and y$\sim$x, we have x$\subseteq$y and y$\subseteq$x\\
+$\therefore$ x=y\\
+(iv) for z,w$\in$A, let x=\{z\}, y=\{w\}, we have x,y$\in$ $\mathcal{P}$(A), but x$\nsubseteq$y and y$\nsubseteq$x\\
+Based on (i), (ii), (iii), and (iv) ,we can conclude that (P(A),$\Subset$) is a partial order, but not a total order.\\
+\end{solution}
+
+
+\begin{problem}[UD:12.16]
+You showed in Problem 12.13 that (P(Z),$\Subset$) is a partial order. For every nonempty subset $\mathcal{A}$ of $\mathcal{P(Z)}$ we say that U$\in$ $\mathcal{P(Z)}$ is an upper set of $\mathcal{A}$, if X$\Subset$U for all X$\in$ $\mathcal{A}$. A nonempty set $\mathcal{A}$ $\Subset$ $\mathcal{P(Z)}$ will be called an upper bounded set if there is an upper set of $\mathcal{A}$ in $\mathcal{P(Z)}$. We say U$_0$ $\in$ $\mathcal{P(Z)}$ is a least upper set if (i) U$_0$ is an upper set of $\mathcal{A}$ and (ii) if U is another upper set of $\mathcal{A}$, then $U_0$ $\Subset$ U.\\
+(a) Let $\mathcal{B}$=\{\{ 1,2,5,7\},\{2,8,10\},\{2,5,8\}\}. Show that $\mathcal{B}$ is an upper bounded set and find a least upper set of $\mathcal{B}$, if there is one.\\
+(b) Prove that every nonempty subset of $\mathcal{P(Z)}$ is upper bounded.\\
+(c) Define "lower set," "lower bounded set," and "greatest lower set."\\
+(d) Let $\mathcal{A}$ be a nonempty subset of $\mathcal{P(Z)}$. Using union and intersection, find an expression for least upper set of $\mathcal{A}$ and greatest lower set of $\mathcal{A}$.\\
+(e) Prove that ($\mathcal{P(Z)}$,$\Subset$) has the "least upper set property" (in other words, show every upper bounded set has a least upper set).
+\end{problem}
+\begin{solution}
+(a) Let U$_0$=\{1,2,5,7,8,10\}\\
+$\therefore$ for every X$\in$ $\mathcal{B}$, we X$\subseteq$U$_0$\\
+$\therefore$ $\mathcal{B}$ is an upper bounded set\\
+And the least upper set of $\mathcal{B}$ is U$_0$=\{1,2,5,7,8,10\}\\
+(b) Let U=$\mathcal{Z}$\\
+$\therefore$ for every $\mathcal{A}$ $\subseteq$ $\mathcal{P(Z)}$ and every X$\in$ $\mathcal{A}$ , we have X $\subseteq$ $\mathcal{Z}$\\
+$\therefore$ X $\subseteq$ U\\
+$\therefore$ $\mathcal{A}$ is an upper bounded set\\
+$\therefore$ every nonempty subset of $\mathcal{P(Z)}$ is upper bounded.\\
+(c) \\
+For every nonempty subset $\mathcal{A}$ of $\mathcal{P(Z)}$ we say that U$\in$ $\mathcal{P(Z)}$ is a lower set of $\mathcal{A}$, if U$\subseteq$X for all X$\in$ $\mathcal{A}$. A nonempty set $\mathcal{A}$ $\subseteq$ $\mathcal{P(Z)}$ will be called an lower bounded set if there is a lower set of $\mathcal{A}$ in $\mathcal{P(Z)}$. We say U$_0$ $\in$ $\mathcal{P(Z)}$ is a greatest upper set if (i) U$_0$ is a lower set of $\mathcal{A}$ and (ii) if U is another lower set of $\mathcal{A}$, then U $\subseteq$ U$_0$.\\
+(d)\\
+the least upper set of $\mathcal{A}$=$\bigcup$A$_\alpha$ (for every A$\alpha$$\in$$\mathcal{A}$)\\
+the greatest lower set of $\mathcal{A}$=$\bigcap$A$_\alpha$ (for every A$\alpha$$\in$$\mathcal{A}$)\\
+(e)\\
+for every upper bounded set $\mathcal{A}$, we can let U$_0$=$\bigcup$A$_\alpha$ (for every A$\alpha$$\in$$\mathcal{A}$)\\
+$\therefore$ we can easily conclude that for every X$\in$ $\mathcal{A}$, we have X$\subseteq$ U$_0$\\
+$\therefore$ U$_0$ is an upper set of $\mathcal{A}$\\
+Then ,we need to prove U$_0$is the least one\\
+we set a set U$_1$ $\subsetneq$ U$_0$\\
+there is x$\notin$ U$_1$ but $\in$ $\bigcup$A$_\alpha$ (for every A$\alpha$$\in$$\mathcal{A}$)\\
+then there is x$\notin$ U$_1$ but $\in$ A$_\alpha$ (A$\alpha$$\in$$\mathcal{A}$)\\
+we can let X=A$\alpha$ , then X$\nsubseteq$  U$_1$\\
+$\therefore$ U$_1$ is not an upper set of $\mathcal{A}$\\
+$\therefore$ U$_0$is the least upper set of $\mathcal{A}$\\
+$\therefore$ every upper bounded set has a least upper set\\
+and we prove that every nonempty subset of $\mathcal{P(Z)}$ is upper bounded in (b)\\
+$\therefore$ ($\mathcal{P(Z)}$,$\Subset$) has the "least upper set property"
+
+\end{solution}
+
+
+\begin{problem}[UD:12.20]
+Suppose we define $\infty$ to be an object that satisfies a$\le$ $\infty$ for all a$\in$ R. Prove that $\infty$ $\not=$ R.
+\end{problem}
+\begin{solution}
+Let we suppose $\infty$ $\in$ R\\
+$\therefore$ $\infty$+1 $\in$ R\\
+$\therefore$ $\infty$+1 > $\infty$ \\
+but it contradicts with a$\le$ $\infty$ for all a$\in$ R\\
+$\therefore$ what we suppose is not right\\
+$\therefore$ $\infty$ $\not=$ R.
+\end{solution}
+
+
+\begin{problem}[UD:12.22]
+Prove that if a is a rational number, then there is an irrational number b such that a<b.
+\end{problem}
+\begin{solution}
+let b=a+$\sqrt{2}$\\
+$\because$ $\sqrt{2}$ is an irrational number and a is a rational number\\
+$\therefore$ b=a+$\sqrt{2}$ is am irrational number and b>a\\
+$\therefore$ if a is a rational number, then there is an irrational number b such that a<b.\\
+\end{solution}
+
+
+
+\begin{problem}[UD:12.23]
+Prove that for two arbitrary real numbers a and b with a<b, there is an irrational number c such that a<c<b.(Hint: Consider a/$\sqrt{2}$ and b/$\sqrt{2}$.)
+\end{problem}
+\begin{solution}
+we can find an x that a/$\sqrt{2}$<x<b/$\sqrt{2}$\\
+$\therefore$ according to Theorem 12.11 we have find an x that is a rational number\\
+let x=$\sqrt{2}$c\\
+$\therefore$ c is an irrational number and a<c<b\\
+$\therefore$ for two arbitrary real numbers a and b with a<b, there is an irrational number c such that a<c<b.
+  
+\end{solution}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

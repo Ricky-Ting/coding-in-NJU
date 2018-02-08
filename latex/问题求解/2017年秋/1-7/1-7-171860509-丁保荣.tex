@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第七讲：不同的程序设计方法}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[网站: 1]	% NOTE: use '[]' (instead of '()' or '{}') to provide additional information
+  在网上查一下，什么是 scripting language，它们和 C++ 这样的程序设计语言有什么不同？
+\end{problem}
+
+% The ``remark'' environments (when needed) must be 
+% put before the ``solution''/``revision''/``proof'' environments.
+\begin{remark}	% Optional
+  参考了wiki百科对于脚本语言的解释
+\end{remark}
+
+\begin{solution}
+语法和结构通常比较简单\\
+学习和使用通常比较简单\\
+通常以容易修改程序的“解释”作为运行方式，而不需要“编译”\\
+程序的开发产能优于运行性能\\
+\end{solution}
+%%%%%%%%%%
+
+\begin{problem}[网站: 2]
+用 Prolog 语言编写 Tower of Hanoi 问题求解程序。
+\end{problem}
+
+\begin{solution}
+\begin{verbatim}
+hanoi(0,A,B,C,[]).
+hanoi(N,A,B,C,Moves) <-
+    N >0, N1 is N-1,
+    hanoi(N1, A, C, B, M1),
+    hanoi(N1, C, B, A, M2),
+    append(M1, [move(A,B)|M2],Moves).
+\end{verbatim}
+\end{solution}
+
+\begin{problem}[网站: 3]
+\begin{verbatim}
+某个企业的员工工资信息采用如下list形式存放。请你写出求该企业月工资发放总额的函数式程序。\\
+表名：Employee_Salary\\
+表结构：（employee_ID salary）\\
+样例：（（20160226001 21000） （20160226002 19800）……）\\
+可能用到的表操纵基本函数：first；rest
+\end{verbatim}
+\end{problem}
+
+\begin{solution}
+\begin{verbatim}
+sumofsalary ::(Num a)=>[(a,a)] -> a
+sumofsalary []=0
+sumofsalary (x:xs)= snd x + sumofsalaryxs
+
+
+
+
+\end{verbatim}
+\end{solution}
+
+
+
+
+
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

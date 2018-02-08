@@ -1,0 +1,614 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+\usepackage{amsfonts}
+\usepackage{multirow}
+%%%%%%%%%%%%%%%%%%%%
+\title{第二讲：什么样的推理是正确的}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[UD: 2.1]	% NOTE: use '[]' (instead of '()' or '{}') to provide additional information
+In the following implications, identify the antecedent and the conclusion. (Don’t worry about whether the implication is true or false.)
+
+(a) If it is raining,I will stay home.
+
+(b) I wake up if the baby cries.
+
+(c) I wake up only if the fire alarm goes off. 
+
+(d) If x is odd, then x is prime.
+
+(e) The number x is prime only if x is odd.
+
+(f) You can come to the party only if you have an invitation. 
+
+(g) Whenever the bell rings,I leave the house.
+\end{problem}
+
+
+\begin{solution}
+ant is short for antecedent, while con is short for conclusion
+ 
+(a)ant: it is raining                     con: I will stay home
+
+(b)ant: the baby cries                con:I wake up
+
+(c)ant: I wake up    con:the fire alarm goes off
+
+(d)ant:x is  odd                          con:x is prime
+
+(e)ant: the number x is prime    con: x is odd
+
+(f)ant:you can come to the party con:you have an invitation
+
+(g)ant:the bell rings.                    con:I leave the house
+\end{solution}
+%%%%%%%%%%
+%%%%%%%%%%
+\newpage
+\begin{problem}[UD: 2.5]
+Write out the truth table for the statement form $(P \rightarrow (\neg R \vee Q)) \wedge R$. Is this statement form a tautology, a contradiction, or neither?
+
+\end{problem}
+\begin{solution}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+ \hline
+ P & R & Q & $\neg R $ & $\neg R \vee Q$ & $P \rightarrow (\neg R \vee Q)$ & $(P \rightarrow (\neg R \vee Q)) \wedge R$\\
+ \hline
+ T & T & T &      F    &       T           &         T                 & T\\
+ \hline
+ T & T & F &      F    &       F           &         F                 & F\\
+ \hline
+ T & F & T &      T    &       T           &         T                 & F\\
+ \hline
+ T & F & F &      T    &       T           &         T                 & F\\
+ \hline
+ F & T & T &      F    &       T           &         T                 & T\\
+ \hline
+ F & T & F &      F    &       F           &         T                 & T\\
+ \hline
+ F & F & T &      T    &       T           &         T                 & F\\
+ \hline
+ F & F & F &      T    &       T           &         T                 & F\\
+\hline
+\end{tabular}
+So this statement form is neither a tautology nor a contradiction!
+\end{solution}
+%%%%%%%%%%
+% \newpage  % continue in a new page
+%%%%%%%%%%
+\begin{problem}[UD: 2.6]
+Negate the sentences below and express the answer in a sentence that is as simple as possible.\\
+(a) I will do my homework and I will pass this class. \\
+(b) Seven is an integer and seven is even.\\
+(c) If T is continuous, then T is bounded.\\
+(d) I can eat dinner or go to the show.\\
+(e) If x is odd,then x is prime.\\
+(f) The number x is prime only if x is odd.\\
+(g) If I am not home, then Sam will answer the phone and he will tell you how to reach me.\\
+(h) If the stars are green or the white horse is shining, then the world is eleven feet wide.
+\end{problem}
+
+% \begin{remark}	
+%   Refer to book.
+% \end{remark}
+
+\begin{solution}
+  (a)I won't do my homework or I won't pass this class.\\
+  (b)Seven isn't an integer or seven is odd.\\
+  (c)T is continuous and T isn't bounded.\\
+  (d)I can't eat dinner and go to the show.\\
+  (e)x is odd, and x isn't prime.\\
+  (f)The number x is prime and x is even.\\
+  (g) I am not home and  Sam won't answer the phone or he won't tell you how to reach me.\\
+  (h)the stars are green or the white house is shining, and the world isn't eleven feet wide.\\
+\end{solution}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{problem}[UD:2.7]
+For each of the cases below,write a tautology using the given statement form.For example, if you are given $P \vee \neg Q$ you might write $(P \vee \neg Q) \Leftrightarrow (Q \rightarrow P)$\\
+(a) $\neg(\neg P)$;\\
+(b) $\neg(P \vee Q)$;\\
+(c) $\neg(P \wedge Q)$;\\
+(d) $P \rightarrow Q$;
+\end{problem}
+
+\begin{solution}
+(a) $\neg(\neg P) \Leftrightarrow P$\\
+(b) $\neg(P \vee Q) \Leftrightarrow (\neg P)\wedge (\neg Q)$\\
+(c) $\neg(P \wedge Q) \Leftrightarrow (\neg P) \vee (\neg Q)$\\
+(d) $P \rightarrow Q \Leftrightarrow (\neg Q) \rightarrow (\neg P)$
+\end{solution}
+
+
+
+
+
+\begin{problem}[UD:2.8]
+When we write, we should make certain that we say what we mean. If we write $P \wedge Q \vee R$, you may be confused, since we haven’t said what to do when you are given a conjunction followed by a disjunction. Put parentheses in to create a statement form with the given truth table.\\
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & Q & R & $P \wedge Q \vee R$\\
+\hline
+T&T&T&T\\
+\hline
+T&T&F&T\\
+\hline
+T&F&T&T\\
+\hline
+T&F&F&F\\
+\hline
+F&T&T&T\\
+\hline
+F&T&F&F\\
+\hline
+F&F&T&T\\
+\hline
+F&F&F&F\\
+\hline
+\end{tabular}
+\end{problem}
+
+\begin{solution}
+After careful analysis,my answer is:$(P \wedge Q) \vee R$\\
+analysis is as follows:\\
+There are two possible answers:$(P \wedge Q) \vee R$ and $P \wedge (Q \vee R)$\\
+when (P is false) and (Q is false) and(R is true) the first one is T while the second one is F.\\
+so the second is impossible.\\
+After it ,we testify the left conditions and find out it is the right answer.
+\end{solution}
+
+
+
+\begin{problem}[UD:2.10]
+Consider the statement “It snows or it is not sunny.” \\
+(a) Find a different statement that is equivalent to the given one.\\
+(b) Find a different statement that is equivalent to the negation of the given one.
+\end{problem}
+
+\begin{solution}
+(a)It is not sunny.\\
+(b)It is sunny.
+\end{solution}
+
+
+
+
+\begin{problem}[UD:2.11]
+The following problem is well known. Many different versions of this problem appear in [101].\\
+On a certain island, each inhabitant is a truth-teller or a liar (and not both, of course). A truth-teller always tells the truth and a liar always lies. Arnie and Barnie live on the island.\\
+ (a) Suppose Arnie says, “If I am a truth-teller, then each person living on this island is a truth-teller or a liar.” Can you say whether Arnie is a truth-teller or liar? If so, which one is he?\\
+ (b) Suppose that Arnie had said, “If I am a truth-teller, then so is Barnie.” Can you tell what Arnie and Barnie are? If so, what are they?
+\end{problem}
+
+\begin{solution}
+(a) answer:Amie is a truth-teller.\\
+The reason is as follows:\\
+Let P= I am a truth-teller ,Q=each person living on this island is a truth-teller or a liar,
+so Amie' words are $P \rightarrow Q$.However Q is always true(as it is mentioned in the description),so whatever 
+the truth value of P,Amie's words are always right.So Amie is a truth-teller.\\
+(b) answer:Both Amie and Barnie are truth-tellers.\\
+Let P=I am a truth-teller,Q=Barnie is a truth-teller.\\
+Let's make a truth-value table.\\
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q &$P \rightarrow Q$\\
+\hline
+T & T & T \\
+\hline
+T & F & F \\
+\hline
+F & T & T \\
+\hline
+F & F & T \\
+\hline
+\end{tabular} 
+So there are four possible situaions.\\
+Let's first suppose A(short for Amie) be a liar,so what she says should be false.\\
+So it should be the second sitution. However,according to the 2nd situation, A should be a truth-teller.\\
+So it contradicts.\\
+So A should be a truth-teller.\\
+And so A's words should be true.\\
+So it means P is true and $ P \rightarrow Q $ should be true.\\
+So it is the 1st situation.\\
+So both A and B are truth-tellers.
+
+\end{solution}
+
+
+\begin{problem}[UD:3.2]
+For each of the following, write out the contrapositive and the converse of the sentence.\\
+(a) If you are the President of the United States,then you live in a white house.\\
+(b) If you are going to bake a souffle,then you need eggs.\\
+(c) If x is a real number,then x is an integer.\\
+(d) If x is a real number,then $x^2 <0$.
+\end{problem}
+
+\begin{solution}
+(a) contrapositive: If you don't live in a white house,then you are not the President of the United States.\\
+converse: If you live in a white house, then you are the President of the United States.\\
+(b)contrapositive: If you don't need eggs, then you are not going to bake a souffle.\\
+converse: If you need eggs, then you are going to bake a souffle.\\
+(c)contrapositive: If x isn't an integer, then x isn't a real number.\\
+converse:If x is an integer, then x is a real number.\\
+(d)contrapositive:If $x^2 \ge 0$,then x isn't a real number.\\
+converse:If $x^2<0$,then x is a real number.
+\end{solution}
+
+\begin{problem}[UD:3.6]
+Matilda always eats at least one of the following for breakfast: ce- real, bread, or yogurt. On Monday, she is especially picky.\\
+If she eats cereal and bread, she also eats yogurt. If she eats bread or yogurt, she also eats cereal. She never eats both cereal and yogurt. She always eats bread or cereal.\\
+Can you say what Matilda eats on Monday? If so, what does she eat?
+\end{problem}
+
+\begin{solution}
+Yes ,I can.\\
+She eats cereal.
+\end{solution}
+
+
+\begin{problem}[UD:3.7]
+Consider the following statement.\\
+If the coat is green, then the moon is full or the cow jumps over it.\\
+(a) This odd statement is composed of several substatements. Identify each sub- statement, assign a letter to it, and write down the original statement as a statement form using these letters and logical connectives.\\
+(b) Find the contrapositive of the original statement form from part (a). Use this to write the contrapositive of the original statement as an English sentence.\\
+(c) Find the converse of the original statement form from part (a). Use this to write the converse of the original statement as an English sentence.\\
+(d) Find the negation of the original statement form from part (a). Use this to write the negation of the original statement as an English sentence.\\
+(e) Are some of the statements in this problem (the original or the ones you obtained) equivalent? If so, which ones?
+
+\end{problem}
+
+\begin{solution}
+(a)Let A be the coat is green.\\
+Let B be the moon is full.\\
+Let C be the cow jumps over it.\\
+So the statement is $A \rightarrow (B \vee C) $\\
+(b) contrapositive:$((\neg B)\wedge(\neg C)) \rightarrow \neg A$\\
+If the moon isn't full and the cow doesn't jump over it,then the coat isn't green.\\
+(c)converse: $(B \vee C) \rightarrow A$\\
+If the moon is full or the cow jumps over it,then the coat is green.\\
+(d)negation: $A \wedge ((\neg B)\wedge(\neg C))$\\
+If the coat is green, then the moon isn't full and the cow doesn't jump over it.\\
+(e)Yes.The contrapositive statement and the original statement are equivalent.
+\end{solution}
+
+
+\begin{problem}[UD:3.8]
+Consider the two statement forms P → Q and P → (Q ∨ ¬P).\\
+(a) Make a truth table for each of these statement forms.\\
+(b) What can you conclude from your solution to part(a)?\\
+\end{problem}
+
+\begin{solution}
+(a)
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q & $P \rightarrow Q$\\
+\hline
+T & T & T\\
+\hline
+T & F & F\\
+\hline
+F & T & T\\
+\hline
+F & F & T\\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+P & Q & $\neg P$ & $(Q \vee \neg P)$ & $P \rightarrow (Q \vee \neg P)$ \\
+\hline
+T & T & F        &   T               &    T\\
+\hline
+T & F & F        &   F               &    F\\
+\hline
+F & T & T        &   T               &    T\\
+\hline
+F & F & T        &   T               &    T\\
+\hline
+\end{tabular}
+(b)$P \rightarrow Q and P \rightarrow (Q \vee \neg P)$ are equivalent.
+\end{solution}
+
+
+\begin{problem}[UD:3.9]
+Karl’s favorite brownie recipe uses semisweet chocolate, very little flour, and less than 1/4 cup sugar. He has four recipes: one French, one Swiss, one German, and one American. Each of the four has at least two of the qualities Karl wants in a brownie recipe. Exactly three use very little flour, exactly three use semisweet chocolate, and exactly three use less than 1/4 cup sugar.\\
+The Swiss and the German recipes use different kinds of chocolate. The Amer- ican and the German recipes use the same amount of flour, but different kinds of chocolate. The French and the American recipes use the same amount of flour. The German and American recipes do not both use less than 1/4 cup sugar.\\
+Karl is very excited because one of these is his favorite recipe. Which one is it?
+\end{problem}
+
+\begin{solution}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+recipe          & German & American & French & Swiss\\
+\hline
+right chocolate &   F    &    T     &    T   &   T\\
+\hline
+right sugar     &   T    &    F     &    T   &   T\\
+\hline
+right flour     &   T    &    T     &    T   &   F\\
+\hline
+right recipe    &   F    &    F     &    T   &   F\\
+\hline
+\end{tabular}
+So his favourite recipe is the French recipe.
+\end{solution}
+
+
+\begin{problem}[UD:3.10]
+ Let n be an integer. Prove that if 3n is odd, then n is odd.
+\end{problem}
+
+\begin{proof}
+ Let's consider the contrapositive statement of the original statement:\\
+ Prove it: If n is even(n is an integer),then 3n is even;\\
+ Let's make n=2t,so We only need to prove 3n=2m(both t and m are integers)\\
+ $\because$ n=2t\\
+ $\therefore$ 3n=6t\\
+ $\therefore$ let m=3t and we get 3n=2m\\
+ So If n is even(n is an integer),then 3n is even
+ Also because the contrapositive statement and the orginal statement are equivalent\\
+ So if 3n is odd, then n is odd
+\end{proof}
+
+
+\begin{problem}[UD:3.11]
+Let x be a natural number. Prove that if x is odd, then integer.then $\surd(2x)$ is not an integer.
+\end{problem}
+
+\begin{proof}
+ Let we first consider the negation of the conclusion:\\
+ If x is odd,then $\surd(2x)$ is an integer;\\
+ $\therefore$ let $\surd(2x)=t$ (t is an integer) \\
+ $\therefore$ $t^2=2x$\\
+ $\therefore$ we can easily draw a conclusion that t is even\\
+ $\therefore$ let t=2m(m is an integer) \\
+ $\therefore$ $4m^2=2x$\\
+ $\therefore$ $x=2m^2$\\
+ $\therefore$ x is even\\
+ $\therefore$ x is even and x is odd contradict\\
+ $\therefore$ the negation of the original conclusion is false\\
+ $\therefore$ the original conclusiont is true\\
+ So if x is odd, then integer.then $\surd(2x)$ is not an integer.
+
+\end{proof}
+
+
+\begin{problem}[UD:4.1]
+Write the following statements symbolically.\\
+(a) For every x,there is a y such that x=2y.\\
+(b) For every y,there is an x suchthat x=2y.\\
+(c) For every x and for every y,it is the case that x=2y.\\
+(d) There exists an x such that for some y the equality x=2y holds.\\
+(e) There exists an x and a y such that x=2y.\\
+\end{problem}
+
+\begin{solution}
+(a) $\forall x,\exists y, x=2y$\\
+(b) $\forall y,\exists x, x=2y$\\
+(c) $\forall x,\forall y, x=2y$\\
+(d) $\exists x,\exists y, x=2y$\\
+(e) $\exists x,\exists y, x=2y$\\
+\end{solution}
+
+
+\begin{problem}[UD:4.5]
+Negate the following sentences. If you don’t know how to negate it,change it to symbols and then negate. State the universe, if appropriate.\\
+(a) For all x$\in$R,we have $x^2$ >0.\\
+(b) Every odd integer is nonzero.\\
+(c) If I am hungry,then I eat chocolate.\\
+(d) For every girl there is a boy she doesn’t like.\\
+(e) There exists x such that g(x)>0.\\
+(f) For every x there is a y such that xy=1.\\
+(g) There is a y such that xy=0 for every x.\\
+(h) If x$\not=$0,then there exists y such that xy=1.\\
+(i) If x>0,then $xy^2$$\geq$0 for all y.\\
+(j) For all $\varepsilon$>0,there exist $\delta$>0 such that if x is a real number with |x−1|<$\delta$,then |$x^2$ −1| < $\varepsilon$.\\
+(k) For all real numbers M,there exists a real number N such that |f(n)|>M for all n > N.
+\end{problem}
+
+\begin{solution}
+ (a) There exists an x$\in$R, we have $x^2 \le 0$.\\
+ (b) There exists an odd integer x such that x=0.\\
+ (c) I am hungry and I won't eat chocolate.\\
+ (d) There exists a girl such that for every boy ,she likes him.\\
+ (e) For all x$\in$R, we have g(x)$\le 0.$\\
+ (f) There exists an x such that for every y,we have xy$\not=$1.\\
+ (g) For every y, there exists an x such that xy$\not=$0.\\ 
+ (h)  x$\not=$0 and for every y,we have xy$\not=$1.\\
+ (i)  x>0, and there exists a y such that $xy^2 <$0.\\
+ (j) There exists a $\varepsilon$ >0 ,for every $\delta$ >0 ,such that if x is a real number with |x-1|<$\delta$,then |$x^2$ -1| $\geq \varepsilon$.\\
+ (k) There exists a real number M, for all real numbers N ,we have there exists n> N such that |f(n)|$\le$M.\\
+\end{solution}
+
+
+\begin{problem}[UD:4.7]
+Consider the following statement:\\
+$\forall x,((x  \in  Z \wedge \neg (\exists y,(y \in Z \wedge x = 7y))) \rightarrow (\exists z,(z \in Z \wedge x = 2z))).$\\
+(a) Negate this statement.\\
+(b) Write the original statement as an English sentence.\\
+(c) Which statement is true, the original one or the negation? Explain your answer.
+\end{problem}
+
+\begin{solution}
+(a) $\exists x,(((x\in Z)\wedge (\forall y,(y\in Z \rightarrow x \not= 7y))) \wedge (\forall z,(z\in Z \rightarrow x\not= 2z)))$\\
+(b) For every x,if (x $\in $ Z) and (for every y,we have (if y $\in$ Z ,then x $\not=$ 7y)), then there exists a z such that z$\in$ Z and x=2z.\\ 
+(c) The original statement is true.\\
+    Here is the reason.\\
+    Base on $\forall$ x ,so x $\in$ Z is false.\\
+    Also because the $\wedge$\\
+    So if-statemnet is false.\\
+    So regardlessly, the original statement is always true.
+\end{solution}
+
+
+\begin{problem}[UD:4.9]
+Why is this joke supposed to be funny? A physicist, a chemist, and a mathematician are traveling through Switzerland. From the train they spot a cow grazing in the field. The chemist gazes out the window and says, “Ah, all the cows in Switzerland are brown.” The physicist says, “No, no. You can’t conclude that. You can only say that some of the cows in Switzerland are brown.” The mathematician says, “No, no, no. All you can say is that there is a cow in Switzerland that is brown on one side.”
+\end{problem}
+
+\begin{solution}
+The chemist give a universal statement while he only see one brown cow.\\
+However, based on what has been seen, the chemist's statement can't be proven false.\\
+The mathematician give a description.
+
+\end{solution}
+
+
+
+\begin{problem}[UD:4.13]
+Decide whether statement (3) is true if statements (1) and (2) are both true. Give reasons for your answers.\\
+(a) The three statements are:\\
+(1) Every one who loves Bill loves Sam. \\
+(2) I don’t love Sam.\\
+(3) I don’t love Bill.
+
+
+(b) The three statements are:\\
+(1) If Susie goes to the ball in the red dress,I will stay home.\\
+(2) Susie went to the ball in the green dress.\\
+(3) I did not stay home.
+
+
+(c) The three statements are:\\
+(1) If l is a positive real number, then there exists a real number m such that m>l.\\
+(2) Every real numberm is less than t.\\
+(3) The real number t is not positive.
+
+
+(d) The three statements are:\\
+(1) Every little breeze seems to whisper Louise or my name is Igor. \\
+(2) My name is Stewart.\\
+(3) Every little breeze seems to whisper Louise.
+
+
+(e) The three statements are:\\
+(1) There is a house on every street such that if that house is blue,the one next to it is black.\\
+(2) There is no blue house on my street. \\
+(3) There is no black house on my street.
+
+
+(f) Let x and y be real numbers.\\
+(1) If x>5,then y<1/5. \\
+(2) We know y=1.\\
+(3) So x$\le$5.
+
+
+(g) Let M and n be real numbers.\\
+(1) If n>M ,then $n^2$ >$M^2$.\\ 
+(2) We know n<M.\\
+(3) So $n^2 \le M^2$.
+
+
+(h) Let x,y,and z be real numbers.\\
+(1) If y>x and y>0,then y>z.\\ 
+(2) We know that y≤z.\\
+(3) Then $y \le x or y\le 0$
+\end{problem}
+
+\begin{remark}
+感谢肖江同学指出了命题正确不代表假设正确。
+\end{remark}
+
+\begin{solution}
+T is short for True. F is short for false. R is short for reason.\\
+(a) T\\
+    R:if I love Bill,according to(1),I must love Sam ,but this contradicts with (2) .\\
+    So I love Bill.
+
+
+(b) F\\
+    R:Because Susie didn't go to the ball in the red dress.\\
+    So it had no connection to whether I stayed home or not.\\
+    So based on (1)and(2),we can't determine whether I stayed home or not.
+
+(c) T\\
+    R:Let us consider the contrapositive statement of (1):If for all real number m ,we have $m \le l$,then l is not a positive real number.\\
+    And according to (2) all m<t ,we have m is not a positive real number.\\
+
+(d) T\\
+    R:According to (2),that my name is Igor is false.\\
+    Also (1) has to be true ,so the statement that every little breeze seems to whisper Louise should be true.
+
+(e) F\\
+    R:if there is at least one black house on my street, according to(1) the existence of the black house doesn't affect the existence of the blue house.\\
+    So there can be black houses on the street.
+(f) T\\
+    R: if x>5,according to(1),y<1/5\\
+    But it contradicts with (2)\\
+    So x$\le$ 5
+
+(g) F\\
+    R:according to (1) there no connection between n<M and whether $n^ 2 \le M^2$ or not.
+
+(h) T\\
+    R:if y>x and y>0 ,then y>z.\\
+    But it contradicts with (2).\\
+    So $y \le x  or  y\le 0  $
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

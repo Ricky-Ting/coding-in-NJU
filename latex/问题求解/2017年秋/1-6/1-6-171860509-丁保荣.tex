@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第六讲：如何将算法告诉计算机}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}	% NOTE: use '[]' (instead of '()' or '{}') to provide additional information
+写出你现在用的 C++ 语言的算术表达式的完整严格的文法
+ \end{problem}
+
+\begin{remark}
+C++语言运算符来自C++ Primer Plus(第六版) 附录D 运算符优先级\\
+英语翻译水平较渣，还请见谅\\
+\end{remark}
+
+\begin{solution}
+<$\emph{unary-operator}$>::=  $\boldsymbol{!}$|$\boldsymbol{+}$|$\boldsymbol{-}$|$\boldsymbol{++}$|$\boldsymbol{--}$|$\boldsymbol{\&}$|$\boldsymbol{*}$\\
+<$\emph{binary-operator}$>::=  $\boldsymbol{*}$| $\boldsymbol{/}$ | $\boldsymbol{+}$ | $\boldsymbol{-}$ \\
+<$\emph{scope resolution operator}$>::=  <$\emph{namespace}$> $\boldsymbol{::}$ <$\emph{statement}$>;\\
+<$\emph{direct member operator}$>::=  <$\emph{variable}$>$\boldsymbol{.}$<$\emph{variable}$>\\
+<$\emph{array-index}$>::=  <$\emph{array-variable}$>$\boldsymbol{[}$<$\emph{value}$>$\boldsymbol{]}$;\\
+<$\emph{stepup}$>::=  <$\emph{variable}$>$\boldsymbol{++}$ [;] | $\boldsymbol{++}$<$\emph{variable}$> [;]\\
+<$\emph{stepdown}$>::=  <$\emph{variable}$>$\boldsymbol{--}$ [;] | $\boldsymbol{--}$<$\emph{variable}$> [;]\\
+<$\emph{negation}$>::=  $\boldsymbol{!}$<$\emph{expression}$>\\
+<$\emph{positive-operator}$>::=  $\boldsymbol{+}$<$\emph{value}$>\\
+<$\emph{negative-operator}$>::=  $\boldsymbol{-}$<$\emph{value}$>\\
+<$\emph{address-access}$>::=  $\boldsymbol{\&}$<$\emph{variable}$>\\
+<$\emph{value-access}$>::=  $\boldsymbol{*}$<$\emph{pointer}$>\\
+<$\emph{multiply-operator}$>::=  <$\emph{value}$> $\boldsymbol{*}$ <$\emph{value}$>\\
+<$\emph{division-operator}$>::=  <$\emph{value}$> $\boldsymbol{/}$ <$\emph{value}$>\\
+<$\emph{additive-operator}$>::=  <$\emph{value}$> $\boldsymbol{+}$ <$\emph{value}$>\\
+<$\emph{subtraction-operator}$>::=  <$\emph{value}$> $\boldsymbol{-}$ <$\emph{value}$>\\
+<$\emph{less-than-expression}$>::=  <$\emph{value}$> $\boldsymbol{<}$ <$\emph{value}$>\\
+<$\emph{greater-than-expression}$>::=  <$\emph{value}$> $\boldsymbol{>}$ <$\emph{value}$>\\
+<$\emph{equality-expression}$>::=  <$\emph{value}$> $\boldsymbol{==}$ <$\emph{value}$>\\
+<$\emph{not-equality-expression}$>::=  <$\emph{value}$> $\boldsymbol{!=}$ <$\emph{value}$>\\
+<$\emph{and-operator}$>::=  <$\emph{expression}$> $\boldsymbol{\&\&}$ <$\emph{expression}$>\\
+<$\emph{or-expression}$>::=  <$\emph{expression}$> $\boldsymbol{||}$ <$\emph{expression}$>\\
+<$\emph{assignment-operator}$>::=  $\boldsymbol{=}$ |$\boldsymbol{*=}$ |$\boldsymbol{/=}$ |$\boldsymbol{\%=}$ |$\boldsymbol{+=}$ |$\boldsymbol{-=}$ |$\boldsymbol{\&=}$ |$\boldsymbol{\^=}$ \\
+<combination-operator>::=  <$\emph{expression}$> $\boldsymbol{,}$ <$\emph{expression}$>\\ 
+
+\end{solution}
+%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[DH:2.5]
+ Show how to perform the following simulations of some control constructs by others. The sequencing construct “and-then” is implicitly available for all the simulations. You may introduce and use new variables and labels if necessary.\\
+(a) Simulate a “for-do” loop by a “while-do” loop.\\
+(b) Simulate the “if-then” and “if-then-else” statements by “while-do” loops.\\
+(c) Simulate a “while-do” loop by “if-then” and “goto” statements.\\
+(d) Simulate a “while-do” loop by a “repeat-until” loop and “if-then” statements.
+\end{problem}
+
+\begin{cause}
+  没有退出while的条件，会造成死循环
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+\begin{verbatim}
+(b)
+if (A) then
+{
+	do B;
+}
+else
+{
+	do C;
+}
+ i=0;
+ while( (A) && (i==0))
+ {
+ 		do B;
+ 		i++;
+ }
+ while ( (not A) && (i==0) )
+ {
+ 		do C;
+ 		i++;
+ }
+
+\end{verbatim}
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

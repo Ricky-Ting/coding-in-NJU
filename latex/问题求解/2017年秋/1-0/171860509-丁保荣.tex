@@ -1,0 +1,218 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+\usepackage{listings}
+\lstloadlanguages{C++, csh, make}
+\lstset{language=C++,tabsize=4, keepspaces=true,
+	breakindent=22pt, 
+	numbers=left,stepnumber=1,numberstyle=\tiny,
+	basicstyle=\footnotesize, 
+	showspaces=false,
+	flexiblecolumns=true,
+	breaklines=true, breakautoindent=true,breakindent=4em,
+	escapeinside={/*@}{@*/}
+}
+%%%%%%%%%%%%%%%%%%%%
+\title{绪论：计算思维}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[1]	% NOTE: use '[]' (instead of '()' or '{}') to provide additional information
+1，请你设计一个递归程序：程序输入为n个硬币，第m个为假币.程序输出寻找假币的过程和称量次数。
+\end{problem}
+
+
+\begin{solution}
+\begin{lstlisting}
+
+#include <iostream>
+//假设假币较轻
+using namespace std;
+void find(int pt[],int t,int start,int num); //寻找的递归函数
+int weigh(int pt[],int t,int start);  //比较重量（计算出重量用来比较大小）
+int main(void)
+{
+    int n,m;  //n是总的硬币数。 m是假币所在的位次。
+    cout <<"Please enter the number of coins and the place of the faked one"<<endl;
+    cin >> n >> m;
+    int pt[10000];   //pt是存放硬币的空间
+    for(int i=1;i<=n;i++)
+    {
+        pt[i]=1;
+    }
+    
+    pt[m]=0;     //将假币重量设为0，其他设为1
+    find(pt,n,1,0);
+    return 0;
+}
+
+void find(int pt[],int t,int start ,int num)
+{
+    if(t==1)
+    {
+        cout<<"the faked coin is at"<<start<<endl<<"次数是"<<num<<endl;
+    }
+    else if(t==2)
+    {
+        if(pt[start]>pt[start+1])
+            cout<<"the faked coin is at "<<start+1 <<endl <<"次数是"<<num+1<<endl;
+        else
+            cout<<"the faked coin is at "<<start <<endl <<"次数是"<<num+1<<endl;
+    }        //以上两个if用来判断递归是否到底，并输出相应结果
+    else
+    {
+        int t1,t2,t3;
+        if ((t%3)==0)
+            t1=t2=t3=t/3;
+        else
+        {
+            t1=t2=t/3;
+            t3=t-t1-t2;
+        }
+        //将硬币分为基本相等的三堆
+        
+        if(weigh(pt,t1,start)==weigh(pt,t2,start+t1))
+        {
+            cout<<"假币在"<<start+t1+t2<<"和"<<start+t1+t2+t3<<"之间"<<endl;
+            find(pt,t3,start+t1+t2,num+1);
+        }
+        else if(weigh(pt,t1,start)>weigh(pt,t2,start+t1))
+        {
+            cout<<"假币在"<<start+t1<<"和"<<start+t1+t2<<"之间"<<endl;
+
+            find(pt,t2,start+t1,num+1);
+        }
+        else
+        {
+            cout<<"假币在"<<start<<"和"<<start+t1<<"之间"<<endl;
+            find(pt,t1,start,num+1);
+        }
+
+        //判断硬币轻重，区分出假币在哪一堆
+    }
+}
+
+int weigh(int pt[],int t,int start)
+{
+    int sum=0;
+    for(int i=start;i<=start+t-1;i++)
+        sum+=pt[i];   //将所求空间内硬币的重量相加
+    return sum;
+}
+
+\end{lstlisting}
+\end{solution}
+%%%%%%%%%%
+
+%%%%%%%%%%
+\begin{problem}[2]
+2，请你为某个型号的电子词典，设计一个查找单词的递归算法(伪代码)
+提示：1，电子词典已经按照词典序排好了序,，词典中共有n个单词；
+           2，你可以直接使用compare(x,y)函数来判断单词x和y是否相同；compare函数在单词x排在y之前时，得到值-1，相同时得到值0，之后时得到值1；
+           3，请自行查阅“折半查找法”，并从中获得帮助；
+           4，查找的结果是：“没有发现”或者“发现”
+\end{problem}
+
+\begin{solution}
+\begin{lstlisting}
+
+#include <iostream>
+#include <string>
+using namespace std;
+struct stringarray
+{
+    string word;
+}; //定义字典结构
+void search(int start,int end,string word,stringarray dictionary[]); //查找函数
+int main(void)
+{
+    stringarray dictionary[10000]; //声明一个字典变量
+    string word; //待输入的单词
+    int num; //字典内的单词数
+    cout<<"Please enter the sum of the words in the dictionary"<<endl;
+    cin >> num;
+    cout<<"Please enter the words in the dictionary,each line only one word"<<endl;
+    cin.get();
+    for(int i=1;i<=num;i++)
+        getline(cin,dictionary[i].word);  //读入字典
+    cout<<"Please enter a word"<<endl;
+    cin>> word;     //读入待查单词
+    search(1,num,word,dictionary);  //查找
+    return 0;
+}
+void search(int start,int end,string word,stringarray dictionary[])
+{
+    int mid=(start+end)/2;
+    if((end-start)<=1&&(dictionary[start].word!=word)&&(dictionary[end].word!=word))
+        cout<<"没有发现";
+    else if(dictionary[mid].word==word)
+        cout<<"发现";
+    else if (dictionary[mid].word>word)
+        search(start,mid,word,dictionary);
+    else
+        search(mid,end,word,dictionary);
+    
+}
+
+
+
+
+
+\end{lstlisting}
+\end{solution}
+%%%%%%%%%%
+% \newpage  % continue in a new page
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

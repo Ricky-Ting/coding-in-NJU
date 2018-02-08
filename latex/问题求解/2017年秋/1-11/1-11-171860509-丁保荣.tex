@@ -1,0 +1,429 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第十一讲：有限与无限}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[UD:20.4]
+(a) Show that the positive rationals $\mathbb{Q}^+$ and the negative rationals$\mathbb{Q}^-$ are equivalent.\\
+(b) Show that the even and odd integers are equivalent.
+\end{problem}
+\begin{solution}
+(a) Define $f$: $\mathbb{Q}^+$ $\rightarrow$ $\mathbb{Q}^-$ by f(x)=-x\\
+Firstly, we can easily note that it is well-defined.\\
+Then, for every y$\in$ $\mathbb{Q}^-$, there is one and only one x $\in$ $\mathbb{Q}^+$ that satisfies f(x)=-x\\
+Therefore f is bijective.\\
+$\therefore$  the positive rationals $\mathbb{Q}^+$ and the negative rationals$\mathbb{Q}^-$ are equivalent.\\
+(b) Define $f$: \{2k|k$\in$Z\} $\rightarrow$ \{2k-1|k$\in$Z\} by f(x)=x+1\\
+Firstly, we can easily note that it is well-defined.\\
+Then, for every y$\in$ $\mathbb{Q}^-$, there is one and only one x $\in$ $\mathbb{Q}^+$ that satisfies f(x)=-x\\
+Therefore f is bijective.\\
+$\therefore$ the even and odd integers are equivalent.
+\end{solution}
+
+\begin{problem}[UD:20.8]
+Prove Theorem 20.6 working with the outline given in the text.
+\end{problem}
+\begin{solution}
+Firstly, for every x$\in$ A$\cup$B, x$\in$ A or $\in$B (but not both), therefore there exists only one y that satisfies H(x)=y for every x$\in$ A$\cup$B\\
+$\therefore$ H(x) is well-defined.\\
+Then, for every y$\in$ C$\cup$D, y$\in$C or $\in$D (but not both). We just illusrate the case that y$\in$C, for y$\in$D, it is similar\\
+$\because$ f is bijective and A$\cap$B=$\emptyset$\\
+$\therefore$ for every y$\in$C, there is one and only one x$\in$A that satisfies f(x)=y and there is no x$\in$B that satisfies f(x)=y.\\
+$\therefore$ H(x) is bijective.\\
+$\therefore$ H(x) is well-defined and bijective.\\
+$\therefore$ A$\cup$B $\approx$ C$\cup$D.
+ \end{solution}
+
+
+\begin{problem}[UD:20.9]
+(a) Suppose that A and B are nonempty finite sets and A$\cap$B=$\emptyset$. Show that there exist integers $n$ and $m$ such that $A$ $\approx$ \{1,2,$\dots$,$n$\} and $B$ $\approx$ \{$n+1$,$\dots$,$n+m$\}.\\
+(b) Prove Corollary 20.8.
+\end{problem}
+\begin{solution}
+(a) Since A is a nonempty finite set, we can define f: A$\rightarrow$\{1,2,3,$\dots$,n\} for some n$in$N\\
+$\therefore$ A$\approx$\{1,2,3,$\dots,n$\} for some n$\in$N\\
+Similarly, we can define g: B$\rightarrow$ \{1,2,3,$\dots$,m\} for some m$\in$N\\
+Then we define a bijective function h: \{1,2,3,$\dots,m$\} $\rightarrow$ \{n+1,n+2,$\dots$,n+m\} by f(x)=x+n\\
+By Theorem 15.6, the comosition h$\circ$g: B$\rightarrow$ \{n+1,n+2,$\dots$,n+m\} for some n and m $\in$N  is bijective.\\
+$\therefore$ $B$ $\approx$ \{$n+1$,$\dots$,$n+m$\}.\\
+(b) 
+let C=\{1,2,3,$\dots$,n\}, D=\{n+1,n+2,$\dots$,n+m\}  Therefore C$\cap$D=$\emptyset$\\
+Define 
+\[H(x)= \begin{cases}
+f(x) & \text{if } x\in A\\
+g(x) & \text{if } x\in B
+\end{cases}\]
+By Theorem 20.6, we can have A$\cup$B is finite.
+
+\end{solution}
+
+
+\begin{problem}[UD:20.10]
+Prove Theorem 20.14 below. We suggest that you start by working Problem 15.14 if you have not already done so.\\
+$\boldsymbol{Theorem 20.14.}$\\
+Let A,B,C and D be nonempty sets with A$\approx$C and B$\approx$D. Then A$\times$B $\approx$ C$\times$D.
+\end{problem}
+\begin{solution}
+$\because$ A$\approx$B and C$\approx$D\\
+$\therefore$ there exist a bijective function f: A$\rightarrow$B and a bijective function g: C$\rightarrow$D\\
+Define H: A$\times$C $\rightarrow$ B$\times$D by H(a,c)=(f(a),g(c)).\\
+According to Problem 15.14, we can conclude that H is bijective.\\
+$\therefore$ A$\times$B $\approx$ C$\times$D
+
+\end{solution}
+
+
+\begin{problem}[UD:21.7]
+Show that $\mathbb{Q}$ is infinite.
+\end{problem}
+\begin{solution}
+We know that N$\subsetneq$Z, adn Theorem 21.3 tells us that N is infinite. Since Corollary 20.11 says that every subset of a finite set is finite, or set Q must be infinite.
+\end{solution}
+
+
+
+\begin{problem}[UD:21.9]
+Let A be a set, and suppose that B is an infinite subset of A. Show that A must be infinite.
+\end{problem}
+\begin{solution}
+If A is finite, by Corollary 20.11, we have B is finite. It contradicts with that B is infinite.\\
+Therefore A must be infinite.
+\end{solution}
+
+
+
+\begin{problem}[UD:21.10]
+Suppose that A is an infinite set, B is a finite set and $f$: A$\rightarrow$B is a function. Show that there exists $b\in$B such that $f$$^{-1}$(\{$b$\}) is infinite.
+\end{problem}
+\begin{solution}
+Let we suppose for all b$\in$B , we have $f$$^{-1}$(\{$b$\}) is finite.\\
+By Theorem 20.12, we have $\bigcup_{b\in B}$$f$$^{-1}$(\{$b$\}) is finite.\\
+And because $\bigcup_{b\in B}$$f$$^{-1}$(\{$b$\})=A\\
+Therefore A is finite, but it contradcits with that A is infinite.\\
+Therefore what we suppose is wrong.\\
+Therefore  there exists $b\in$B such that $f$$^{-1}$(\{$b$\}) is infinite.
+\end{solution}
+
+
+
+\begin{problem}[UD:21.11]
+Let $X$ be an infinite set, and $A$ and $B$ be finite subsets of $X$. Answer each of the following, giving reasons for your answers:\\
+(a) Is $A\cap B$ finite or infinite?\\
+(b) Is A$\backslash$B finite or infinite?\\
+(c) Is X$\backslash$A finite or infinite?\\
+(d) Is A$\cup$B finite or infinite?\\
+(e) If $f$: A$\rightarrow$X is a one-to-one function, is $f(A)$ finite or infinite?
+\end{problem}
+\begin{solution}
+(a) A$\cap$B is finite.\\
+$\because$ A and B are finite\\
+$\therefore$ A$\therefore$ A$\cup$B is finite.\\
+$\because$ A$\cap$B $\subseteq$ A$\cup$B\\
+$\therefore$ A$\cap$B is finite.\\
+(b) A$\backslash$B is finite.\\
+$\because$ A is finite\\
+$\because$ A$\backslash$B $\subseteq$ A\\
+$\therefore$ A$\backslash$B is finite.\\
+(c) X$\backslash$A is infinite\\
+Let we suppose  X$\backslash$A is finite\\
+$\because$ A is finite\\
+$\therefore$ X=A$\cup$ (X$\backslash$A) is finite, but it contradicts with that X is infinite.\\
+$\therefore$ what we suppose is wrong.\\
+$\therefore$ X$\backslash$A is infinite\\
+(d) A$\cup$B is finite.\\
+By Theorem 20.12, we can conclude that.\\
+(e) f(A) is finite.\\
+$\because$ A is one-to-one.\\
+$\therefore$ A$\rightarrow$ f(A) is bijective\\
+By Theorem 21.6, there is a unique positive integer n such that A$\approx$\{1,$\dots$,n\}.\\
+$\therefore$ f(A) $\approx$ \{1,$\dots,n$\}\\
+$\therefore$ f(A) is finite. 
+\end{solution}
+
+
+
+\begin{problem}[UD:21.16]
+(a) Suppose that A is a finite set and B$\subseteq$A. We showed that B is finite. Show that |B|$\le$|A|.\\
+(b) Suppose that A is a finite set and B$\subseteq$A. Show that if B$\not=$A, then |B|<|A|.\\
+(c) Show that if two finite sets A and B satisfy B$\subseteq$A and |A|$\le$|B|, then A=B.
+\end{problem}
+\begin{solution}
+(a) A=B$\cup$(B$\backslash$A)\\
+(i) if (B$\backslash$A)$\not=$$\emptyset$ According to Problem 20.9, we can have B$\approx$\{1,2,$\dots$,n\} , (B$\backslash$A)=\{n+1,$\dots$,n+m\} and A=\{1,$\dots$,n+m\}\\
+$\therefore$ |A|=|B|+|(B$\backslash$A)| \\
+(ii) if (B$\backslash$A)=$\emptyset$, then A=B and |(B$\backslash$A)|=0\\
+$\therefore$ |A|=|B|+|(B$\backslash$A)| \\
+$\because$ |(B$\backslash$A)| $\ge$ 0\\
+$\therefore$ |B|$\le$|A|.\\
+(b)A=B$\cup$(B$\backslash$A)\\
+$\because$ B$\not=$A\\
+$\therefore$ (B$\backslash$A)$\not=$$\emptyset$\\
+$\therefore$ According to Problem 20.9, we can have B$\approx$\{1,2,$\dots$,n\} , (B$\backslash$A)=\{n+1,$\dots$,n+m\} and A=\{1,$\dots$,n+m\}\\
+$\therefore$ |A|=|B|+|(B$\backslash$A)| \\
+$\because$ |(B$\backslash$A)| > 0\\
+$\therefore$ |B|<|A|.\\
+(c)\\
+$\because$ B satisfy B$\subseteq$A\\
+$\therefore$ |B|$\le$|A| and A=B$\cup$(B$\backslash$A)\\\\
+$\because$ |A|$\le$|B|\\
+$\therefore$ |A|=|B|\\
+$\therefore$ |(B$\backslash$A)| = 0\\
+$\therefore$ (B$\backslash$A)=$\emptyset$\\
+$\therefore$ A=B
+\end{solution}
+
+\begin{problem}[UD:21.17]
+Suppose that A and B are finite sets and $f$: A$\rightarrow$B is one-to-one. Show that |A|$\le$|B|.
+\end{problem}
+\begin{solution}
+$\because$ A and B are finite sets\\
+$\therefore$ \{1,$\dots,n$\}$\approx$A for some n$\in$N and B$\approx$\{1,$\dots,m$\} for some m$\in$N\\
+$\therefore$ Define g: \{1,$\dots,n$\}$\rightarrow$A is bijective and h: B$\rightarrow$\{1,$\dots,m$\} is bijective\\
+and $\because$ f is one-to-one,\\
+$\therefore$ h$\circ$f$\circ$g: \{1,$\dots,n$\}$\rightarrow$ \{1,$\dots,m$\} is one-to-one.\\
+$\therefore$ we can easily conclude that \{1,$\dots,n$\} $\subseteq$ \{1,$\dots,m$\}\\
+$\therefore$ n$\le$m\\
+$\therefore$ |A|$\le$|B|.\\
+\end{solution}
+
+
+
+\begin{problem}[UD:21.18]
+Let A and B be sets with A finite. Let $f$: A$\rightarrow$B. Prove that |ran($f$)| $\le$ |A|.
+\end{problem}
+\begin{solution}
+Let we suppose |ran($f$)| > |A|\\
+$\therefore$ there exists an x which relates to at least two different y's\\
+$\therefore$ it contradicts with f is a well-defined function\\
+$\therefore$ what we suppose is not right.\\
+$\therefore$ |ran($f$)| $\le$ |A|.
+\end{solution}
+
+
+
+\begin{problem}[UD:21.19]
+Let A be a finite set. Show that a function $f$: A$\rightarrow$A is one-to-one if and only if it is onto. Is this still true if A is infinite?
+\end{problem}
+\begin{solution}
+(a) $f$: A$\rightarrow$A is one-to-one.\\
+Let we suppose f is not onto.\\
+$\therefore$ ran(f)$\subsetneq$A\\
+$\therefore$ |ran(f)|<|A|\\
+$\therefore$ we can note that g: A$\rightarrow$ran(f) is also one-to-one\\
+$\therefore$ |A|$\le$|ran(f)|\\
+$\therefore$ |A|$\le$|ran(f)|<|A|, but it contradicts\\
+$\therefore$ what we suppose is not right\\
+$\therefore$ f is onto\\
+(b) $f$: A$\rightarrow$A is onto.\\
+Let we suppose f is not one-to-one\\
+$\therefore$ there exist one y$\in$A that there are at least two x's $\in$ A that satisfy f(x)=y, we define them x$_1$ and x$_2$\\
+$\therefore$ we define F: A$\backslash$\{x$_1$\} is still onto.\\
+$\therefore$ |A| $\le$ |A$\backslash$\{x$_1$\}| =|A| -1,\\
+$\therefore$ it contradicts\\
+$\therefore$ what we suppose is wrong\\
+$\therefore$ f is one-to-one\\
+$\therefore$ $f$: A$\rightarrow$A is one-to-one if and only if it is onto.
+\\
+(c) it is not true if A is infinite.\\
+\end{solution}
+
+
+
+
+\begin{problem}[UD:22.1]
+Give an example, if possible, of each of the following:\\
+(a) a countably infinite collection of pairwise disjoint finite sets whose union is countably infinite;(See Problem 8.11 for the definition of pairwise disjoint.)\\
+(b) a countably infinite collection of nonempty sets whose union is finite;\\
+(c) a countably infinite collection of pairwise disjoint nonempty sets whose union is finite.\\
+\end{problem}
+\begin{solution}
+(a) $\bigcup_{I\in N}$\{I\}\\
+(b) not exist\\
+(c) not exist\\
+\end{solution}
+
+
+
+\begin{problem}[UD:22.2]
+Which of the following sets are finite? countably infinite? uncountable? (Be careful-don't apply theorems for finite sets to infinite sets!) Give reasons for your answers for each of the following:\\
+(a) \{1/n: n$\in$ $\mathbb{Z}$$\backslash$\{0\}\};\\
+(b) $\mathbb{R}$ $\backslash$ $\mathbb{N}$;\\
+(c) \{$x\in \mathbb{Z}$:|$x$-7|<|$x$|\};\\
+(d) 2$\mathbb{Z}$ $\times$ 3$\mathbb{Z}$;\\
+(e) the set of all lines with rational slopes;\\
+(f) $\mathbb{Q}$ $\backslash$ \{0\};\\
+(g) $\mathbb{N}$ $\backslash$ \{1,3\}.
+\end{problem}
+\begin{solution}
+(a) countably infinite.\\
+As $\mathbb{Q}$ is countably infinite and the asked set is a subset of it.\\
+(b) uncountable, the proof is similar to Theorem 22.12.\\
+(c) countably infinite. The set is \{4,5,6,$\dots$\} and we can easily prove that \{4,5,6,$\dots$\}$\approx$ N.\\
+(d) countably infinite. By Corollary 22.10\\
+(e) uncountable, let y=ax+b, b can be irrational number.\\
+(f) countably infinite.\\
+As $\mathbb{Q}$ is countably infinite and the asked set is a subset of it.\\
+(g) countably infinite.\\
+As $\mathbb{N}$ is countably infinite and the asked set is a subset of it.\\
+\end{solution}
+
+
+
+
+\begin{problem}[UD:22.3]
+Is the set of all infinite sequences of 0's and 1's finite, countably infinite, or uncountable? Guess and then prove, please.
+\end{problem}
+
+\begin{solution}
+We can easily note that this set is not finite.\\
+Let us suppose this set is countably infinite. And we have shown that $\mathbb{Z}^+$ is countably infinite, there exists a bijective function f: $\mathbb{Z}^+$ $\rightarrow$ (0,111111$\dots$). We list the values of f using the sequence of 1 or 0\\
+f(1) = a$_{11}$a$_{12}$a$_{13}$$\dots$\\
+f(2) = a$_{21}$a$_{22}$a$_{23}$$\dots$\\
+f(3) = a$_{31}$a$_{32}$a$_{33}$$\dots$\\
+$\dots$\\
+Since f is onto, each sequence of 0's and 1's appears in this list.\\
+The odd thing is that we can construct a number b=f(1) = b$_{1}$b$_{2}$b$_{3}$$\dots$\\ that is not in the list.\\
+if a$_{11}$=0, then b$_{1}$=1 else b$_{1}$=1, and similarly we relates b$_{n}$ with a$_{nn}$ by assigning a different value from a$_{nn}$ to b$_{n}$\\
+Therefore we construct a b that is not in the list, it contradicts with the assertion that f is onto.\\
+$\therefore$ what we suppose is not right\\
+$\therefore$ this set is not countably infinite and isn't finite.\\
+$\therefore$ this set is uncoountable.
+\end{solution}
+
+
+
+\begin{problem}[UD:22.6]
+Prove Corollary 22.4.
+\end{problem}
+\begin{solution}
+let A be the countable set. There are two cases.\\
+(i) A is finite\\
+According to Corollay 20.11, we can conclude that every subset of A is finite.\\
+Therefore every subset of A is countable.\\
+(ii) A is infinite.\\
+Therefore A is countable infinite.\\
+Therefore A$\approx$N\\
+Therefore we can construct a bijective function f: N$\rightarrow$A\\
+Select an arbitrary subset of A, name it B\\
+Therefore B $\subseteq$A\\
+if B is finite, we can easily note that B is countable.\\
+if B is infinite, we can construct a bijective function g: N$\rightarrow$B\\
+$\therefore$ B is countable\\
+$\therefore$ Every subset of a countable set is countable.
+\end{solution}
+
+
+\begin{problem}[UD:22.9]
+There is another way to show that $\mathbb{Q}$ is countable. Turn the outline below into a proof by describing the counting process. (Don't try to find a formula for the function.)
+\end{problem}
+\begin{solution}
+We can count the elements of Q$^{+}$ in the way illustrated in the grapg below.\\
+And we have proved that Q$^{-}$ $\approx$ Q$^{+}$. Then Q=Q$^{+}$ $\cup$ Q$^{-}$ $\cup$ \{0\} is finite and countable, so Q$\approx$N\\
+    \fig{width = 0.70\textwidth}{UD22.9.JPG}{counting solution}
+\end{solution}
+
+
+\begin{problem}[UD:23.2]
+(a) In $\mathbb{R}$, find the distance of the number 1 to the number 3 in the usual metric and in the discrete metric.\\
+(b) In $\mathbb{R}$$^2$, find the distance of the point (1,3) to the point (2,5) in the usual metric, the taxicab metric, the max metric, and the discrete metric.
+\end{problem}
+\begin{solution}
+(a) d$_{u}$(1,3)=2, d$_{d}$(1.3)=1\\
+(b) d$_{u}$((1,3),(2,5))=$\sqrt{5}$\\
+d$_{tc}$((1,3),(2,5))=3\\
+d$_{m}$((1,3),(2,5))=2\\
+d$_{d}$((1,3),(2,5))=1\\
+\end{solution}
+
+
+
+\begin{problem}[UD:23.3]
+(a) Sketch the set \{$(x,y)\in \mathbb{R}^2$: $d_u((x,y),(0,0)<1)$\}, where $d_u$ is the usual metric.\\
+(b) Sketch the set \{$(x,y)\in \mathbb{R}^2$: $d_{tc}((x,y),(0,0)<1)$\}, where $d_{tc}$ is the taxicab metric.\\
+(c) Sketch the set \{$(x,y)\in \mathbb{R}^2$: $d_m((x,y),(0,0)<1)$\}, where $d_m$ is the max metric.\\
+(d) Sketch the set \{$(x,y)\in \mathbb{R}^2$: $d_d((x,y),(0,0)<1)$\}, where $d_d$ is the discrete metric.\\
+(e) Sketch the set \{$(x,y,z)\in \mathbb{R}^3$: $d_u((x,y,z),(0,0,0)<1)$\}, where $d_u$ is the usual metric. (See Example 23.2 for the definition if you need it.)\\
+\end{problem}
+\begin{solution}
+\fig{width = 0.70\textwidth}{UD23.3.JPG}{sketching solution}
+\end{solution}
+
+
+
+\begin{problem}[UD:23.10]
+Let $X$ be the space of polynomials with real coefficients. Define a function d from X$\times$X $\rightarrow$ $\mathbb{R}$ by $d(p,q)=|p(0),q(0)|.$ Is $d$ a metric? If so, prove it. If not,why not?
+\end{problem}
+\begin{solution}
+No, it doesn't satisfy definiteness: let p=x, q=x$^2$, then |p(0)=q(0)|, but p$\not=$q.
+\end{solution}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[UD: 10.5]
+  Let X be a nonempty set with an equivalence relation $\sim$ on it. Prove that for all elements x and y in X, the equality E$_x$=E$_y$ holds if and only if x$\sim$y.
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  (1)\\
+  $\because$ [x]=[y]\\
+  $\therefore$ x$\in$[x]=[y]\\
+  $\therefore$ x$\sim$y\\
+  (2)\\
+  for a$\in$[x]\\
+  $\therefore$a$\sim$x$\sim$y\\
+  $\therefore$a$\sim$y\\
+  $\therefore$a$\in$[y]\\
+  $\therefore$ [x]$\subseteq$[y]\\
+  Similarly, we can have [y]$\subseteq$[x]\\
+  $\therefore$ [x]=[y]
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

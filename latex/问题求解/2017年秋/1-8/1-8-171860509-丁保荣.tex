@@ -1,0 +1,699 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第八讲：集合及其运算}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[UD: 6.7]
+Find an expression for each of the shaded sets in the Venn diagrams of Figure 6.5
+\end{problem}
+
+\begin{solution}
+from left to right, from up to down\\
+(a) B $\backslash$ (A $\cap$ B)\\
+(b) (A $\cup$ B) $\backslash$ (A $\cap$ B)\\
+(c) A $\cap$ B $\cap$ C\\
+(d) (B $\cap$ C) $\backslash$ A\\
+(e)  ((A$\cap$B)$\cup$(A$\cap$C)$\cup$(B$\cap$C)) $\backslash$ (A $\cap$ B $\cap$ C)
+\end{solution}
+
+
+\begin{problem}[UD: 6.16]
+In each part of this problem, two sets, A and B, are defined. Prove that A$\Subset$B in each of the following:\\
+(a) A=\{x$^2$ :x$\in$ Z\} and B=Z;\\
+(b) A=R and B=\{2x : x$\in$ R\};\\
+(c) A=\{(x,y)$\in$ R$^2$ : y=(5-3x)/2\} and B=\{(x,y)$\in$ R$^2$ : 2y+3x=5\}.\\
+\end{problem}
+
+\begin{solution}
+(a)\\
+$\because$ x$\in$ Z\\
+$\therefore$ x=2k or 2k+1 (k$\in$ Z)\\
+(1) if x=2k, then x$^2$=4k$^2$ , $\therefore$ 4k$^2$ $\in$ Z, $\therefore$ x $\in$ Z\\
+(2) if x=2k+1 then x$^2$=4k$^2$+4k+1, $\therefore$ 4k$^2$+4k+1 $\in$ Z, $\therefore$ x$\in$ Z\\
+Based on (1) and (2) we can conclude that for all x $\in$ Z ,we have x$^2$ $\in$ Z, namely B\\
+$\therefore$ A$\Subset$ B\\
+\\
+(b)\\
+for every y $\in$ R,namely A, we have y/2 $\in$ R\\
+we can let y=2x\\
+$\therefore$ for every 2x $\in$ R,namely A, we have x $\in$ R\\
+$\therefore$ that property satisfies the defination of B\\
+$\therefore$ for every 2x $\in$ R,namely A, we have 2x $\in$ B\\
+$\therefore$ A$\Subset$ B\\
+\\
+(c)\\
+for every (x,y) $\in$ A, we have y=(5-3x)/2\\
+$\therefore$ for every (x,y) $\in$ A, we have 2y+3x=5\\
+$\therefore$ for every (x,y) $\in$ A, we have (x,y)$\in$ B\\
+$\therefore$ A$\Subset$B
+\end{solution}
+
+\begin{problem}[UD: 6.17]
+Prove that one set is a proper subset of the other one in each of the following:\\
+(a) A=\{(x,y) $\in$ R$^2$ : xy>0 \} and B=\{(x,y) $\in$ R$^2$ :x$^2 + y ^2$ > 0 \};\\
+(b) A=$\emptyset$ and B=\{(x,y)$\in$ R$^2$: $x^2 + y^2 \le 0$ \}.
+\end{problem}
+
+\begin{solution}
+(a)\\
+(1) for every (x,y) $\in$ A,we have xy>0\\
+$\therefore$ xy$\not=$ 0\\
+$\therefore$ $x^2 + y^2>0$\\
+$\therefore$ that property satisfies the defination of B\\
+$\therefore$ for every (x,y) $\in$ A,we have (x,y) $\in$ B\\
+$\therefore$ A$\Subset$B\\
+(2) (2,-5)$\in$ B but (2,-5)$\notin$ A\\
+$\therefore$ A $\not=$ B\\
+Based on (1) and (2), A$\subsetneqq$ B\\
+\\
+(b)\\
+(1) we need to prove for every x, if x$\in$ A,then x$\in$ B\\
+Since there are no elements in the empty set, the antecedent is always false. Therefore the implication is always true.\\
+$\therefore$ A $\Subset$ B\\
+(2) (0,0) $\in$ B, but (0,0) $\notin$ A\\
+$\therefore$ A$\not=$B\\
+Based on (1) and (2), A$\subsetneqq$B\\
+\end{solution}
+
+\begin{problem}[UD:7.1]
+In this problem we refer to statements of Theorem 7.4.\\
+(a) Prove statement 2. \\
+(A $^\complement$)$^\complement$=A.\\
+(b) Prove statement 14. \\
+A $\cap$(B $\cup$ C) = (A $\cap B$)$\cup$(A $\cap$ C). (Distributive property)\\
+(c) Prove statement 16. \\
+X $\backslash$(A $\cap$ B)=(X $\backslash$ A)$\cup$ (X $\backslash$ B).(Demorgan's law)\\
+\indent (When X is the universe we also write (A $\cap$ B)$^\complement$ =A$^\complement$ $\cup$ B$^\complement$\\
+(d) Prove statement 18.\\
+A$\Subset$B if and only if (X $\backslash$ B) $\Subset$ (X $\backslash$ A).\\
+\indent (When X is the universe we also write A$\Subset$B if and only if B$^\complement$ $\Subset$ A$^\complement$)\\
+(e) Prove statement 20.\\
+A $\cap$ B=B if and only if B$\Subset$A.
+\end{problem}
+
+
+\begin{solution}
+(a)\\
+(1) for every x$\in$ (A$^\complement$)$^\complement$ ,we have x$\notin$ (A$^\complement$)\\
+$\therefore$ we have x$\in$ A\\
+$\therefore$ (A$^\complement$)$^\complement$ $\Subset$ A\\
+(2) for every x$\in$ A,we have x$\notin$ (A$^\complement$)\\
+$\therefore$ we have x$\in$ (A$^\complement$)$^\complement$\\
+$\therefore$  A $\Subset$ (A$^\complement$)$^\complement$\\
+Based on (1) and (2),we have (A $^\complement$)$^\complement$=A.\\
+\\
+\\
+(b)\\
+(1) for every x $\in$ A $\cap$(B $\cup$ C),x$\in$ A and x$\in$ (B $\cup$ C)\\
+$\therefore$ there are two cases:\\
+\indent (i) x$\in$ A and x$\in$ B :\\
+\indent \indent $\therefore$ x$\in$(A $\cap$ B)\\
+\indent \indent $\therefore$ x$\in$(A $\cap B$)$\cup$(A $\cap$ C)\\
+\indent (ii) x$\in$ A and x$\in$ C\\
+\indent \indent $\therefore$ x$\in$(A $\cap$ C)\\
+\indent \indent $\therefore$ x$\in$(A $\cap B$)$\cup$(A $\cap$ C)\\
+according to (i)and(ii),we can conclude that A $\cap$(B $\cup$ C) $\Subset$ (A $\cap B$)$\cup$(A $\cap$ C)\\
+(2) for every x $\in$ (A $\cap B$)$\cup$(A $\cap$ C), x$\in$ (A$\cap$B) or x$\in$ (A$\cap$C)\\
+$\therefore$ there are two cases:\\
+\indent (i) x$\in$ (A$\cap$B)\\
+\indent \indent x$\in$ A and x$\in$ B\\
+\indent \indent x$\in$ A and x$\in$ (B $\cup$ C)\\
+\indent \indent x $\in$ A $\cap$(B $\cup$ C)\\
+\indent (ii) x$\in$ (A$\cap$C)\\
+\indent \indent x$\in$ A and x$\in$ C\\
+\indent \indent x$\in$ A and x$\in$ (B $\cup$ C)\\
+\indent \indent x $\in$ A $\cap$(B $\cup$ C)\\
+according to (i) and (ii),we can conclude that (A $\cap B$)$\cup$(A $\cap$ C) $\Subset$ A $\cap$(B $\cup$ C)\\
+Based on (1) and (2) ,we can conclude that A $\cap$(B $\cup$ C) = (A $\cap B$)$\cup$(A $\cap$ C)\\
+\\
+\\
+(c)\\
+(1) for every x $\in$ X $\backslash$(A $\cap$ B),we have x$\in$ X and x$\notin$ (A $\cap$ B)\\
+$\therefore$ x $\in$ X and x$\in$ (A$\cap$ B)$^\complement$\\
+$\therefore$ x$\in$ X and x$\in$((A$\backslash$(A$\cap$ B)) $\cup$ (B$\backslash$(A$\cap$ B)) $\cup$ (A$\cup$B)$^\complement$)\\
+$\therefore$ there are three cases:\\
+\indent (i) x$\in$X and x$\in$ (A$\backslash$(A$\cap$ B))\\
+\indent \indent $\therefore$ x$\in$ X and x$\notin$ B\\
+\indent \indent $\therefore$ x$\in$ (X$\backslash$ B)\\
+\indent \indent $\therefore$ x$\in$ (X $\backslash$ A)$\cup$ (X $\backslash$ B)\\
+\indent (ii) x$\in$X and x$\in$ (B$\backslash$(A$\cap$ B))\\
+\indent \indent $\therefore$ x$\in$ X and x$\notin$ A\\
+\indent \indent $\therefore$ x$\in$ (X$\backslash$ A)\\
+\indent \indent $\therefore$ x$\in$ (X $\backslash$ A)$\cup$ (X $\backslash$ B)\\
+\indent (iii) x$\in$ X and x$\in$ (A$\cup$B)$^\complement$\\
+\indent \indent $\therefore$ x$\in$ X and x$\notin$ A and x$\notin$ B\\
+\indent \indent $\therefore$ x$\in$ (X $\backslash$ A)$\cap$ (X $\backslash$ B)\\
+\indent \indent $\therefore$ x$\in$ (X $\backslash$ A)$\cup$ (X $\backslash$ B)\\
+according to (i), (ii) and (iii), we can conclude that X $\backslash$(A $\cap$ B) $\Subset$ (X $\backslash$ A)$\cup$ (X $\backslash$ B)\\
+(2)for every x $\in$ (X $\backslash$ A)$\cup$ (X $\backslash$ B),we have x$\in$ X and x$\in$((A$\backslash$(A$\cap$ B)) $\cup$ (B$\backslash$(A$\cap$ B)) $\cup$ (A$\cup$B)$^\complement$)\\
+$\therefore$ there are three cases:\\
+\indent (i) x$\in$X and x$\in$ (A$\backslash$(A$\cap$ B))\\
+\indent \indent $\therefore$ x$\in$ X and x$\in$((A$\backslash$(A$\cap$ B)) $\cup$ (B$\backslash$(A$\cap$ B)) $\cup$ (A$\cup$B)$^\complement$)\\
+\indent \indent $\therefore$ x $\in$ X and x$\in$ (A$\cap$ B)$^\complement$\\
+\indent \indent $\therefore$ x $\in$ X and x$\notin$ (A$\cap$ B)\\
+\indent \indent $\therefore$ x $\in$ X $\backslash$(A $\cap$ B)\\
+\indent (ii) x$\in$X and x$\in$ (B$\backslash$(A$\cap$ B))\\
+\indent \indent $\therefore$ x$\in$ X and x$\in$((A$\backslash$(A$\cap$ B)) $\cup$ (B$\backslash$(A$\cap$ B)) $\cup$ (A$\cup$B)$^\complement$)\\
+\indent \indent $\therefore$ x $\in$ X and x$\in$ (A$\cap$ B)$^\complement$\\
+\indent \indent $\therefore$ x $\in$ X and x$\notin$ (A$\cap$ B)\\
+\indent \indent $\therefore$ x $\in$ X $\backslash$(A $\cap$ B)\\
+\indent (iii) x$\in$ X and x$\in$ (A$\cup$B)$^\complement$\\
+\indent \indent $\therefore$ x$\in$ X and x$\in$((A$\backslash$(A$\cap$ B)) $\cup$ (B$\backslash$(A$\cap$ B)) $\cup$ (A$\cup$B)$^\complement$)\\
+\indent \indent $\therefore$ x $\in$ X and x$\in$ (A$\cap$ B)$^\complement$\\
+\indent \indent $\therefore$ x $\in$ X and x$\notin$ (A$\cap$ B)\\
+\indent \indent $\therefore$ x $\in$ X $\backslash$(A $\cap$ B)\\
+according to (i), (ii) and (iii), we can conclude that (X $\backslash$ A)$\cup$ (X $\backslash$ B) X $\backslash$(A $\cap$ B) $\Subset$ (X $\backslash$(A $\cap$ B))\\
+according to (1) and (2),we can conclude that X $\backslash$(A $\cap$ B)=(X $\backslash$ A)$\cup$ (X $\backslash$ B).\\
+\\
+\\
+(d)\\
+(1) Because A$\Subset$ B, we have B$^\complement$ $\Subset$ A$^\complement$\\
+for every x$\in$(X$\backslash$B), we have x$\in$ (X $\cap$ B$^\complement$)\\
+and $\because$ B$^\complement$ $\Subset$ A$^\complement$\\
+$\therefore$ x$\in$ (X $\cap$ A$^\complement$)\\
+$\therefore$ (X $\backslash$ B) $\Subset$ (X $\backslash$ A)\\
+(2) $\because$ (X $\backslash$ B) $\Subset$ (X $\backslash$ A)\\
+$\therefore$ (X $\cap$ B$^\complement$) $\Subset$ (X $\cap$ A$^\complement$)\\
+$\therefore$ B$^\complement$ $\Subset$ A$^\complement$\\
+$\therefore$ A$\Subset$ B\\
+Based on (1) and (2),we can conclude that A$\Subset$B if and only if (X $\backslash$ B) $\Subset$ \\
+\\
+\\
+(e)\\
+(1) $\because$ A $\cap$ B=B \\
+$\therefore$ for every x$\in$ B, we have x$\in$(A $\cap$ B)\\
+$\therefore$ x$\in$ A\\
+$\therefore$ B$\Subset$ A\\
+(2) $\because$ B$\Subset$ A\\
+$\therefore$ for every x $\in$ B, we have x $\in$ A\\
+\indent (i)\\
+$\therefore$ for x $\in$ (A $\cap$ B), we have x $\in$ B\\
+$\therefore$ A$\cap$B $\Subset$ B\\
+\indent (ii)\\
+$\therefore$ for x $\in$ B,we have x$\in$ A\\
+$\therefore$ x$\in$ A$\cap$B\\
+$\therefore$ B $\Subset$ (A$\cap$B)\\
+accoding to (i) and (ii) ,we can conclude that A$\cap$B=B\\
+Based on (1) and (2),we can conclude that A $\cap$ B=B if and only if B$\Subset$A\\
+
+\end{solution}
+
+
+\begin{problem}[UD:7.8]
+Consider the following sets:\\
+(i) (A$\cap$B) $\backslash$ (A$\cap$B$\cap$C),\\
+(ii) A$\cap$B $\backslash$ (A$\cap$B$\cap$C),\\
+(iii) A$\cap$ B $\cap$ C$^\complement$,\\
+(iv) (A$\cap$B) $\backslash$ C,and\\
+(v) (A$\backslash$C) $\cap$ (B $\backslash$C).\\
+(a) Which of the sets above are written ambiguously,if any?\\
+(b) Of the sets above that make sense, which ones equal the set sketched in Figure 7.2?\\
+(c) Prove that (A$\cap$B)$\backslash$C=(A$\backslash$C) $\cap$ (B$\backslash$C).\\
+\end{problem}
+
+\begin{solution}
+(a) the second one is written ambiguously.\\
+(b) all above except the second one equal the set sketched in Figure 7.2\\
+(c)\\
+(1) for every x $\in$ (A$\cap$B)$\backslash$C,we have x$\in$ (A $\cap$ B) and x$\notin$ C\\
+$\therefore$ x$\in$ (A$\cap$ B) and x$\in$ C$^\complement$\\
+$\therefore$ x$\in$ (A $\cap$ B $\cap$ C$^\complement$)\\
+$\therefore$ x$\in$ (A$\cap$C$^\complement$) $\cap$ (B$\cap$C$^\complement$)\\
+$\therefore$ x$\in$ (A$\backslash$C) $\cap$ (B$\backslash$C)\\
+$\therefore$ (A$\cap$B)$\backslash$C $\Subset$ (A$\backslash$C) $\cap$ (B$\backslash$C)\\
+(2) for every x $\in$ (A$\backslash$C) $\cap$ (B$\backslash$C),we have x$\in$ (A$\cap$C$^\complement$) $\cap$ (B$\cap$C$^\complement$)\\
+$\therefore$ x$\in$ (A $\cap$ B $\cap$ C$^\complement$)\\
+$\therefore$ x$\in$ (A$\cap$ B) and x$\in$ C$^\complement$\\
+$\therefore$ x$\in$ (A $\cap$ B) and x$\notin$ C\\
+$\therefore$ x$\in$ (A$\cap$B)$\backslash$C\\
+$\therefore$ (A$\backslash$C) $\cap$ (B$\backslash$C) $\Subset$ (A$\cap$B)$\backslash$C\\
+According to (1) and (2),we can conclude that (A$\cap$B)$\backslash$C=(A$\backslash$C) $\cap$ (B$\backslash$C).\\
+\end{solution}
+
+
+\begin{problem}[UD:7.9]
+In this problem you will prove that the union of two sets can be rewritten as the union of two disjoint sets.\\
+(a) Prove that the two sets A$\backslash$B and B are disjoint.\\
+(b) Prove that A$\cup$=(A$\backslash$B) $\cup$ B.
+\end{problem}
+
+\begin{solution}
+(a)\\
+(1) for every x $\in$ A$\backslash$B,we have x$\in$ A and x$\notin$ B\\
+$\therefore$ x$\notin$B\\
+(2) for every x $\in$ B, we have x$\notin$ B$^\complement$ \\
+$\therefore$ x$\notin$ A$\backslash$B\\
+Based on (1) and (2),we can conclude that A$\backslash$B and B are disjoint.\\
+\\
+(b)\\
+(1) for every x $\in$ A$\cup$B, we have x$\in$A or x$\in$B\\
+for x$\in$ B ,we can show that x$\in$ (A $\backslash$ B) $\cup$ B\\
+for x$\in$ A ,there are two cases:\\
+\indent (i) x$\in$ A$\cap$ B\\
+\indent \indent $\therefore$ x$\in$ B\\
+\indent \indent $\therefore$ x$\in$ (A $\backslash$ B) $\cup$ B\\
+\indent (ii) x$\in$ A$\backslash$ (A$\cap$B)\\
+\indent \indent $\therefore$ x$\in$ A$\backslash$ B\\
+\indent \indent $\therefore$ x$\in$ (A $\backslash$ B) $\cup$ B\\
+$\therefore$ we can conclude that A$\cup$B $\Subset$ (A$\backslash$B)$\cup$B.\\
+(2) for every x $\in$ (A$\backslash$B)$\cup$B,we have x$\in$ (A$\backslash$) or x$\in$ B.\\
+\indent (i). x$\in$ (A$\backslash$)\\
+\indent \indent $\therefore$ x$\in$ A\\
+\indent \indent $\therefore$ x$\in$ A$\cup$B\\
+\indent (ii).x$\in$ B\\
+\indent \indent $\therefore$ x$\in$ A$\cup$B\\
+$\therefore$ we can conclude that (A$\backslash$B)$\cup$B $\Subset$ A$\cup$B\\
+Based on (1) and (2), A$\cup$=(A$\backslash$B) $\cup$ B\\
+\end{solution}
+
+
+\begin{problem}[UD:7.10]
+Prove or disprove: If A$\cup$B=A$\cup$C, then B=C;
+\end{problem}
+
+\begin{solution}
+let A=\{1,2,3\} B=\{1\} C=\{2\}\\
+then we have A$\cup$B =A$\cup$C =\{1,2,3\},but B$\not=$C\\
+So the statement is not true.
+\end{solution}
+
+
+\begin{problem}[UD:7.11]
+Prove or give a counterexample for the following statement.\\
+\indent Let X be the universe and A,B$\Subset$X. If A$\cap$Y=B$\cap$Y for all Y$\Subset$ X,then A=B.\\
+\end{problem}
+
+\begin{solution}
+(1) Let Y=A, then we have A$\cap$A=B$\cap$A\\
+$\therefore$ A=B$\cap$A\\
+$\therefore$ A$\Subset$B\\
+(2) Let Y=B, then we have A$\cap$B=B$\cap$B\\
+$\therefore$ A$\cap$B=B\\
+$\therefore$ B$\Subset$A\\
+Based on (1) and (2),we can conclude that A=B\\
+So the statement is true.
+\end{solution}
+
+
+\begin{problem}[UD:8.1]
+Consider the intervals of real numbers given by A$_n$=[0,1/n),B$_n$=[0,1/n],and C$_n$=(0,1/n).\\
+(a)Find $\bigcup_{n=1}^{\infty}$A$_n$ ,$\bigcup_{n=1}^{\infty}$B$_n$,and $\bigcup_{n=1}^{\infty}$C$_n$.\\
+(b)Find $\bigcap_{n=1}^{\infty}$A$_n$ ,$\bigcap_{n=1}^{\infty}$B$_n$,and $\bigcap_{n=1}^{\infty}$C$_n$.\\
+(c)Does $\bigcup_{n\in N}$A$_n$ make sense? Why or why not?
+\end{problem}
+\begin{solution}
+(a)\\
+$\bigcup_{n=1}^{\infty}$A$_n$=[0,1)\\
+$\bigcup_{n=1}^{\infty}$B$_n$=[0,1]\\
+$\bigcup_{n=1}^{\infty}$C$_n$=(0,1)\\
+\\
+(b)\\
+$\bigcap_{n=1}^{\infty}$A$_n$=\{0\}\\
+$\bigcap_{n=1}^{\infty}$B$_n$=\{0\}\\
+$\bigcap_{n=1}^{\infty}$C$_n$=$\emptyset$\\
+\\
+(c)\\
+It doesn't make sense.\\
+$\because$ 0$\in$N, but 0 cannot be the denominator.\\
+
+\end{solution}
+
+
+
+
+
+
+\begin{problem}[UD:8.4]
+Prove or give a counterexample:Let \{A$_n$:n$\in$Z$^+$\} and \{B$_n$:n$\in$Z$^+$\} be two indexed families of set. If A$_n$ $\subsetneq$ B$_n$ for all n$\in$ Z$^+$, then \\
+\indent \indent $\bigcap_{n=1}^{\infty}$A$_n$ $\subsetneq$ $\bigcap_{n=1}^{\infty}$B$_n$.\\
+(Recall that A$\subsetneq$B means strict inclusion; that is, A$\Subset$B and A$\not=$B.)
+\end{problem}
+
+\begin{solution}
+This statement is not true.\\
+We can let B$_n$=\{1,2\}\\
+when n is odd let A$_n$=\{1\}\\
+when n is even let A$_n$=\{2\}\\
+$\therefore$ for all n$\in$ Z$^+$, we have A$_n$ $\subsetneq$ B$_n$\\
+but $\bigcap_{n=1}^{\infty}$A$_n$ = $\bigcap_{n=1}^{\infty}$B$_n$
+$\therefore$ the statement is not true.\\
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+\begin{problem}[UD:8.7]
+Suppose that \{A$_\alpha$:$\alpha$$\in$I\} is an indexed family of subsets of a set X, and that B is a subset of X.\\
+(a) If A$_\alpha$ =$\emptyset$ for some $\alpha$ $\in$ I,prove that $\bigcap_{\alpha \in I}$A$_\alpha$ =$\emptyset$.\\
+(b) If A$_\alpha$ =X for some $\alpha$ $\in$ I,prove that $\bigcup_{\alpha \in I}$A$_\alpha$ =X.\\
+(c) If B$\Subset$A$_\alpha$ for every $\alpha$ $\in$ I, prove that B$\Subset$ $\bigcap_{\alpha \in I}$A$_\alpha$.\\
+\end{problem}
+
+\begin{solution}
+(a) Suppose that $\bigcap_{\alpha \in I}$A$_\alpha$ $\not=$ $\emptyset$, we have there exists an x$\in$ $\bigcap_{\alpha \in I}$A$_\alpha$ =$\emptyset$\\
+$\therefore$ we have there exists an x $\in$ A$_\alpha$ for all $\alpha$ $\in$ I\\
+$\therefore$ A$_\alpha$ $\not=$ $\emptyset$ for all $\alpha$ $\in$ I\\
+but it contradicts with the condition that A$_\alpha$ =$\emptyset$ for some $\alpha$ $\in$ I\\
+$\therefore$ what we suppose is wrong \\
+$\therefore$ $\bigcap_{\alpha \in I}$A$_\alpha$ =$\emptyset$\\
+\\
+(b) Suppose that $\bigcup_{\alpha \in I}$A$_\alpha$ $\not=$ X, we have there exists an x $\in$ X but $\notin$ $\bigcup_{\alpha \in I}$A$_\alpha$\\
+$\therefore$ there exists an x$\in$ X but $\notin$ A$_\alpha$ for all $\alpha$ $\in$ I\\
+but it contradicts with the condition that A$_\alpha$ =X for some $\alpha$ $\in$ I\\
+$\therefore$ what we suppose is wrong\\
+$\therefore$ $\bigcup_{\alpha \in I}$A$_\alpha$ =X\\
+\\
+(c) Suppose that B$\nsubseteq$ $\bigcap_{\alpha \in I}$A$_\alpha$, we have there exists an x$\in$ B but $\notin$ $\bigcap_{\alpha \in I}$A$_\alpha$.\\
+$\therefore$ there exists an x$\in$ B but $\notin$ A$_\alpha$ for some $\alpha$ $\in$ I\\
+but it contradicts with the condition that B$\Subset$A$_\alpha$ for every $\alpha$ $\in$ I\\
+$\therefore$ what we suppose is wrong\\
+$\therefore$ B$\Subset$ $\bigcap_{\alpha \in I}$A$_\alpha$
+\end{solution}
+
+
+
+
+
+
+
+
+\begin{problem}[UD:8.8]
+Define\\
+\indent \indent A=R$\backslash$ $\bigcap_{n\in Z^+}$ (R$\backslash$ \{-n,-n+1,...,0,...,n-1,n\}).\\
+The set A should be familiar to you. Guess what it is and then prove that your guess is correct.
+\end{problem}
+
+
+\begin{solution}
+A=Z\\
+\\
+According to Exercise 8.9, we have $\bigcap_{n \in Z^+}$ (R$\backslash$ \{-n,-n+1,...,0,...,n-1,n\})=R $\backslash$ ($\bigcup_{n\in Z^+}$ \{-n,-n+1,...,0,...,n-1,n\})
+$\therefore$ A=R$\backslash$ (R $\backslash$ Z)\\
+$\therefore$ A=R$\backslash$ $\complement_{R}^{Z}$\\
+$\therefore$ A=Z
+\end{solution}
+
+
+
+\begin{problem}[UD:8.9]
+Guess a simpler way to express the set A defined as\\
+\indent \indent A=Q$\backslash$ $\bigcap_{n\in Z}$(R$\backslash$\{2n\}),\\
+and then prove that your guess is correct.
+\end{problem}
+
+
+
+\begin{solution}
+A=\{2n|n$\in$Z\}\\
+According to Exercise 8.9, we have $\bigcap_{n\in Z}$(R$\backslash$\{2n\})=R$\backslash$ $\bigcup_{n \in Z}$\{2n\}\\
+$\therefore$ A= Q$\backslash$ (R$\backslash$ \{2n|n$\in$Z\})\\
+$\therefore$ A= Q$\backslash$ $\complement_{R}^{\{2n|n \in Z\}}$\\
+$\therefore$ A=\{2n|n$\in$Z\}\\
+\end{solution}
+
+
+
+
+\begin{problem}[UD:8.11]
+A collection of sets\{A$_\alpha$:$\alpha \in$ I\} is said to be a pairwise disjoint collection if the following is satisfied :For all $\alpha \beta \in$I, if A$_\alpha$ $\cap$A$_\beta$ $\not=$ $\emptyset$, then A$_\alpha$=A$_\beta$. Suppose that each set A$_\alpha$ is nonempty.\\
+(a) Give an example of pairwise disjoint sets A$_1$,A$_2$,A$_3$,....\\
+(b) What is the contrapositive of "if A$_\alpha$ $\cap$ A$\beta$ $\not=$ $\emptyset$, then A$_\alpha$=A$_\beta$"?\\
+(c) What is the converse of "if A$_\alpha$ $\cap$ A$\beta$ $\not=$ $\emptyset$, then A$_\alpha$=A$_\beta$"?\\
+(d) If \{A$_\alpha:\alpha \in I$\} is a pairwise disjoint collection, does the assertion you found in (b) hold for all $\alpha$ and $\beta$ in I?\\
+(e) If the assertion that you found in (b) holds for all $\alpha$ and $\beta$ in I, is \{A$_\alpha:\alpha \in I$\} a pairwise disjoint collection?\\
+(f) If \{A$_\alpha:\alpha \in I$\} is a pairwise disjoint collection of sets, does it follow that $\bigcap_{\alpha \in I}$A$_\alpha$ =$\emptyset$?\\
+(g) If $\bigcap_{\alpha \in I}$A$_\alpha$ =$\emptyset$, is \{A$_\alpha:\alpha \in I$\} necessarily a pairwise disjoint collection of sets?
+\end{problem}
+
+
+\begin{solution}
+(a) A$_n$=\{1\}\\
+(b) if A$_\alpha$ $\not=$ A$_\beta$, then A$_\alpha$ $\cap$ A$\beta$ = $\emptyset$\\
+(c) if A$_\alpha$=A$_\beta$, then A$_\alpha$ $\cap$ A$\beta$ $\not=$ $\emptyset$\\
+(d) yes\\
+(e) yes\\
+(f) no\\
+(g) no\\
+
+\end{solution}
+
+
+
+
+\begin{problem}[UD:9.2]
+(a) Show that P(A)$\cup$P(B)$\Subset$P(A$\cup$B).\\
+(b) Show that P(A)$\cup$P(B)$\not=$P(A$\cup$B) by exhibiting two concrete sets, A and B, for which the aforementioned inequality holds.\\
+\end{problem}
+
+
+\begin{solution}
+(a)\\
+for every x$\in$ P(A)$\cup$P(B), we have x$\Subset$ A or x$\Subset$ B.\\
+$\therefore$ x$\Subset$ A$\cup$B\\
+$\therefore$ x$\in$ P(A$\cup$B)\\
+$\therefore$ P(A)$\cup$P(B)$\Subset$P(A$\cup$B)\\
+\\
+(b)\\
+Let A=\{1\} B=\{2\} A$\cup$B=\{1,2\}\\
+P(A)=\{\{1\},$\emptyset$\}, P(B)=\{\{2\},$\emptyset$\}, P(A$\cup$B)=\{\{1\},\{2\},\{1,2\},$\emptyset$\}\\
+P(A)$\cup$P(B)=\{\{1\},\{2\},$\emptyset$\}\\
+$\therefore$ P(A)$\cup$P(B)$\not=$P(A$\cup$B)\\
+
+\end{solution}
+
+
+
+
+\begin{problem}[UD:9.4]
+Show that A$\Subset$B if and only if P(A) $\Subset$ P(B).
+\end{problem}
+
+
+\begin{solution}
+(1) for every x$\in$ P(A), we have x$\Subset$ A\\
+$\therefore$ x$\Subset$B\\
+$\therefore$ x$\in$ P(B)\\
+$\therefore$ we can conclude that P(A) $\Subset$ P(B)\\
+(2) for every x$\Subset$ A, we have x$\in$ P(A)\\
+$\therefore$ x$\in$ P(B)\\
+$\therefore$ x$\Subset$B\\
+$\therefore$ we can conclude that A$\Subset$B\\
+Based on (1) and (2), A$\Subset$B if and only if P(A) $\Subset$ P(B)\\
+\end{solution}
+
+
+
+
+
+\begin{problem}[UD:9.12]
+(a) Prove the following:\\
+\indent Let A,B,C and D be nonempty sets. Then A $\times$ B=C $\times$ D if and only if A=C and B=D.\\
+(b) Where did your proof use the fact that the sets were nonempty?
+\end{problem}
+
+\begin{solution}
+(a)\\
+(1)\\
+$\because$ A,B,C and D are nonempty sets\\
+$\therefore$ A$\times$B=\{(x,y)|x$\in$A,y$\in$B\} $\not=$ $\emptyset$ \\
+\indent C$\times$D=\{(z,w)|z$\in$C,w$\in$D\} $\not=$ $\emptyset$ \\
+$\because$ A $\times$ B=C $\times$ D\\
+$\therefore$ for every (x,y) $\in$ A$\times$B ,we can find (x,y) $\in$ C$\times$D\\
+\indent for every (z,w) $\in$ C$\times$D ,we can find (z,w) $\in$ A$\times$B\\
+$\therefore$ for every x $\in$A, we can find x$\in$C (this is also the same for y)\\
+\indent for every z$\in$C,we can find z$\in$ A(this is also the same for w)\\
+$\therefore$ A$\Subset$C and C$\Subset$ A, B$\Subset$D and D$\Subset$ B\\
+$\therefore$ A=C,B=D\\
+(2)\\
+$\because$ A,B,C and D are nonempty sets\\
+$\therefore$ A$\times$B=\{(x,y)|x$\in$A,y$\in$B\} $\not=$ $\emptyset$ \\
+\indent C$\times$D=\{(z,w)|z$\in$C,w$\in$D\} $\not=$ $\emptyset$ \\
+$\because$ A=C and B=D\\
+$\therefore$ A$\Subset$C and C$\Subset$ A, B$\Subset$D and D$\Subset$ B\\
+$\therefore$ for every x $\in$A, we can find x$\in$C (this is also the same for y)\\
+\indent for every z$\in$C,we can find z$\in$ A(this is also the same for w)\\
+$\therefore$ for every (x,y) $\in$ A$\times$B ,we can find (x,y) $\in$ C$\times$D\\
+\indent for every (z,w) $\in$ C$\times$D ,we can find (z,w) $\in$ A$\times$B\\
+$\therefore$ A $\times$ B$\Subset$C $\times$ D and C $\times$ D $\Subset$  A $\times$ B\\
+$\therefore$ A $\times$ B=C $\times$ D\\
+Based on (1) and (2),Let A,B,C and D be nonempty sets. Then A $\times$ B=C $\times$ D if and only if A=C and B=D.\\
+\\
+(2)\\
+when I want to illustrate that A$\times$B $\not=$ $\emptyset$ and C$\times$D $\not=$ $\emptyset$\\
+
+\end{solution}
+
+
+
+
+\begin{problem}[UD:9.13]
+Suppose A,B,C and D are four sets. If A$\times$B$\Subset$C$\times$D, must A$\Subset$C and B$\Subset$D? Why or why not?
+\end{problem}
+
+\begin{solution}
+No, it doesn't need to.\\
+We can let C$\Subset$ A and A$\not=$C and B=D=$\emptyset$\\
+We can still have A$\times$B$\Subset$C$\times$D\\
+
+\end{solution}
+
+
+
+
+
+
+\begin{problem}[UD:9.14]
+Let A,B and C be sets. If the statements below are true prove them.\\
+If they are false,give a counterexample:\\
+(a) A$\times$(B$\cup$C) = (A$\times$B) $\cup$ (A$\times$C);\\
+(b) A$\times$(B$\cap$C) = (A$\times$B) $\cap$ (A$\times$C);\\
+\end{problem}
+
+\begin{solution}
+(a)\\
+(1)for every (x,y)$\in$ A$\times$(B$\cup$C), we have x$\in$ A and y$\in$ (B$\cup$C)\\
+$\therefore$ there are two cases:\\
+\indent (i) x$\in$ A and y$\in$B\\
+\indent \indent $\therefore$ (x,y)$\in$ A$\times$B\\
+\indent \indent $\therefore$ (x,y)$\in$ (A$\times$B)$\cup$(A$\times$C)\\
+\indent (ii) x$\in$ A and y$\in$C\\
+\indent \indent $\therefore$ (x,y)$\in$ A$\times$C\\
+\indent \indent $\therefore$ (x,y)$\in$ (A$\times$B)$\cup$(A$\times$C)\\
+$\therefore$ according to (i) and (ii),A$\times$(B$\cup$C) $\Subset$ (A$\times$B) $\cup$ (A$\times$C)\\
+(2)for every (x,y) $\in$ (A$\times$B) $\cup$ (A$\times$C), we have (x,y)$\in$ A$\times$B or(x,y)$\in$ A$\times$C\\
+$\therefore$ therefore there are two cases:\\
+\indent (i)(x,y)$\in$ A$\times$B\\
+\indent \indent x$\in$A and y$\in$B\\
+\indent \indent x$\in$ A and y$\in$ (B$\cup$C)\\
+\indent \indent (x,y)$\in$ A$\times$(B$\cup$C)\\
+\indent (ii)(x,y)$\in$ A$\times$C\\
+\indent \indent x$\in$A and y$\in$C\\
+\indent \indent x$\in$ A and y$\in$ (B$\cup$C)\\
+\indent \indent (x,y)$\in$ A$\times$(B$\cup$C)\\
+$\therefore$ according to (i) and (ii),(A$\times$B) $\cup$ (A$\times$C) $\Subset$ A$\times$(B$\cup$C)\\
+Based on (1) and (2),A$\times$(B$\cup$C) = (A$\times$B) $\cup$ (A$\times$C)\\
+\\
+(b)\\
+(1)for every (x,y)$\in$ A$\times$(B$\cap$C), we have x$\in$A and y$\in$ B$\cap$C\\
+$\therefore$ we have (x$\in$A and y$\in$B) and (x$\in$A and y$\in$C)\\
+$\therefore$ we have (x,y)$\in$(A$\times$B) and (x,y)$\in$(A$\times$C)\\
+$\therefore$ we have (x,y)$\in$ (A$\times$B) $\cap$ (A$\times$C)\\
+$\therefore$  A$\times$(B$\cap$C) $\Subset$ (A$\times$B) $\cap$ (A$\times$C)\\
+(2)for every (x,y)$\in$ A$\times$(B$\cap$C), we have (x,y)$\in$(A$\times$B) and (x,y)$\in$(A$\times$C)\\
+$\therefore$ we have (x$\in$A and y$\in$B) and (x$\in$A and y$\in$C)\\
+$\therefore$ we have x$\in$A and y$\in$ B$\cap$C\\
+$\therefore$ we have (x,y)$\in$ A$\times$(B$\cap$C)\\
+$\therefore$ (A$\times$B) $\cap$ (A$\times$C) $\Subset$ A$\times$(B$\cap$C)\\
+Based on (1) and (2),A$\times$(B$\cap$C) = (A$\times$B) $\cap$ (A$\times$C)\\
+\end{solution}
+
+
+
+
+
+
+\begin{problem}[UD:9.16]
+This problem introduces rigorous definitions of an ordered pair and Cartesian product. Let A be a set and a,b$\in$A. We define the ordered pair of a and b with first coordinate a and second coordinate b as\\
+\indent \indent (a,b)=\{\{a\},\{a,b\}\}.\\
+Using this definition prove the following.\\
+(a) If (a,b)=(x,y), then a=x and b=y.\\
+(b) If a$\in$A and b$\in$B, then (a,b) $\in$ P(P(A$\cup$B)).\\
+Now we are able to define the Cartesian product of the two sets A and B as the set\\
+A$\times$B=\{x$\in$P(P(A$\cup$B))\:x=(a,b) for some a$\in$ A and some b$\in$B\}.\\
+(c) Use the above definations to prove that if A$\Subset$C and B$\Subset$D,then A$\times$B $\Subset$ C$\times$D.\\
+\indent This is a pretty complicated defination. It is also not our idea, but rather an idea that was born from axioms. P.Halmos' book,[31],is an excellent reference for this subject.
+
+\end{problem}
+
+
+\begin{solution}
+(a)\\
+$\because$ (a,b)=(x,y)\\
+$\therefore$ \{\{a\},\{a,b\}\}=\{\{x\},\{x,y\}\}\\
+$\therefore$ \{a\}==\{x\} and \{a,b\}=\{x,y\}\\
+$\therefore$ a=x and b=y\\
+(b)\\
+$\because$ a$\in$A and b$\in$B\\
+$\therefore$ a$\in$A$\cup$B and b$\in$A$\cup$B\\
+$\therefore$ {a}$\in$ P(A$\cup$B) and {a,b}$\in$ P(A$\cup$B)\\
+$\therefore$ \{\{a\},\{a,b\}\}$\in$P(P(A$\cup$B))\\
+$\therefore$ (a,b) $\in$ P(P(A$\cup$B))\\
+(c)\\
+(1) Prove if a=x and b=y, then (a,b)=(x,y)\\
+$\because$ a=x and b=y\\
+$\therefore$ \{a\}==\{x\} and \{a,b\}=\{x,y\}\\
+$\therefore$ \{\{a\},\{a,b\}\}=\{\{x\},\{x,y\}\}\\
+$\therefore$ (a,b)=(x,y)\\
+(2)$\because$ A$\Subset$C and B$\Subset$D\\
+$\therefore$ for every x$\in$A, we have x$\in$C\\
+\indent for every y$\in$B, we have y$\in$D\\
+$\therefore$ for every (x,y) $\in$ (A$\times$B),we have (x,y) $\in$ (C$\times$D)\\
+$\therefore$ A$\times$B $\Subset$ C$\times$D 
+
+\end{solution}
+
+
+
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

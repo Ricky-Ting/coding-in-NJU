@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{第十三讲：布尔代数}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+
+\begin{problem}[第一题]
+证明布尔代数是有界有补分配格，有界有补分配格是布尔代数
+\end{problem}
+
+\begin{solution}
+(1) prove:A Boolean algebra B is a bounded, distributive and complemented lattice.\\
+By Theorem 15.2 and axiom [B1], every Boolean algebra B satisfies the associative, commutative, and absorption laws and hence is a lattice where + and ∗ are the join and meet operations, respectively. With respect to this lattice, a+1 = 1 implies a ≤ 1 and a ∗ 0 = 0 implies 0 ≤ a,for any element a$\in$ B. Thus B is a bounded lattice. Furthermore, axioms [B2] and [B4] show that B is also distributive and complemented.\\
+(i) Commutive laws: $\because$ a+b=b+a and a*b=b*a, $\therefore$ a$\vee$b=b$\vee$a and a$\wedge$b=b$\wedge$a\\
+(ii) Associative laws: $\because$ (a+b)+c=a+(b+c) and (a*b)*c=a*(b*c), $\therefore$ (a$\vee$b)$\vee$c=a$\vee$(b$\vee$c) and (a$\wedge$b)$\wedge$c=a$\wedge$(b$\wedge$c)\\
+(iii) Absorption laws: $\because$ a*(a+b)=a and a+(a*b)=a, $\therefore$ a$\wedge$(a$\vee$b)=a and a$\vee$(a$\wedge$b)=a\\
+(iv) bounded: a+1 = 1 implies a ≤ 1 and a ∗ 0 = 0 implies 0 ≤ a,for any element a$\in$ B. Thus B is a bounded lattice.\\
+(v) According to [B2], we can conclude that a$\vee$(b$\wedge$c)=(a$\vee$b)$\wedge$(a$\vee$c) and a$\wedge$(b$\vee$c)=(a$\wedge$b)$\vee$(a$\wedge$c)\\
+(vi) According to [B4], we can conclude that a$\vee$a'=1 and a$\wedge$a'=0\\
+$\therefore$ A Boolean algebra B is a bounded, distributive and complemented lattice.\\
+(2) prove:A bounded, distributive and complemented lattice B ia s Boolean algebra.\\
+a lattice where + and ∗ are the join and meet operations\\
+(i) communitive laws: $\because$ a$\vee$b=b$\vee$a and a$\wedge$b=b$\wedge$a, $\therefore$ a+b=b+a and a*b=b*a\\
+(ii) Distributive laws: $\because$ a$\vee$(b$\wedge$c)=(a$\vee$b)$\wedge$(a$\vee$c) and a$\wedge$(b$\vee$c)=(a$\wedge$b)$\vee$(a$\wedge$c),$\therefore$ a+(b∗c)=(a+b)∗(a+c) and a∗(b+c)=(a ∗ b)+(a ∗ c)\\
+(iii) Identity laws: $\because$ 0 is the infimun of B and 1 is the supremum of B, $\therefore$ a$\vee$0=a and a$\wedge$1=a, $\therefore$ a+0=a and a*1=a\\
+(iv) Complement laws: $\because$ a' is the complement of a, $\therefore$ a$\vee$a'=1 and a$\wedge$a'=0,$\therefore$ a+a'=1 and a*a'=0\\
+$\therefore$ A bounded, distributive and complemented lattice B ia s Boolean algebra.\\
+Based on (1) and (2),布尔代数是有界有补分配格，有界有补分配格是布尔代数.
+\end{solution}
+
+\begin{problem}[第二题]
+证明SM定理15.6
+\end{problem}
+\begin{solution}
+a=u$_1$+u$_2$+$\cdots$+u$_r$ and b=v$_1$+v$_2$+$\cdots$+v$_s$ and a'=w$_1$+w$_2$+$\cdots$+w$_t$ and \{u$_1$,u$_2$,$dots$,u$_r$\}$\cap$\{w$_1$,w$_2$,$dots$,w$_t$\}=$\emptyset$ and \{u$_1$,u$_2$,$dots$,u$_r$\}$\cup$\{w$_1$,w$_2$,$dots$,w$_t$\}= A \\
+and a+b=u$_1$+u$_2$+$\cdots$+u$_r$+v$_1$+v$_2$+$\cdots$+v$_s$\\
+and a*b=x$_1$+x$_2$+$\cdots$+x$_q$(x$_1$,x$_2$,$\dots$,x$_q$ all are the common elements of \{u$_1$,u$_2$,$dots$,u$_r$\} and \{v$_1$,v$_2$,$dots$,v$_s$\})\\
+$\therefore$ f(a)=\{u$_1$,u$_2$,$dots$,u$_r$\} and f(b)=\{v$_1$,v$_2$,$dots$,v$_s$\} and f(a')=\{w$_1$,w$_2$,$dots$,w$_t$\}\\
+and f(a+b)=\{u$_1$,u$_2$,$dots$,u$_r$\}$\cup$\{v$_1$,v$_2$,$dots$,v$_s$\} and f(a*b)=\{u$_1$,u$_2$,$dots$,u$_r$\}$\cap$\{v$_1$,v$_2$,$dots$,v$_s$\}\\
+$\therefore$ f(a+b)=f(a)+f(b), and f(a*b)=f(a)*f(b) and f(a')=f(a)’\\
+$\therefore$ The above mapping f:B$\rightarrow$P(A) is an isomorphism.
+\end{solution}
+
+\begin{problem}[第三题]
+证明等势的布尔代数均同构
+\end{problem}
+\begin{solution}
+We define Boolean Algebra A and B have the same number of elements.\\
+$\therefore$ according to the problem solved above, we can note that A is isomorphic to P(C) with the mapping f where C is the set of atoms of A and B is isomorphic to P(D) with the mapping g where D is the set of atoms of B.\\
+And according to Corollary 15.7, we note that C and D have the same number of elements. \\
+$\therefore$ As proved before, we can define a bijective function h: S$\rightarrow$T is a isomorphism.\\
+$\therefore$ g$^{-1}$$\circ$h$\circ$f if is a isomorphism.\\
+$\therefore$ A and B are isomorphic.\\
+
+\end{solution}
+
+
+
+
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+\item SM第十四章中，书上关于最大（maximal）最小（minimal）元的定义与ppt中关于他们的定义不一致，极大极小直的定义也产生了冲突，以哪一个为准？\\
+\item 想问一下，我们以后的课程（包括除问题求解外的课程）会学《深入理解计算机系统》这本书吗？
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

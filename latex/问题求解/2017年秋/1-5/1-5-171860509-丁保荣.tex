@@ -1,0 +1,553 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+\usepackage{listings}
+\lstloadlanguages{C++, csh, make}
+\lstset{language=C++,tabsize=4, keepspaces=true,
+  breakindent=22pt, 
+  numbers=left,stepnumber=1,numberstyle=\tiny,
+  basicstyle=\footnotesize, 
+  showspaces=false,
+  flexiblecolumns=true,
+  breaklines=true, breakautoindent=true,breakindent=4em,
+  escapeinside={/*@}{@*/}
+}
+%%%%%%%%%%%%%%%%%%%%
+\title{第五讲：数据与数据结构}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[DH:2.10]
+A permutation (a$_1$,$\cdots$,a$_N$) can be represented by a vector P of length N with P[I]=a$_1$. \\
+Design an algorithm which, given an integer N and a vector of integers P of length N, checks whether P represents any permutation of A$_N$.
+\end{problem}
+
+\begin{solution}
+bubblesort():\\
+(1)set i=0;\\
+(2)do the following N-1 times:\\
+\indent \noindent(2.1) point to the first element;\\
+\indent \noindent(2.2) do the following (N-1-i) times:\\
+\indent \noindent \indent \noindent(2.2.1) compare the element pointed to with the next element;\\
+\indent \noindent \indent \noindent(2.2.2) if the compared elements are in the wrong order, exchange them;\\
+\indent \noindent \indent \noindent(2.2.3) point to the next element;\\
+(2.3) let i++;\\
+\\
+main():\\
+B$_1$=bubblesort(P);\\
+B$_2$=bubblesort(A$_N$);\\
+if (B$_1$==B$_2$) then print "P represents a permutation of A$_N$";\\
+else print "P doesn't represent any permutation of A$_N$";\\
+\end{solution}
+
+
+\begin{problem}[DH:2.11]
+Design an algorithm which, given a positive integer N, produces all the permutations of A$_N$.\\
+\end{problem}
+
+\begin{solution}
+运用递归方法求解，用for循环每次确定第一个数为某一值，在每次for循环内运用递归求解规模递减1的全排列(用一个状态数组标记前面已确定的数和还未确定的数)\\
+\begin{lstlisting}
+//
+//  main.cpp
+//  An permutation
+//
+//  Created by 丁保荣 on 2017/10/27.
+//  Copyright © 2017年 丁保荣. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+int counter=0;
+void arrange(int A[],int c[],int n,int k);
+int main(void)
+{
+    int A[10000],b[10000];
+    int n=5;
+    cin >>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>A[i];
+        b[i]=0;
+    }
+    arrange(A,b,n,1);
+    cin.get();
+    return 0;
+}
+
+void arrange(int A[],int c[],int n,int k)
+{
+    if (k==n) 
+    {
+        for(int i=1;i<=n;i++)
+        {
+            if (c[i]==0)
+                cout<<A[n]<<" ";
+            else
+                cout<<A[c[i]]<<" ";
+        }
+        counter++;
+        cout<<counter<<endl;
+    }
+    else
+    {
+        for(int i=1;i<=n;i++)
+        {
+            if(c[i]!=0)
+                continue; 
+            else
+            {
+                c[i]=k;
+                arrange(A,c,n,k+1);
+                c[i]=0;
+            }
+        }
+    }
+}
+
+\end{lstlisting}
+\end{solution}
+
+
+\begin{problem}[DH:2.12]
+We say that a permutation $\sigma$ =(a$_1$,$\cdots$,a$_N$) can be obtained by a stack, if it is possible to start from the input sequence (1,2,$\cdots$,N) and an empty stack S, and produce the output $\sigma$ using only the following types of operations:\\
+\\
+$\boldsymbol{read(X)}$: Read an integer from the input into variable X.\\
+$\boldsymbol{print(X)}$: Print the integer currently stored in variable X on the output.\\
+$\boldsymbol{push(X,S)}$: Push the integer currently stored in variable X on to the stack S.\\
+$\boldsymbol{pop(X,S)}$: Pop the integer from the top of the stack S into variable X.(This operation is illegal if S is empty).\\
+\\
+For example, the permutation(2,1) can be obtained by a stack, since the following series of operations\\
+\indent \noindent $\boldsymbol{read(X), push(X,S), read(X), print(X), pop(X,S), print(X)}$\\
+applied to the input sequence (1,2) produces the output sequence (2,1).\\
+\indent \noindent A permutation can be obtained by a queue, if it can be similarly obtained from the input (1,2,$\cdots$,N), using an initially empty quene Q, and the operations $\boldsymbol{read(X), print(X)}$, and\\
+\indent \noindent $\boldsymbol{add(X,Q)}$: Add the integer currently stored in X to the rear of Q.\\
+\indent \noindent $\boldsymbol{remove(X,Q)}$: Remove the integer from the front of Q into X.(This opeartion is illegal if Q is empty.)\\
+\\
+We can similarly speak of a permutation obtained by two stacks, if we permit the $\boldsymbol{push}$ and $\boldsymbol{pop}$ operations on two stacks S and S'.
+
+(a) Show that the following permutations can be obtained by a stack:\\
+\indent \noindent  i. (3,2,1).\\
+\indent \noindent ii. (3,4,2,1).\\
+\indent \noindent iii. (3,5,7,6,8,4,9,2,10,1).\\
+(b) Prove that the following permutations cannot be obtained by s stack:\\
+\indent \noindent i. (3,1,2).\\
+\indent \noindent ii. (4,5,3,7,2,1,6).\\
+(c) How many permutations of A$_4$ cannot be obtained by a stack?\\
+\end{problem}
+
+
+\begin{solution}
+(a)\\
+\indent \noindent i.read(1), push(1,S), read(2), push(2,S), read(3), print(3),\\
+ pop(2,S), print(2), pop(1,S), print(1)\\
+\indent \noindent ii.read(1), push(1,S), read(2), push(2,S), read(3), print(3),\\
+ read(4), print(4), pop(2,S), print(2), pop(1,S), print(1)\\
+
+\indent \noindent iii.read(1), push(1,S), read(2), push(2,S), read(3), print(3),\\
+read(4), push(4,S), read(5), print(5), read(6), push(6,S),\\
+read(7), print(7), pop(6,S), print(6), read(8), print(8),\\
+pop(4,S), print(4), read(9), print(9), pop(2,S), print(2),\\
+read(10), print(10), pop(1,S), print(1)\\
+(b)\\
+\indent \noindent i.the first output is 3, so 1 and 2 should be stored in the stack.\\
+ So when output 1 and 2, 1 should be in front of 2,it contradicts with (3,1,2).\\
+ So the permutation(3,1,2) cannot be obtained by a stcak.\\
+ \indent \noindent i.Let's consider the output:7 is before 2 and 6,\\
+ with the input we can condlude that 2 and 6 is stored in the stack.\\
+ and according to the input, 6 is stored above 2 in the stack.\\
+ So 6 should be printed earlier than 2.\\
+ So it contradicts with the output.\\
+ So the permutation(4,5,3,7,2,1,6) cannot be obtained by a stack.\\
+ (c)\\
+ \indent \noindent There are ten permutations of A$_4$ cannot be obtained by a stack.\\
+ They are (3,1,2,4), (3,1,4,2), (3,4,1,2), (4,3,1,2), (2,4,1,3)\\
+ (4,2,1,3), (4,2,3,1), (1,4,2,3), (4,1,2,3), (4,1,3,2)
+\end{solution}
+
+
+\begin{problem}[DH: 2.13]
+Design an algorithm that checks whether a given permutation can be obtained by a stack. In
+case the answer is yes, the algorithm should also print the appropriate series of operations.
+In your algorithm, in addition to \textbf{read}, \textbf{print}, \textbf{push}, and \textbf{pop}, you may use the test is \(\textbf{empty(
+S)}\) for testing the emptiness of the stack \textbf{S}.
+\end{problem}
+
+\begin{solution}
+完整程序见DH:2.15\\
+完整程序见DH:2.15\\
+完整程序见DH:2.15\\
+\end{solution}
+
+
+\begin{problem}[DH: 2.14]
+(a) Give series of operations that show that each of the permutations given in Exercise 2.12(b) can be obtained by a queue and also by two stacks.\\
+(b) Prove that every permutation can be obtained by a queue.\\
+(c) Prove that every permutation can be obtained by two stacks.
+\end{problem}
+
+
+\begin{solution}
+(a)\\
+\indent \noindent i.(3,1,2)\\
+\indent \noindent using a queue:\\
+read(1), add(1,Q), read(2), add(2,Q), read(3), print(3), \\
+remove(1,Q), print(1), remove(2,Q), print(2)\\
+\indent \noindent using two stacks:\\
+read(1), push(1,S), read(2), push(2,S'), read(3),\\
+print(3), pop(1,S), print(1), pop(2,S'), print(2)\\
+\indent \noindent ii.(4,5,3,7,2,1,6)\\
+\indent \noindent using a queue:\\
+read(1), add(1,Q), read(2), add(2,Q), read(3), add(3,Q),\\
+read(4), print(4), read(5), print(5), remove(1,Q), add(1,Q),\\
+remove(2,Q), add(2,Q), remove(3,Q), print(3), read(6), add(6,Q),\\
+read(7), print(7),remove(1,Q), add(1,Q), remove(2,Q), print(2),\\
+remove(6,Q),add(6,Q), remove(1,Q), print(1), remove(6,Q), print(6).\\
+\indent \noindent using two stacks:\\
+read(1), push(1,S), read(2), push(2,S)\\
+read(3), push(3,S), read(4), print(4)\\
+read(5), print(5), pop(3,S), print(3)\\
+read(6), push(6,S'), read(7), print(7)\\
+pop(2,S), print(2), pop(1,S), print(1)\\
+pop(6,S'), print(6)\\
+\\
+(b)\\
+when the input is fixed,we want certain any permutation.We can do by the following steps.\\
+When output the elements, there is a sequence. And the next output element can only be in one of the two places:the queue or the input sequence.\\
+(1)if the next output element is in the input sequence,we can add all the elements(if there exists) before the desired element to the queen, and then read the desired element,then output it.\\
+(2)if the next output element is in the queue,we can remove all the elements(if there exists) before the desired element and then add then to the queen respectively.After that we can remove the desired element from the queue, and then output it.\\
+\\
+(c)\\
+The condition is similiar to (b)\\
+When the input is fixed, we want certain any permutation. We can do by the following steps.\\
+When output the elements, there is a sequence. And the next output element can only be in one of the threes places:the stack S, the stack S',the input sequence.\\
+(1)if the next output element is in the input sequence, we can push all the elements(if there exists) before the desired element to the stack S (stack S' is also OK).After that, we can read the desired element, and then output it.\\
+(2)if the next output element is in the stack S, we can pop all the elements(if there exists) before the desired element and then push them to the stack S' respectively. After that we can pop the desired element,and then output it.\\
+(3)if the next output element is in the stack S', the operations are similar to (2).
+\end{solution}
+
+\begin{problem}[DH: 2.15]
+Extend the algorithm you were asked to design in Exercise 2.13, so that if the given permutation cannot be obtained by a stack, the algorithm will print the series of operations on two stacks that will generate it.
+\end{problem}
+
+\begin{solution}
+\begin{lstlisting}
+//
+//  main.cpp
+//  testify a stack sequence improved
+//
+//  Created by 丁保荣 on 2017/10/27.
+//  Copyright © 2017年 丁保荣. All rights reserved.
+//
+
+
+#include <iostream>
+using namespace std;
+
+int stack[10000]={0};//S栈
+int stack2[10000]={0};//S'栈
+int a[10000];//输出序列
+int point=1;//S栈的顶部的指针
+int point2=1;//S'栈的顶部的指针
+int j=1;//输出序列的指针
+int n;//输出长度
+int place=0;//search函数中所要寻找的元素距离栈顶的距离
+
+
+
+int testify(int a[],int n);//测试是否能用一个栈操作
+void output(int a[],int n);//用一个栈操作
+void operation(int i);//output中的操作
+void outputwithtwostacks(void);//用两个栈操作
+int search(int s);   //查找元素在栈中的位置
+void operation2(int i);//outputwithstacks中的操作
+void betweenstacks(void);//在两个栈中间调节输出某一栈中的某一元素
+int main(void)
+{
+    cin>>n;   //输出序列的长度
+    for(int i=1;i<=n;i++)
+        cin>>a[i];  //读入输出序列
+    if (testify(a,n)==0)
+    {
+        output(a,n);
+    }  //测试是否能用一个栈操作，如果能，则输出操作步骤
+    else
+    {
+        outputwithtwostacks();
+    } //输出用两个栈操作的操作步骤
+    return 0;
+}
+
+
+int testify(int a[],int n)
+{
+    int compare=0;
+    for(int i=1;i<=n-1;i++)
+    {
+        compare=a[i];
+        for(int k=i+1;k<=n;k++)
+        {
+            if (a[k]<a[i])
+            {
+                if(a[k]>compare)
+                {
+                    cout<<"The permutation cannot be obtained by a stack!"<<endl;
+                    return 1;
+                }
+                else
+                    compare=a[k];
+            }
+        }
+    }
+    cout<<"The permutation can be obtained by a stack!"<<endl;
+    return 0;
+}
+
+
+void output(int a[],int n)
+{
+    for(int i=1;i<=n;i++)
+    {
+        operation(i);
+        
+    //所有元素已进栈或输出，下面处理栈内元素
+    }
+    while(point>1)
+    {
+        cout<<"pop("<<stack[point-1]<<",S)"<<endl;
+        cout<<"print("<<stack[point-1]<<")"<<endl;
+        stack[point-1]=0;
+        point--;
+    }
+}
+
+void operation(int i)
+{
+    if(i<a[j]) //所求元素不在栈内，使i元素进栈
+    {
+        cout<<"read("<<i<<")"<<endl;
+        stack[point]=i;
+        point++;
+        cout<<"push("<<i<<",S)"<<endl;
+    }
+    else if(i==a[j]) //所求元素刚刚输入
+    {
+        cout<<"read("<<i<<")"<<endl;
+        cout<<"print("<<i<<")"<<endl;
+        j++;
+    }
+    else if(i>a[j]) //所求元素已进栈
+    {
+        cout<<"pop("<<stack[point-1]<<",S)"<<endl;
+        cout<<"print("<<stack[point-1]<<")"<<endl;
+        stack[point-1]=0;
+        point--;
+        j++;
+        operation(i); //将已进栈的所求元素输出，并递归直至i被处理（进栈或输出）
+    }
+    
+}
+//above is the 2.13 solution
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//不太华丽的分割线
+//below is the improved function
+void outputwithtwostacks(void)
+{
+    for(int i=1;i<=n;i++)
+    {
+        operation2(i);
+    }
+    //所有元素已经栈或输出，下面处理栈内元素
+    while(j<=n)
+    {
+        betweenstacks();
+    }
+}
+void operation2(int i)
+{
+    if(i<a[j]) //所求元素不在栈内，使i进栈
+    {
+        cout<<"read("<<i<<")"<<endl;
+        stack[point]=i;
+        point++;
+        cout<<"push("<<i<<",S)"<<endl;
+    }
+    else if(i==a[j]) //所求元素刚刚进栈
+    {
+        cout<<"read("<<i<<")"<<endl;
+        cout<<"print("<<i<<")"<<endl;
+        j++;
+    }
+    else if(i>a[j]) //所求元素已进栈
+    {
+        betweenstacks();
+        operation2(i); //将所求元素从栈内输出，并递归直至i被处理（进栈或输出）
+    }
+
+}
+int search(int s)
+{
+    for(int i=1;i<=point-1;i++)
+    {
+        if(s==stack[i])
+        {
+            place=point-i-1;
+            return 1;
+        }
+    }
+    for(int i=1;i<=point2-1;i++)
+    {
+        if(s==stack2[i])
+        {
+            place=point2-i-1;
+            return 2;
+        }
+    }
+    return -1;
+}
+void betweenstacks(void)
+{
+    //首先判断所要输出元素在哪个栈内，并将所求元素调节至栈顶，然后输出。
+    if(search(a[j])==1)
+    {
+        for(int j=1;j<=place;j++)
+        {
+            
+            cout<<"pop("<<stack[point-1]<<",S)"<<endl;
+            cout<<"push("<<stack[point-1]<<",S')"<<endl;
+            stack2[point2]=stack[point-1];
+            stack[point-1]=0;
+            point--;
+            point2++;
+        }
+        cout<<"pop("<<stack[point-1]<<",S)"<<endl;
+        cout<<"print("<<stack[point-1]<<")"<<endl;
+        j++;
+        stack[point-1]=0;
+        point--;
+    }
+    else if(search(a[j]==2))
+    {
+        for(int j=1;j<=place;j++)
+        {
+            cout<<"pop("<<stack[point-1]<<",S')"<<endl;
+            cout<<"push("<<stack[point-1]<<",S)"<<endl;
+            stack[point]=stack2[point2-1];
+            point2--;
+            point++;
+        }
+        cout<<"pop("<<stack2[point2-1]<<",S')"<<endl;
+        cout<<"print("<<stack2[point2-1]<<")"<<endl;
+        j++;
+        stack2[point2-1]=0;
+        point2--;
+    }
+}
+
+\end{lstlisting}
+
+\end{solution}
+
+
+\begin{problem}[DH: 2.16]
+Consider the treesort algorithm described in the text.\\
+(a) Construct an algorithm that transforms a given list of integers into a binary search
+tree.\\
+(b) What would the output of treesort look like if we were to reverse the order in which the subroutine \textbf{second-visit-traversal} calls itself recursively? In other words, we consistently visit the right offspring of a node before we visit the left one.
+\end{problem}
+
+\begin{solution}
+(a) 
+\begin{verbatim}
+insert(i,T):
+  if(i<T.value)
+  {
+    if(isempty(Left(T)))
+      Left(T).value=i;
+    else
+      insert(i,Left(T));
+  }
+  else
+  {
+    if(isempty(Right(T)))
+      Right(T).value=i;
+    else
+      insert(i,Right(T));
+  }
+
+
+main():
+Read(n);
+read(a[1]...a[n]);
+root=a[1];
+for(i=2;i<=n;i++)
+{
+  insert(a[i],root);
+}
+
+\end{verbatim}
+(b)we will have a permutation of decreasing sequence.\\
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[题号]
+  题目。
+\end{problem}
+
+\begin{cause}
+  简述错误原因（可选）。
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+  正确解答。
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}

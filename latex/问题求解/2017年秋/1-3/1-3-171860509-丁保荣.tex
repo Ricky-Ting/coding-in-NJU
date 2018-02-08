@@ -1,0 +1,502 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+\usepackage{listings}
+\lstloadlanguages{C++, csh, make}
+\lstset{language=C++,tabsize=4, keepspaces=true,
+  breakindent=22pt, 
+  numbers=left,stepnumber=1,numberstyle=\tiny,
+  basicstyle=\footnotesize, 
+  showspaces=false,
+  flexiblecolumns=true,
+  breaklines=true, breakautoindent=true,breakindent=4em,
+  escapeinside={/*@}{@*/}
+}
+%%%%%%%%%%%%%%%%%%%%
+\title{第三讲：常用的证明方法}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%
+\noplagiarism	% always keep this
+%%%%%%%%%%%%%%%%%%%%
+\beginthishw	% begin ``this homework (hw)'' part
+
+%%%%%%%%%%
+\begin{problem}[UD: 5.12]	% NOTE: use '[]' (instead of '()' or '{}') to provide additional information
+  Let n be an integer. Prove that if $n^2 − (n − 2)^2$ is not divisible by 8, then n is even.
+\end{problem}
+
+
+\begin{proof}
+  $n^2 -(n-2)^2$ = 4n-4=4(n-1)\\
+  if n is odd ,then (n-1) is even\\
+  $\therefore$ (n-1) is divisible by 2\\
+  $\therefore$ 4(n-1) is divisible by 8\\
+  $\therefore$ it contradicts with $n^2 -(n-2)^2$ is divisible by 8\\
+  $\therefore$ n isn't odd \\
+  $\therefore$ n is even \\
+\end{proof}
+%%%%%%%%%%
+
+%%%%%%%%%%
+\begin{problem}[UD: 5.14]
+Consider the following statement.\\
+$ \forall ,(x \in Z^{+} \rightarrow \exists y, \exists z,((y \in Q) \wedge (z \in Q) \wedge ( yz  \not = 0) \wedge  (x^2=y^2+z^2)))$\\
+（a）Change this symbolic statement to an English sentence.\\
+ (b) Prove the statement you found in (a).
+
+\end{problem}
+
+\begin{solution}
+  (a) for every a positive integer x ,we have there exist a rational number y and a rational number z such that $x^2=y^2 + z^2$\\
+  (b) Let y=xcos$\alpha$,z=xsin$\alpha$ and that suits the condition\\
+      $\because$ x is an integer\\
+      $\therefore$ if we want y and z to be rational numbers,we just need to make $cos\alpha and sin\alpha$ rational numbers.\\
+      $\therefore$ we can let $cos\alpha = 4/5  and  sin\alpha = 3/5$\\
+      $\therefore$ we have y=4x/5 and z=3x/5\\
+      $\therefore$ y and z are rational numbers.\\
+      $\therefore$ the statement is true.
+
+\end{solution}
+%%%%%%%%%%
+% \newpage  % continue in a new page
+%%%%%%%%%%
+\begin{problem}[UD: 17.11]
+  Let g: N $\rightarrow$ $R^+$ and let a be a positive real number. Suppose that g has the properties that g(1)=a and g(m+n)=g(m)g(n) for all natural numbers n and m.\\
+  (a) Prove that g(0)=1.\\
+  (b) Prove that g(n)=a$^n$ for all n$\in$ N.
+\end{problem}
+
+% \begin{remark}	
+%   Refer to book.
+% \end{remark}
+
+\begin{proof}
+  (a) Let m=n=0\\
+  $\therefore$ g(0+0)=g(0)g(0)\\
+  $\therefore$ g(0)=g(0)$^2$\\	
+  $\therefore$ g(0)=0 or g(0)=1 
+  and$\because$ g(x)$\in$ R$^+$\\
+  $\therefore$ g(0)=1\\
+  \\
+  (b) (1) when n=1,we have g(1)=a according to the context \\
+          $\therefore$ the statement is true for n=1\\
+      (2) Let us suppose g(k)=a$^k$ is true\\
+          when n=k+1, let m=1,n=k, so we have g(k+1)=g(1)g(k)= a * a$^k$ = a$^{k+1}$\\
+          so g(k+1)=a$^{k+1}$ is true.\\
+      $\therefore$ based on (1) and (2), we have g(n)=a$^n$ for all n $\in$ N.
+\end{proof}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}[UD: 17.13]
+Find the error in the Not a proof below.(See Problem 10.8 for the definition of the degree of a polynomial)\\
+\\
+Nontheorem.\\
+Let p be a polynomial of positive degree n such that p is a product of degree one  polynomials and p(0)=0. If c $\in$ R satisfies p(c)=0,then c=0.\\
+\\
+   In other words, our claim is that if p(x)=ax(a$_1$x + b$_1$) $\cdots$ (a$_{n-1}$x + b$_{n-1}$), where a,b$_1$,$\cdots$,b$_{n-1}$ $\in$ R and a,a$_1$,$\cdots$,a$_{n-1}$ $\not=0$,then the only root of p is 0.\\
+   \\
+   \\
+Not a proof.\\
+We will prove this statement by induction on the degree n of the polynomial p.\\
+  For the base step, we let n=1. Since p(0)=0, we can write p(x)=ax for some a$\in$R and a$\not=$0.If p(c)=0, then p(c)=ac=0.Since a$\not=$0, we conclude that c=0.\\
+  For the induction step,assume that if p is a polynomial of degree n that is a product of degree one polynomials and satisfies p(0)=0,then p(c)=0 implies that c=0. Let p be a polynomial of degree n+1 that factors into n+1 degree one polynomials and satisfies p(0)=0. We need to show that p(c)=0 implies that c=0. Write p(x)=ax(a$_1$x + b$_1$) $\cdots$,(a$_n$ + b$_n$), where a,a$_1$,$\cdots$,a$_n$ are nonzero real numbers and b$_1$,$\cdots$,b$_n$ $\in$ R. Suppose that p(c)=0. Then\\
+  \\
+    0=p(c)=ac(a$_1$c + b$_1$)$\cdots$(a$_n$c +b$_n$)\\
+    \\
+  One of the factors,ac,a$_1$c + b$_1$,$\cdots$,a$_n$c + b$_n$,must vanish.Rearranging terms if necessary ,we may assume  that the factor ac or the factor a$_1$c +b$_1$ vanished.Now,\\
+  \\
+  q(x)= ax(a$_1$x + b$_1$) $\cdots$ (a$_{n-1}$x + b$_{n-1}$)\\
+  \\
+  is a polynomial of degree n that is a product of degree one polynomials and satisfies q(0)=0. Since ac(a$_1$c + b$_1$)=0, we have q(c)=0. Since our induction hypothesis applies to q, we conclude that c=0.Therefore,p(c)=0 implies that c=0, and the nontheorem follows from mathematical induction.\\
+
+
+\end{problem}
+
+\begin{solution}
+we can't conclude q(c)=0 from p(c)=0,because we can let c=-($\frac{b_n}{a_n}$), and therefore we have q(c)$\not=0$ while p(c)=0\\
+
+\end{solution}
+
+
+
+\begin{problem}[UD:17.14]
+  Prove the second principle of mathematical induction (Theorem 17.6) from the first one (Theorem 17.1). To do so,let P(n) be the assertion "Q(1),$\cdots$,Q(n)" are true."
+\end{problem}
+
+\begin{solution}
+Let P(n) be the  assertion "Q(1), $\cdots$, Q(n) " are true.\\
+$\therefore$ P(1) is the assertion "Q(1) is true"\\
+Let me consider the statement S:P(n) is true for all n\\
+(1) when n=1, According to (i), Q(1) is true, $\therefore$ P(1) is true.\\
+$\therefore $ P(n) is true when n=1\\
+(2) Let us suppose P(n) is true.\\
+$\therefore$ Q(1),$\cdots$, Q(n) are true.\\
+$\therefore$ according to (ii) Q(n+1) is true.\\
+$\therefore$ Q(1),$\cdots$,Q(n),Q(n+1) are true.\\
+$\therefore$ P(n+1) is true.\\
+\\
+$\therefore$ according to (1) and (2), the statement S:(P(n) is true for all n) is true\\
+$\therefore$ Q(n) holds for all positive integers n.
+
+\end{solution}
+
+
+
+\begin{problem}[UD:17.16]
+A subset S of R$^2$ is convex if for every two points x,y $\in$ S, the line segment joining x and y again lies in S. Recall that an interior angle at a vertex of a convex polygon is the smaller of the two angles formed by the edges at that vertex.\\
+Prove that for an integer n, where n $\ge$ 3, the sum of all the interior angles of a convex polygon with n vertices is (n-2)180 degrees.
+\end{problem}
+
+\begin{proof}
+we define T$_n$= the sum of all the interior angles of a convex polygon with n vertices \\
+So we need to prove T$_n$=(n-2)180 is true for all n $\ge$ 3.\\
+(1) n=3, we all know the sum of all the interior angles of a triangle is 180.\\
+$\therefore$ T$_n$=(n-2)180 is true for n=3\\
+
+(2) Let we suppose T$_k$ =(k-2)180 (k $\ge$ 3) is ture.\\
+When n=k+1, we can cut the convex polygon with k+1 vertices into two convex polygons: a triangle and a convex polygon with k vertices\\
+$\therefore$ T$_{k+1}$=T$_k$+180 =(k-1)180\\
+$\therefore$ if T$_n$=(n-2)180 is true for n, it is also true for n+1\\
+\\
+$\therefore$ according to (1) and (2), T$_n$=(n-2)180 is true for all n $\ge$ 3
+\end{proof}
+
+
+\begin{problem}[UD:17.18]
+A triangular number, T$_n$, is the number of equally spaced points that can be used to form an equilateral triangle with sides built of n equally spaced points. \\
+(a) Find a formula for the n$^th$ triangular number, and prove that your formula is correct.\\
+(b) Can you think of a (familiar) game that uses T$_4$? T$_5$?
+\end{problem}
+
+\begin{remark}
+（b）经郑奘巍同学提醒
+\end{remark}
+
+\begin{solution}
+(a) T$_n$=n(n+1)/2\\
+Proof:\\
+(1) when n=1, we haveT$_1$=1,it suits the formula.\\
+$\therefore$ T$_n$=n(n+1)/2 is true for n=1\\
+(2) Let us suppose T$_k$=k(k+1)/2 is true\\
+When n=k+1, T$_{k+1}$=T$_k$ + k + 1 = (k+1)(k+2)/2\\
+$\therefore$ if T$_n$=n(n+1)/2 is true for n, it is also true for n+1\\
+$\therefore$ according to (1) and (2), T$_n$=n(n+1)/2 is true for all n\\
+\\
+(b) halma\\
+\end{solution}
+
+
+\begin{problem}[UD:17.19]
+This problem refers to the notation and theorem above.\\
+(a) Compute each of the following:\\
+5!, $\binom{8}{3}$ , $\binom{8}{5}$, $\binom{5}{2}$ , $\binom{5}{3}$ ,$\binom{7}{0}$ , and $\binom{7}{7}$.\\
+(b) A "picture proof" of a special case of Theorem 17.7,namely $(m+1)^2=m^2  +  2m  +  1$ for m $\in$ N, is presented in Figure 17.4.Explain the picture proof.\\
+(c) Prove that for all K,n $\in$ N with $1 \le k \le n$, we get \\
+          $\binom{n+1}{k} = \binom{n}{k-1}  +  \binom{n}{k}$.\\
+          (if you write out what it means ,life will be a lot easier.)\\
+(d) Use part (c) to prove Theorem 17.7 (See Project 27.7,on Pascal's triangle.)\\
+(e) Prove that \\
+      $\sum\limits_{k=0}^{n}\binom{n}{k}(-1)^k  =  0$ for all n $\in  Z^+$ 
+\end{problem}
+
+\begin{solution}
+(a) 5!=120\\
+    $\binom{8}{3}$=56\\
+    $\binom{8}{5}$=56\\
+    $\binom{5}{2}$=10\\
+    $\binom{5}{3}$=10\\
+    $\binom{7}{0}$=1\\
+    $\binom{7}{7}$=1\\
+    \\
+(b) $m^2$ represents a square with m dots in every line.\\
+    2m represents two line of dots with m dots in each line.\\
+    1 represents the dot in the corner.\\
+    All above comstitutes the square with m+1 dots in every line.\\
+    \\
+(c) $\binom{n}{k-1}$ + $\binom{n}{k}$\\
+=$\frac{n!}{(k-1)!(n-k+1)!}  +  \frac{n!}{k!(n-k)!}$\\
+=$(\frac{n!}{(k-1)!(n-k)!})(\frac{1}{k}  +  \frac{1}{n-k+1})$\\
+=$(\frac{n!}{(k-1)!(n-k)!})(\frac{n+1}{k(n-k+1)})$\\
+=$\frac{(n+1)!}{k!(n-k+1)!}$\\
+=$\binom{n+1}{k}$\\
+\\
+(d) We need to prove Let a,b $\in$ R and n $\in$ Z$^+$.Then (a+b)$^n$=$\sum\limits_{k=0}^{n}\binom{n}{k}  a^k b^{n-k}.$\\
+    (1) When n=1 we have a+b=a+b\\
+        $\therefore$  (a+b)$^n$=$\sum\limits_{k=0}^{n}\binom{n}{k}  a^k b^{n-k}$ is true for n=1\\
+    (2) Let us suppose (a+b)$^n$=$\sum\limits_{k=0}^{n}\binom{n}{k}  a^k b^{n-k}$
+    Let us consider n+1:\\
+              (a+b)$^{n+1}$=(a+b)$^n$(a+b) \\
+              =$\sum\limits_{k=0}^{n}\binom{n}{k}a^{k+1}b^{n-k}  +  \sum\limits_{k=0}^{n}\binom{n}{k}a^kb^{n-k+1}$\\
+              =$\sum\limits_{k=1}^{n+1}\binom{n}{k-1}a^kb^{n-k+1}  +  \sum\limits_{k=1}^{n}\binom{n}{k}a^kb^{n_k+1}  +  \binom{n}{0}a^0b^{n+1}$\\
+              =$\sum\limits_{k=1}^{n}\binom{n}{k-1}a^kb^{n-k+1}  +  \sum\limits_{k=1}^{n}\binom{n}{k}a^kb^{n_k+1}  +  \binom{n}{0}a^0b^{n+1}  +  \binom{n}{n}a^{n+1}b^0$\\
+              =$\sum\limits_{k=1}^{n}(\binom{n}{k-1}+\binom{n}{k})a^kb^{n-k+1}  +  \binom{n+1}{0}a^0b^{n+1}  +  \binom{n+1}{n+1}a^{n+1}b^0$\\
+              =$\sum\limits_{k=1}^{n}\binom{n+1}{k}a^kb^{n-k+1}  +  \binom{n+1}{0}a^0b^{n+1}  +  \binom{n+1}{n+1}a^{n+1}b^0$\\
+              =$\sum\limits_{k=0}^{n+1}\binom{n+1}{k}a^kb^{n-k+1}$\\
+    $\therefore$ if (a+b)$^n$=$\sum\limits_{k=0}^{n}\binom{n}{k}  a^k b^{n-k}$ is true for n ,then it is also true for n+1\\
+    \\
+    $\therefore$ based on (1) and (2) (a+b)$^n$=$\sum\limits_{k=0}^{n}\binom{n}{k}  a^k b^{n-k}$ is true for all n$\in$ Z$^+$\\
+    \\
+(e) according to (d) we have  (a+b)$^n$=$\sum\limits_{k=0}^{n}\binom{n}{k}  a^k b^{n-k}$ is true for all n$\in$ Z$^+$\\
+    so we can let a=-1 b=1,then we have ((-1)+1)$^n$=$\sum\limits_{0}^{n}(-1)^{k}b^{n-k}$\\
+    $\therefore$ we have $\sum\limits_{k=0}^{n}\binom{n}{k}(-1)^k  =  0$ for all n $\in  Z^+$ 
+
+\end{solution}
+
+
+
+
+\begin{problem}[ES:24.4]
+Consider a square whose side has length one. Suppose we select five points from this square. Prove that there are two points whose distance is at most $\frac{\sqrt{2}}{2}$
+\end{problem}
+
+\begin{remark}
+借鉴百度思路
+\end{remark}
+
+
+\begin{solution}
+Let us suppose every two points's distance is over $\frac{\sqrt{2}}{2}$\\
+Let us consider four points.
+We can divide the square into four small squares whose side has length $\frac{1}{2}$, \\
+so in order to let every two points's distance is over $\frac{\sqrt{2}}{2}$,we have to put only one point in one square.\\
+And we still have a fifth point which must be in one of the four squares.\\
+So there exitst two points whose distance is less than $\frac{\sqrt{2}}{2}$\\
+So what we suppose is not true.\\
+So there are two points whose distance is at most $\frac{\sqrt{2}}{2}$\\
+
+
+
+\end{solution}
+
+
+\begin{problem}[ES:4.6]
+Find and prove a generalization of Proposition 24.2 to three dimensions.
+\end{problem}
+
+\begin{solution}
+Given nine distinct lattice points in the xyz-plane, at least one of the line segments determined by these points has a lattice point as its midpoint.\\
+\\
+Proof:\\
+There are eight types:\\
+(even,even,even)  (even,even,odd)   (even,odd,even)   (even,even,odd)  \\
+(odd,even,even)   (odd,even,odd)    (odd,odd,even)    (odd,odd,odd)    \\
+$\therefore$ with nine points,there must be at least two of the same type.\\
+$\therefore$ the midpoint of the line segment lining the two points is a lattice point(as even plus even is even and odd plus odd is even).\\
+$\therefore$ Given nine distinct lattice points in the xyz-plane, at least one of the line segments determined by these points has a lattice point as its midpoint.
+
+\end{solution}
+
+
+\begin{problem}[ES:4.8]
+Write a computer program that takes as its input a sequence of distinct integers and returns as its output the length of a longest monotone subsequence.
+\end{problem}
+
+\begin{solution}
+\begin{lstlisting}
+//
+//  main.cpp
+//  longest monotone subsequence
+//
+//  Created by 丁保荣 on 2017/10/15.
+//  Copyright © 2017年 丁保荣. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+struct imm
+{
+    int value;
+    int up;
+    int down;
+    int max;
+};
+void find(int i,imm a[]);
+int main(void)
+{
+    imm a[1000];
+    int n=0;  //the length of the original sequence
+    cout <<"Please enter the length of the sequence" << endl;
+    cin >> n;  //enter the length of the original sequence
+    cout <<"Please enter the numbers"<<endl;
+    for(int i=0;i<=n-1;i++)
+        cin >> a[i].value;
+    for(int i=0;i<=n-1;i++)
+    {
+        a[i].max=a[i].down=a[i].up=1;
+        find(i,a);
+    }
+    int max=0;
+    for(int i=0;i<=n-1;i++)
+        if(a[i].max>max)
+            max=a[i].max;
+    cout<< "The length of the length of the original sequence is" <<max;
+    return 0;
+}
+
+void find(int i, imm a[])
+{
+    if (i==0)
+    {
+        return;
+    }
+    for(int j=i-1;j>=0;j--)
+    {
+        if(a[j].value>a[i].value)
+        {
+            if(a[j].down>=a[i].down)
+            {
+                a[i].down=a[j].down+1;
+                if (a[i].down>a[i].up)
+                    a[i].max=a[i].down;
+            }
+        }
+        else
+        {
+            if(a[j].up>=a[i].up)
+            {
+                a[i].up=a[j].up+1;
+                if(a[i].up>a[i].down)
+                    a[i].max=a[i].up;
+            }
+        }
+        
+    }
+    return;
+}
+
+\end{lstlisting}
+
+\end{solution}
+
+
+
+
+
+\begincorrection	% begin the ``correction'' part (Optional)
+
+%%%%%%%%%%
+\begin{problem}[UD:1.8]
+The following is a classic problem in mathematics. Though there are many variations of this problem, the standard one is the following.
+You are given 12 coins that appear to be identical. However, one of the coins is counterfeit, and the weight of this coin is slightly different than that of the other 11. Using only a two-pan balance, what is the smallest number of weighings you would need to find the counterfeit coin? (Think about a simpler, similar problem.)
+(See I. Peterson’s website [82] for a discussion of this problem.)（抄写或简述题目）
+\end{problem}
+
+\begin{cause}
+  没有想出最优解
+\end{cause}
+
+% Or use the ``solution'' environment
+\begin{revision}
+
+3次\\
+\begin{lstlisting}
+
+  将12枚假币标号为1，2，3，···，12
+  将其分为三堆A1={1,2,3,4} A2={5,6,7,8}  A3={9,10,11,12}
+  将A1，A2放在天平的两端
+  if(天平平衡)
+  {
+    假币在A3{9,10,11,12}中
+    将{7,8}和{9,10}放在天平上
+    if(天平平衡)
+    {
+      假币在{11,12}中
+      只要将其中一枚与真币进行比较即可找出假币
+      操作3次，结束 done!
+    }
+    else
+    {
+      假币在{9,10}中
+      只要将其中一枚与真币进行比较即可找出假币
+      操作3次，结束 done!
+    }
+  }
+  else if(A1比A2重)
+  {
+      假币在{1,2,3,4,5,6,7,8}中
+      天平两边B1={1,2,5}和B2={3,4,12}
+      if(平衡)
+      {
+        假币在{6，7，8}中且假币较轻
+        只要6和7进行比较即可找出假币
+        操作3次，结束 done!
+      }
+      else if(B1比B2重)
+      {
+        假币在{1,2}中且假币较重
+        将1和2进行比较即可找出假币
+        操作3次，结束 done!
+      }
+      else if(B1比B2轻)
+      {
+        假币在{3,4,5}(如果在{3,4}中则假币较重，如果在{5}中则假币较轻)
+        将{3}和{4}进行比较
+        if(平衡)
+        {
+          假币是5
+          操作三次，结束 done!
+        }
+        else
+        {
+          假币是较重的那个
+          操作三次，结束 done!
+        }
+      }
+  }
+  
+\end{lstlisting}
+
+\end{revision}
+%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{problem}[UD:2.10]
+Consider the statement “It snows or it is not sunny.” \\
+(a) Find a different statement that is equivalent to the given one.\\
+(b) Find a different statement that is equivalent to the negation of the given one.
+\end{problem}
+
+\begin{cause}
+应只考虑形式化，不考虑现实含义
+\end{cause}
+
+\begin{revision}
+(a) If it is sunny,then it snows.\\
+(b) It doesn't snow and it is sunny.\\
+\end{revision}
+
+
+
+\beginfb	% begin the feedback section (Optional)
+
+你可以写：
+\begin{itemize}
+  \item 对课程及教师的建议与意见
+  \item 教材中不理解的内容
+  \item 希望深入了解的内容
+  \item 等
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%
+\end{document}
