@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: hw.tex 						   %
+% Description: LaTeX template for homework.                %
+%
+% Feel free to modify it (mainly the 'preamble' file).     %
+% Contact hfwei@nju.edu.cn (Hengfeng Wei) for suggestions. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT NOTE: Compile this file using 'XeLaTeX' (not 'PDFLaTeX') %
+%
+% If you are using TeXLive 2016 on windows,                          %
+% you may need to check the following post:                          %
+% https://tex.stackexchange.com/q/325278/23098                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, UTF8]{ctexart}
+\input{preamble}  % modify this file if necessary
+
+%%%%%%%%%%%%%%%%%%%%
+\title{数模调研}
+\me{丁保荣}{171860509}
+\date{\today}     % you can specify a date like ``2017年9月30日''.
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{数学建模是什么}
+简单的来说：数学建模就是使用数学方法解决实际应用问题,在数学的框架下表达自己解决问题的思想和方法。\\
+
+\subsection{数学建模的步骤}
+\begin{enumerate}
+\item 分析实际问题中的各种因素，使用变量表示；
+\item 分析这些变量之间的关系，哪些是相互依存的，哪些是独立的，他们具有什么样的关系；
+\item 根据实际问题选用合适的数学框架（典型的有优化问题，配置问题等等），并具体的应用问题在这个数学框架下表出；
+\item 选用合适的算法求解数学框架下表出的问题；
+\item 使用计算结果解释实际问题，并且分析结果的可靠性
+\end{enumerate}
+
+\subsection{数学建模中需要的能力}
+\begin{itemize}
+\item 数学思维的能力；
+\item 分析问题本质的能力；
+\item 团队合作的能力；
+\item 资料检索能力：Google等互联网资源，图书馆；
+\item 编程的能力：常用的数学工具软件有MATLAB和Mathematica
+\item 论文写作的能力
+\end{itemize}
+
+\section{常见数模竞赛及其要求}
+\subsection{MCM/ICM(俗称美赛)}
+MCM/ICM是Mathematical Contest in Modeling和Interdisciplinary Contest in Modeling的缩写，即“数学建模竞赛”和“交叉学科建模竞赛”。MCM始于1985年，ICM始于2000年，由COMAP（the Consortium for Mathematics and Its Application，美国数学及其应用联合会）主办，得到了SIAM，NSA，INFORMS等多个组织的赞助。MCM/ICM与其他著名数学竞赛（如Putnam数学竞赛）的区别在于其着重强调研究问题、解决方案的原创性、团队合作、交流以及结果的合理性。竞赛以三人（本科生）为一组，在四天时间内，就指定的问题完成从建立模型、求解、验证到论文撰写的全部工作。\\
+\begin{itemize}
+\item 一般在下半年可以开始报名（大约11月左右报名），Contests→Register for Contest(这里需要用指导老师的邮箱来注册，所以需要提前联系老师，确定老师愿意指导，用老师的邮箱号注册，每位老师最多指导2只队伍)。美赛报名费100美元，需要用VISA卡或者MASTER卡支付。
+\item 比赛时间：春节前后
+\item 论文提交：在网上提交，并且寄送纸质版到美国。
+\item 无答辩
+\item 奖状发放：大概4月左右网上自己下载获奖证书（大陆同学）
+\item 美赛的奖项有：Outstanding Winner (1\%) 、Finalist(1\%)、Meritorous Winner(9\%)、Honoralbe Mention(31\%)、Successful Participant(57\%)。一般只要提交了文章至少能获得成功参赛奖。
+\end{itemize}
+\subsection{CUMCM(俗称国赛)}
+全国大学生数学建模竞赛（CUMCM）创办于1992年，每年一届，目前已成为中国大陆高校规模最大的基础性学科竞赛，也是世界上规模最大的数学建模竞赛。2017年，近11万名大学生报名参加本项竞赛。\\
+\begin{itemize}
+\item 报名：报名时间可能每个大学不太一样，有的大学要先进行校赛预选，大约是在5-6月开始报名，报名请关注学校相关教务处网站、数学学院网站。报名费300元（有的学校会返还报名费来鼓励大家积极参与，获奖的话说不定学校还会给丰厚的奖金呢~~）。以团队报名，每个队伍不超过3人（所以也可以2人或者1人），每队须有一个指导教师。（关于组队的注意事项后面会详细讲到）
+\item 培训：有的学校会在暑假小学期组织建模培训，如果有的话，建议可以去听听~没有培训的话，就自己好好看看呗~
+\item 比赛时间：比赛一般在每年9月中上旬举行，比赛时间是从某个周五的上午8:00开始，为期三天三夜，截止到次周一上午8：00。（关于时间的分配我在后面也会详细讲讲）
+\item 比赛期间：参赛队伍可以在比赛期间利用图书、互联网资料帮助建模，有问题也可以请教老师，原则上不相互交流（原则上......）。本科组比赛有A,B两道题，需要选择其中一道题进行解答。PS：最后AB两题各个奖项数量相同，所以如果选A,B题的分别有7000,3000只队伍，国赛一等奖A,B题分别有20个名额，那么A题的获奖比例和B题是不同的，但是具体选做的人少的还是选容易的要自己斟酌~（关于换题在后面会讲讲）
+\item 比赛提交：提交纸质版给数学学院，并且把论文、数据、程序打包压缩拷贝给相关老师。
+\item 比赛答辩：初审进入国赛获奖名单的队伍需要答辩，每个省的初审进度可能不太一样，有的在9月底就会进行答辩，有的可能10月。答辩开始有一个3-5分钟的概要介绍，每个队伍选一个口齿伶俐的小伙伴上去讲就好。答辩的主要目的是验真，所以只要是自己做的应该没多大问题。答辩可能会问到关于模型、软件或者程序的问题。当然答辩也是可能挂掉的，挂掉了就降档。
+\item 奖项：国一  国二  省一  省二  省三
+\end{itemize}
+
+\section{准备}
+\subsection{数学知识}
+\begin{itemize}
+\item 《线性代数》(很重要)
+\item 《常微分方程》
+\item 《运筹学》
+\item 《微积分》(基础)
+\item 《概率论与数理统计》(很重要)
+\end{itemize}
+
+\section{学校对于数模的安排}
+\begin{itemize}
+\item 需要数学和计算机两门学科最高一次考试成绩达到85(具体见报名通知时的细则)
+\item 校内集训:暑假的头两(可能与小学期有冲突)。如果通过选拔，将持续培训到比赛前
+\item 需要自行学习概率统计、线性代数、线性规划；数据分析软件等内容。
+\item 推荐教材：叶其孝主编的《大学生数学建模竞赛辅导教材》系列共五本。在图书馆数量多极易借。
+\end{itemize}
+
+
+
+
+\section{数学建模的分工}
+\subsection{建模}
+
+\subsection{编程}
+要达到熟练运用matlab进行运筹优化,数据处理,微分方程的地步. 数理统计可以交给SPSS,R ,其中SPSS无脑操作上手快.
+\subsection{论文}
+数学建模论文在20-25页上下最好，带上附页最好也别超过40页左右。
+
+\section{推荐书目}
+\begin{itemize}
+\item 数学模型(姜启源、谢金星) (国产风格，面面俱到，模型比较杂，而且可操作性较差。适合作为一本辅助参考性读物进行学习)
+\item 数学建模方法与分析.(新西兰)Mark.M．Meerschaert. （娓娓道来，五步法）
+\item MATLAB揭秘  郑碧波 译 （本书讲的极其通俗易懂，适合无编程经验的）
+\item 精通matlab2011a  张志涌
+\item 数学建模与应用：司守奎 （囊括了各类建模的知识，还附有代码，很难得，工具书性质的）
+\item Matlab智能算法30个案例分析  史峰,王辉等
+\item 《MATLAB神经网络43个案例分析》- 王小川, 史峰, 郁磊    
+\item 《MATLAB统计分析与应用：40个案例分析》
+\item 数字图像处理(MATLAB版)  冈萨雷斯 (13国赛碎纸片复原居然涉及了图像处理,所以列在这里了.可看可不看,太专业化了)
+\item 《数学建模竞赛:获奖论文精选与点评》- 韩中庚
+\item 《机器学习》 - 周志华
+\item 《统计学习方法》 - 李航
+\item 《最优化理论与方法》 - 袁亚湘
+\item 《最优化原理》 - 胡适耕
+\item 《凸优化（中译）》 - Stephen Boyd
+\item 《凸优化算法（英文）》 - Dimitri P.Bertsekas
+\item 《Introduction to Numerical Analysis (英文)》- J.Stoer,R.Bulirsch
+\item 《数据挖掘导论 (中译)》-Michael SteinBach
+\item 《正确写作美国大学生数学建模竞赛》
+\item 《美国大学生数学建模竞赛题解析与研究》1-5卷
+
+\end{itemize}
+
+\section{软件准备}
+\begin{itemize}
+\item 编程工具(Matlab/Python/Mathematica)
+\item 统计建模(R/SPSS/Minitab)
+\item 论文写作(Word/LaTex)
+\item 公式编辑器(MathType)
+\item 插图制作(PowerPoint/PS)
+\item 流程图绘制(Visio)
+\item 版本控制器(SVN/Git)
+\item 团队资料笔记共享(有道云笔记)
+\end{itemize}
+
+
+\section{前人经验}
+\begin{itemize}
+\item 国赛讲究实力，美赛讲究创新。美赛不一定要多高级的方法，但是一定要有创意。而国赛，组委会往往是有一个模糊的“标准答案”在的，按部就班做下来就好了。拿到一个问题，可以先建立一个初等模型，讨论下结果；再逐渐放宽条件，把模型做的复杂一点。即 Basic model -> Normal model -> Extended model的思路。这个思维在美赛中很好，这么做下来基本都能得金奖的。
+\item MATLAB是必备的，必须要熟练掌握各种模型的实现。此外，SPSS(或者R)也是要掌握的。Mathematic和MATLAB的替代性很强，不掌握也没关系（仅在建模方面，mathematic 当然也是很强大的）。强烈建议大家至少熟练掌握一种智能算法.
+\item 摘要很重要
+\item 硕博论文是一个非常好的突破口。
+\end{itemize}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%
+% always keep this
+%%%%%%%%%%%%%%%%%%%%
+% begin ``this homework (hw)'' part
+
+\begin{thebibliography}{99}
+\bibitem{a} wiki中关于数学建模的条目 https://zh.wikipedia.org/wiki/数学建模
+\bibitem{b} 知乎上关于如何入门参与数学建模的回答 
+\bibitem{c} 团组织生活-计科竞赛一览.pdf by郑奘巍
+\end{thebibliography}
+\end{document}
