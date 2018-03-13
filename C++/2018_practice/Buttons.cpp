@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+
+int main(void)
+{
+	int n;
+	int result=0;
+	cin>>n;
+	for(int i=1;i<=n-1;i++)
+	{
+		result+=i*(n-i);
+	}
+	result+=n;
+	cout<<result;
+	return 0;
+}
