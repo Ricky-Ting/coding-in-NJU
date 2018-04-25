@@ -34,7 +34,23 @@ s.size()
 
 `std::ios::sync_with_stdio(false);` 解除对C的输入输出的兼容
 
+## 保留小数位数
+
+```
+#include<iomanip>
+
+cout<<setiosflags(ios::fixed)<<setprecision(3)
+```
+
+
+
 ## map
+
+## memset()
+
+`extern void *memset(void *buffer, int c, int count) `
+
+`char a[100];memset(a, '/0', sizeof(a));`
 
 
 ## 位操作
