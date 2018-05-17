@@ -79,3 +79,45 @@ if(a!=b)
 	a^=b;
 }
 ```
+
+### Priority Queue
+
+```
+#include<queue>
+using namespace std;
+
+priority_queue <int> pq;
+pq.push(1);
+a=pq.top();
+num=pq.size();
+!qp.empty();
+pq.pop();
+```
+
+如果是结构体,可以再结构体中重载"<"操作符
+
+```
+struct info
+{
+	float score;
+	bool operator <(const info &a) const
+	{
+		return a.socre<score;
+	}
+};
+```
+
+传入结构体可自定义优先级
+
+```
+struct cmp
+{
+	bool operator ()(int a, int b)
+	{
+		return a>b;
+	}
+};
+
+priority_queue<int,vector<int>,cmp> q
+
+```
