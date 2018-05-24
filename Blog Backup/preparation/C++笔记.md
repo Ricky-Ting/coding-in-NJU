@@ -45,6 +45,19 @@ cout<<setiosflags(ios::fixed)<<setprecision(3)
 
 
 ## map
+```
+#include<map>
+map<int,int> mymap;
+```
+
+## set
+```
+#include<set>
+set<int> myset;
+myset.insert(value);
+myset.size();
+```
+
 
 ## memset()
 
@@ -121,3 +134,12 @@ struct cmp
 priority_queue<int,vector<int>,cmp> q
 
 ```
+
+### hash_map
+
+```
+#include<hash_map>
+hash_map<int,string> mymap;
+mymap[key]="data";
+```
+
