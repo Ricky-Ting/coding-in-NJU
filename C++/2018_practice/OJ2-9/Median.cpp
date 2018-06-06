@@ -40,6 +40,4 @@ int main()
 		printf("%I64d\n",l);
 	}
 	return 0;
-
-
-}
+}   //二分
