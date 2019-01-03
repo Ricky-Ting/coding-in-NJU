@@ -143,3 +143,22 @@ hash_map<int,string> mymap;
 mymap[key]="data";
 ```
 
+### C++ 类
+
+```
+class myclass
+{
+public:
+	sth
+	
+private:
+	sth
+};
+
+myclass::myfunction(void)
+{
+}
+
+//函数可以在class 内部定义，也可以在外部定义
+
+```

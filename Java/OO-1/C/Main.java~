@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+public  class Main{
+	
+	public static void main(String args[]) throws Exception {
+		Scanner cin = new Scanner(System.in);
+		int n=cin.nextInt();
+		int m=cin.nextInt();
+		People[] p = new People[5];
+		for(int i=1;i<=n;i++){
+			String name=cin.next();
+			int age=cin.nextInt();
+			p[i]=new People(name,age);
+		}
+		for(int i=1;i<=n;i++){
+			p[i].print();
+		}
+		for(int i=1;i<=m;i++){
+			int a=cin.nextInt();
+			int b=cin.nextInt();
+			System.out.println(People.equals(p[a],p[b]));
+		}
+
+	}
+	
+
+}
+
+public class People {
+		protected String name;
+		protected int age;
+		public People (String name,int age) {
+			this.name=name;
+			this.age=age;
+		}
+		public void print() {
+			System.out.println("Name="+name+" Age="+age);
+		}
+		public staic boolean equals(People A,People B){
+			if(A.name==B.name && A.age==B.age)
+				return true;
+			return false;
+
+		}
+	
+	}
