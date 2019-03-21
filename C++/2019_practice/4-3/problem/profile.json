@@ -1,0 +1,7 @@
+﻿{
+  "Name": "杰哥的玉米地",
+  "Author": "Ricky",
+  "TimeLimit": 2,
+  "MemoryLimit": 128,
+  "StdRun": ["./src/std"]
+}

@@ -1,0 +1,42 @@
+
+g++ generate_data.cpp -o generate_data
+
+./generate_data > data/test1.in
+./generate_data > data/test2.in
+./generate_data > data/test3.in
+./generate_data > data/test4.in
+./generate_data > data/test5.in
+./generate_data > data/test6.in
+./generate_data > data/test7.in
+./generate_data > data/test8.in
+./generate_data > data/test9.in
+./generate_data > data/test10.in
+./generate_data > data/test11.in
+./generate_data > data/test12.in
+./generate_data > data/test13.in
+./generate_data > data/test14.in
+./generate_data > data/test15.in
+./generate_data > data/test16.in
+./generate_data > data/test17.in
+./generate_data > data/test18.in
+./generate_data > data/test19.in
+./generate_data > data/test20.in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
