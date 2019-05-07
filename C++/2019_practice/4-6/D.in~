@@ -1,0 +1,45 @@
+42
+#include<stdio.h>
+#include<stdlib.h>
+#define OMAEWA_MOU_SHINDEIRU g
+void func()
+{
+	char m = 'OMAEWA_MOU_SHINDEIRU';
+	long long x = 0x1234567890;
+	float y = .89123f;
+	printf("Ni Kan Zhe Dai Ma You Da/***/ You Yuan\n");		
+    // have fun int main() {hahahahaha = 0.awsl}
+
+	return;	
+}
+
+int main(int argc,char* argv[])
+{
+	(argc++)--;
+
+renshengchonglai:
+	unsigned xiaoxin = rand()%2;
+
+	switch(xiaoxin)
+	{
+		case 0:
+			printf("Boom~");
+			goto renshengchonglai;
+		case 1:
+		default:
+			printf("MiaoMiaoMiao\n\t");
+			goto yeah;
+	}
+yeah:
+	
+	/*/Zhe shi shen me 
+	gui dong xi a !!!!!!!*/
+	for(int i = 0;i < 100;i += 2)
+	printf("You have never \" seen OJ hardcore like this %d\n",i);
+	/* Happy QM Festival =) */
+	int A,Wei,Da,Shi,Bai = -12345678;	
+}
+
+/* Jia You Gan Dai Ma*/
+
+

@@ -1,0 +1,100 @@
+#include<queue>
+#include<stdio.h>
+#include<string.h>
+#include<vector>
+#define min(a,b) a<b?a:b
+using namespace std;
+#define INF 0x3f3f3f3f
+#define MAX 1010
+int V,E;
+int flow[MAX];
+int pre[MAX];
+int remain[MAX][MAX];
+
+int bfs(int s,int t)
+{
+memset(pre,-1,sizeof(pre));
+ memset(flow,INF,sizeof(flow));
+  queue<int> queue;
+   pre[s] = s;
+  queue.push(s);
+//  printf("V = %d\n",V);
+  while(!queue.empty())
+	    {
+	        int u = queue.front();
+        queue.pop();
+	    //  printf("pop! u = %d\n",u);
+	        if(u == t) break;
+         
+        for(int i=0;i<V;i++)
+	        {
+	        //  printf("i = %d\n",i);
+	            if(i!=s&&remain[u][i] > 0&& pre[i] == -1)
+            {
+	                queue.push(i);  
+	                pre[i] = u;
+	                flow[i] = min(flow[u], remain[u][i]);
+	            }
+	        }   
+	    }   
+	    if(pre[t]==-1)
+        return -1;
+    else
+        return flow[t];
+	}
+	 
+	int solveFlow(int s,int t)
+	{
+	    int sum = 0;
+	    int increment = 0;
+	    while((increment = bfs(s,t))!=-1)
+	    {
+        int cur = t;
+        while(cur!=s)
+        {
+            remain[pre[cur]][cur] -= increment;
+	            remain[cur][pre[cur]] += increment;
+          cur = pre[cur];
+ 
+        }
+        sum += increment;
+    }
+	    return sum;
+	}
+	 
+int backindex(int r,int c,int rr,int cc)
+	{
+    if(rr<=0||cc<=0||rr>r||cc>c)
+	        return -1;
+    else
+        return r*c+(rr-1)*c+cc; 
+	}
+ 
+	int frontindex(int r,int c,int rr,int cc)
+{
+    if(rr<=0||cc<=0||rr>r||cc>c)
+	        return -1;
+	    else
+	        return (rr-1)*c+cc;
+	}
+	 
+	void build(int r,int c)
+	{
+	    for(int i=1;i<=r;i++)
+	    {
+        for(int j=1;j<=c;j++)
+	        {
+	            int back  = backindex(r,c,i,j);
+							      	            int front  = frontindex(r,c,i,j);
+							      	            int a1 = frontindex(r,c,i,j+1);
+							      	            int a2 = frontindex(r,c,i,j-1);
+							      	            int a3 = frontindex(r,c,i-1,j);
+							      	            int a4 = frontindex(r,c,i+1,j);
+							      	            remain[front][back] = 1;
+							      	            if(a1!=-1) remain[back][a1] = 1;
+							      	            if(a2!=-1) remain[back][a2] = 1;
+							      	            if(a3!=-1) remain[back][a3] = 1;
+							      	            if(a4!=-1) remain[back][a4] = 1;
+							      	        }
+							      	    }   
+							      }
